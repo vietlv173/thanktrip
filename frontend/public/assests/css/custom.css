@@ -1,0 +1,209 @@
+.react-autosuggest__container {
+  position: relative;
+}
+
+.group-input .react-autosuggest__container {
+  width: 100%;
+}
+
+.react-autosuggest__input {
+  width: 240px;
+  height: 30px;
+  padding: 10px 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.react-autosuggest__input--focused {
+  outline: none;
+}
+
+.react-autosuggest__input--open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+}
+
+.react-autosuggest__suggestions-container--open {
+  display: block;
+  position: absolute;
+  top: 51px;
+  width: 280px;
+  background-color: #fff;
+  font-family: Helvetica, sans-serif;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .05);
+  font-weight: 300;
+  font-size: 16px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  max-height: 286px;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+.react-autosuggest__suggestions-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.react-autosuggest__suggestions-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.react-autosuggest__suggestions-list::-webkit-scrollbar-thumb {
+  background: #d8d8d8;
+  border-radius: 3px;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+}
+
+.react-autosuggest__suggestion:last-child .dropdown__item {
+  border-bottom: 0;
+}
+
+.dropdown--select-location .react-autosuggest__suggestion .dropdown__item {
+  padding: 10px 14px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  background-color: #ddd;
+}
+.form-group--datepicker .react-datepicker-wrapper {
+  width: 100%;
+}
+
+.dropdown__intro {
+  padding: 0 12px;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.board-calendar {
+  padding: 22px 22px 15px 22px;
+  border-radius: 10px;
+  background-color: white;
+  margin-top: 10px;
+  display: none;
+}
+
+.board-calendar__wrap {
+  overflow-x: auto;
+}
+
+.board-calendar__wrap-content {
+  min-width: 690px;
+}
+
+.board-calendar.show {
+  display: block;
+}
+
+.board-calendar__day-of-the-week {
+  display: flex;
+  display: -ms-flexbox;
+}
+
+.board-calendar__day-of-the-week p {
+  width: calc(100% / 7);
+  text-align: center;
+  opacity: .5;
+  font-weight: 300;
+  line-height: 25px;
+  margin-bottom: 6px;
+}
+
+.board-calendar__content {
+  border: 1px solid #dbdbdb;
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  font-weight: 300;
+}
+
+.board-calendar__item {
+  border-bottom: 1px dashed #dbdbdb;
+  border-right: 1px dashed #dbdbdb;
+  padding: 10px 8px 5px 10px;
+  width: calc(100% / 7);
+  min-height: 48px;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.board-calendar__item:nth-child(7n) {
+  border-right: 0;
+}
+
+.board-calendar__item:nth-child(n + 29) {
+  border-bottom: 0;
+}
+
+.board-calendar__item.active {
+  background-image: linear-gradient(180deg, #ffba00 0%, #ff5111 100%);
+  color: white;
+  border: 0;
+}
+
+.board-calendar__item .date {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.board-calendar__item .price {
+  margin-top: 3px;
+  line-height: 1;
+  text-align: right;
+}
+
+.board-calendar__item.active .price {
+  line-height: 1;
+  font-weight: 600;
+}
+
+.border-bottom-none {
+  border-bottom: none!important;
+}
+
+.board-calendar__control {
+  margin-top: 15px;
+}
+
+.board-calendar__control.hide {
+  display: none;
+}
+
+.board-calendar__control.mt-2 {
+  margin-top: 8px;
+}
+
+.board-calendar__control img {
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}

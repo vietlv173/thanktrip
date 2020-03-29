@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Khách hàng - <%= user.fullName %></title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+
+    </style>
+    <style>
+        h2 {
+            line-height: 36px;
+            font-size: 20px;
+        }
+
+        h5 {
+            line-height: 18px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .r4_counter h4 {
+            margin: 0;
+        }
+
+        a {
+            color: #008ece;
+            text-decoration: none !important;
+        }
+
+        .uln ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-custom .dashboardStatistic ul li {
+            max-width: calc(100% / 4);
+        }
+
+        .dashboardStatistic ul li {
+            position: relative;
+            color: #999;
+            font-size: 12px;
+            padding: 6px 0 6px 67px;
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            vertical-align: middle;
+            min-height: 72px;
+            white-space: nowrap;
+            margin: 4px 25px 8px 0;
+            box-sizing: border-box;
+            width: 22%;
+        }
+
+        .dashboardStatistic ul li + li {
+            border-left: 1px solid #d6d6d6;
+        }
+
+        .btn-group-left a, .btn-group-left button {
+            text-transform: uppercase;
+        }
+
+        .content-list div[class*=col-md-] .form-group {
+            margin: 0;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .th-text-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<%- include('../layouts/header', {userLogin: userLogin}); %>
+<div class="app-body">
+    <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/admin/user/index">Khách hàng</a>
+            </li>
+            <li class="breadcrumb-item active"><%= user.fullName %></li>
+        </ol>
+        <div class="container-fluid">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Khách hàng
+                                        </p>
+                                    </div>
+                                    <div class="card-body" style="padding: 0;">
+                                        <div class="content-list row row-padding-15 mb15" style="padding: 15px 20px;">
+                                            <div class="col-md-4 col-sm-6" style="text-align: center;">
+                                                <img src="https://ui-avatars.com/api/?size=192&name=<%= user.fullName %>" alt="">
+                                            </div>
+                                            <div class="col-md-8 col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="form-label control-label">Họ và tên:</label>
+                                                    <div class="form-wrap form-control-static">
+                                                        <strong><%= user.fullName %></strong>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label control-label">
+                                                        Số điện thoại:
+                                                    </label>
+                                                    <div class="form-wrap form-control-static payOrder">
+                                                        <a href="javascript:void(0)"><%= user.phone ? user.phone : 'N\A' %></a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label control-label">Email:</label>
+                                                    <div class="form-wrap form-control-static payOrder">
+                                                        <%= user.email ? user.email : 'N\A' %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12">
+                                                <br>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12" style="text-align: right;">
+                                                <form action="/admin/user/de-active/<%= user.id %>" method="post">
+                                                    <a href="/admin/user/change-password/<%= user.id %>" class="btn btn-primary btn-sm">
+                                                        <i class="nav-icon icon-key"></i>
+                                                        Đổi mật khẩu
+                                                    </a>
+                                                    <button class="btn btn-danger btn-sm">
+                                                        <i class="nav-icon icon-lock"></i>
+                                                        Ngừng hoạt động
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <table class="table table-responsive-sm table-striped table-outline"
+                                               style="margin-bottom: 0;">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 40px;">ID</th>
+                                                <th>Mã đơn hàng</th>
+                                                <th>Mã CTV</th>
+                                                <th>Thời gian</th>
+                                                <th>Trạng thái</th>
+                                                <th class="th-text-right">Số chỗ đặt</th>
+                                                <th class="th-text-right">Tổng chi phí</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="th-text-right"></td>
+                                                <td class="th-text-right"></td>
+                                            </tr>
+                                            <% user.flights.forEach(function(flight, key) { %>
+                                                <tr>
+                                                    <td><%= key + 1 %></td>
+                                                    <td>
+                                                        <a href="/admin/flight/view/<%= flight.id %>">
+                                                            <%= flight.flightCode %>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <%= flight.collaboratorCode ? flight.collaboratorCode:"N/A"  %>
+                                                    </td>
+                                                    <td>
+                                                        <%= _.convertDate(flight.createdAt) %>
+                                                    </td>
+                                                    <% if(flight.status === 1) { %>
+                                                    <td><span class="badge badge-primary">Chờ thanh toán</span></td>
+                                                    <% } %>
+                                                    <% if(flight.status === 2) { %>
+                                                        <td><span class="badge badge-success">Đã thanh toán</span></td>
+                                                    <% } %>
+                                                    <td class="th-text-right">
+                                                        <%= flight.passengers.length %>
+                                                    </td>
+                                                    <td class="th-text-right">
+                                                        <%= new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(flight.totalMoney) %>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+</body>
+</html>

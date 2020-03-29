@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Khách hàng</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+    </style>
+
+    <style type="text/css">
+        @keyframes spinner {
+            0% {
+                opacity: 1
+            }
+            100% {
+                opacity: 0
+            }
+        }
+
+        .spinner div {
+            left: 95px;
+            top: 75px;
+            position: absolute;
+            animation: spinner linear 1s infinite;
+            background: #1d3f72;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px / 5px;
+            transform-origin: 5px 25px;
+        }
+
+        .spinner div:nth-child(1) {
+            transform: rotate(0deg);
+            animation-delay: -0.9s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(2) {
+            transform: rotate(36deg);
+            animation-delay: -0.8s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(3) {
+            transform: rotate(72deg);
+            animation-delay: -0.7s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(4) {
+            transform: rotate(108deg);
+            animation-delay: -0.6s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(5) {
+            transform: rotate(144deg);
+            animation-delay: -0.5s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: -0.4s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(7) {
+            transform: rotate(216deg);
+            animation-delay: -0.3s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(8) {
+            transform: rotate(252deg);
+            animation-delay: -0.2s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(9) {
+            transform: rotate(288deg);
+            animation-delay: -0.1s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(10) {
+            transform: rotate(324deg);
+            animation-delay: 0s;
+            background: #1d3f72;
+        }
+
+        .loading-io {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .spinner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: translateZ(0) scale(1);
+            backface-visibility: hidden;
+            transform-origin: 0 0; /* see note above */
+        }
+
+        .spinner div {
+            box-sizing: content-box;
+        }
+
+        .th-text-right{
+            text-align: right;
+        }
+
+        .tab-content .tab-pane{
+            padding: 0 0 0;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<%- include('../layouts/header', {userLogin: userLogin}); %>
+<div class="app-body">
+    <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active">Khách hàng</li>
+        </ol>
+        <div class="container-fluid" data-ng-app="userApp" data-ng-controller="userCtrl">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Tìm kiếm
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input ng-model="queries.userSearch" ng-enter="getStatistical()" class="form-control" id="name" type="text"
+                                                           placeholder="Theo tên, SĐT khách hàng">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label style="width: 100%;">
+                                                    <strong>Thời gian đăng ký</strong>
+                                                    <a data-ng-click="showAndHideSearchDate()" class="pull-right btn-search-date-advanced" href="javascript:void(0)">
+                                                        <span class="nav-icon icon-calendar"></span>
+                                                        Tìm tùy chọn
+                                                    </a>
+                                                </label>
+                                                <div class="form-group" ng-show="!queries.searchDateAdvanced">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <select ng-model="queries.dateQuick" ng-change="getStatistical()" class="form-control" id="dateQuick">
+                                                                <option value="all">Toàn thời gian</option>
+                                                                <option value="today">Hôm nay</option>
+                                                                <option value="yesterday">Hôm qua</option>
+                                                                <option value="seven-day-ago">7 ngày qua</option>
+                                                                <option value="month">Tháng này</option>
+                                                                <option value="last-month">Tháng trước</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" ng-show="queries.searchDateAdvanced">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">Từ ngày</label>
+                                                                <input ng-model="queries.startDate" type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">Đến ngày</label>
+                                                                <input ng-model="queries.endDate" type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button class="btn btn-primary pull-right" data-ng-click="getStatistical()">
+                                                                <i class="nav-icon icon-refresh"></i>
+                                                                Tìm kiếm
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="">Theo trạng thái</label>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="all" name="status">
+                                                            <label class="form-check-label" for="radio1">Tất cả</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="10" name="status">
+                                                            <label class="form-check-label" for="radio1">Đang hoạt động</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio2" type="radio" value="0" name="status">
+                                                            <label class="form-check-label" for="radio2">Ngừng hoạt động</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Khách hàng
+                                        </p>
+                                    </div>
+                                    <div class="card-body" style="padding: 0;text-align: center;">
+                                        <div class="loading-io" ng-show="pageLoading">
+                                            <div class="spinner">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div id="res-view" style="text-align: left;">
+                                            <table class="table table-responsive-sm table-striped"
+                                               style="margin-bottom: 0;">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 40px;">STT</th>
+                                                <th>Số diện thoại</th>
+                                                <th>Họ và tên</th>
+                                                <th>Email</th>
+                                                <th>Trạng thái</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr ng-repeat="(key,user) in responses.users">
+                                                <td>{{key+1}}</td>
+                                                <td>
+                                                    <a href="view/{{ user._id }}">
+                                                        {{ user.phone }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {{ user.fullName }}
+                                                </td>
+                                                <td>
+                                                    {{ user.email ? user.email : '---' }}
+                                                </td>
+                                                <td><span class="badge badge-success">Hoạt động</span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/javascript/user.js"></script>
+</body>
+</html>

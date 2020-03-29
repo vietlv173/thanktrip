@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | CTV - <%= collaborator.fullName %></title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+
+    </style>
+    <style>
+        h2 {
+            line-height: 36px;
+            font-size: 20px;
+        }
+
+        h5 {
+            line-height: 18px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .r4_counter h4 {
+            margin: 0;
+        }
+
+        a {
+            color: #008ece;
+            text-decoration: none !important;
+        }
+
+        .dashboardStatistic {
+            position: relative;
+        }
+
+        .uln ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-custom .dashboardStatistic ul li {
+            max-width: calc(100% / 4);
+        }
+
+        .dashboardStatistic ul li {
+            position: relative;
+            color: #999;
+            font-size: 12px;
+            padding: 6px 0 6px 67px;
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            vertical-align: middle;
+            min-height: 72px;
+            white-space: nowrap;
+            margin: 4px 25px 8px 0;
+            box-sizing: border-box;
+        }
+
+        .dashboardStatistic .total .dash_icon {
+            background: #0094da;
+        }
+
+        .dashboardStatistic .dash_icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            position: absolute;
+            top: 25px;
+            left: 28px;
+            background: #4bac4d;
+            text-align: center;
+            border-radius: 100% !important;
+            color: #fff;
+            line-height: 32px;
+        }
+
+        .dashboardStatistic .dash_title {
+            font-weight: 700;
+            color: #666;
+            margin: 0 0 0 2px;
+        }
+
+        .c-callout {
+            text-align: left;
+            padding: 6px 0 6px 60px;
+            border-top: 1px solid #d6d6d6;
+        }
+
+        .dashboardStatistic .total span.number {
+            color: #0094da;
+        }
+
+        .dashboardStatistic span.number {
+            display: block;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        span.yesterday {
+            color: #999;
+            display: block;
+            font-size: 12px;
+            margin: 0 0 0 2px;
+        }
+
+        .btn-group-left a, .btn-group-left button {
+            text-transform: uppercase;
+        }
+
+        .dashboardStatistic .return .dash_icon {
+            background: #ff8030;
+        }
+
+        .dashboardStatistic .down .dash_icon {
+            background: #f94f5e;
+        }
+
+        @media (min-width: 768px){
+            .c-callout {
+                border-top: none;
+                border-left: 1px solid #d6d6d6;
+            }
+        }
+    </style>
+
+    <style type="text/css">
+        @keyframes spinner {
+            0% {
+                opacity: 1
+            }
+            100% {
+                opacity: 0
+            }
+        }
+
+        .spinner div {
+            left: 95px;
+            top: 75px;
+            position: absolute;
+            animation: spinner linear 1s infinite;
+            background: #1d3f72;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px / 5px;
+            transform-origin: 5px 25px;
+        }
+
+        .spinner div:nth-child(1) {
+            transform: rotate(0deg);
+            animation-delay: -0.9s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(2) {
+            transform: rotate(36deg);
+            animation-delay: -0.8s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(3) {
+            transform: rotate(72deg);
+            animation-delay: -0.7s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(4) {
+            transform: rotate(108deg);
+            animation-delay: -0.6s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(5) {
+            transform: rotate(144deg);
+            animation-delay: -0.5s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: -0.4s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(7) {
+            transform: rotate(216deg);
+            animation-delay: -0.3s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(8) {
+            transform: rotate(252deg);
+            animation-delay: -0.2s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(9) {
+            transform: rotate(288deg);
+            animation-delay: -0.1s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(10) {
+            transform: rotate(324deg);
+            animation-delay: 0s;
+            background: #1d3f72;
+        }
+
+        .loading-io {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .spinner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: translateZ(0) scale(1);
+            backface-visibility: hidden;
+            transform-origin: 0 0; /* see note above */
+        }
+
+        .spinner div {
+            box-sizing: content-box;
+        }
+
+        .th-text-right{
+            text-align: right;
+        }
+    </style>
+
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/admin/collaborator/index">Cộng tác viên</a>
+            </li>
+            <li class="breadcrumb-item active"><%= collaborator.fullName %></li>
+        </ol>
+        <div class="container-fluid" data-ng-app="Application" data-ng-controller="collaboratorCtrl">
+            <input id="collaboratorId" type="hidden" value="<%= collaborator.id %>">
+            <div class="loading-io" ng-show="pageLoading">
+                <div class="spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div id="ui-view" style="display: none;">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Tìm kiếm
+                                        </p>
+                                        <div class="card-header-actions">
+                                            <a href="/admin/collaborator/create" class="btn btn-block btn-outline-dark">
+                                                <i class="nav-icon icon-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" id="name" type="text"
+                                                           placeholder="Theo tên, mã CTV">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-sm btn-primary pull-right" type="submit">
+                                            <i class="nav-icon icon-check"></i>
+                                            Tìm kiếm
+                                        </button>
+                                        <button class="btn btn-sm btn-danger pull-left" type="reset">
+                                            <i class="nav-icon icon-close"></i>
+                                            Khôi phục
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            <i class="nav-icon icon-globe"></i>
+                                            <%= collaborator.fullName %>
+                                        </p>
+                                        <div class="card-header-actions">
+                                            <select class="form-control" id="filterDate" ng-model="file" ng-change="getStatistical()">
+                                                <option value="">Hôm nay</option>
+                                                <option value="yesterday">Hôm qua</option>
+                                                <option value="seven-day-ago">7 ngày qua</option>
+                                                <option value="month">Tháng này</option>
+                                                <option value="last-month">Tháng trước</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding: 0;">
+                                        <div class="nav-tabs-boxed">
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#home-1" role="tab" aria-controls="home" aria-selected="true">
+                                                        <i class="nav-icon icon-info"></i>
+                                                        Thông tin
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#profile-1" role="tab" aria-controls="profile" aria-selected="false">
+                                                        <i class="nav-icon icon-wallet"></i>
+                                                        Ngân hàng
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#messages-1" role="tab" aria-controls="messages" aria-selected="false">
+                                                        <i class="nav-icon icon-layers"></i>
+                                                        Giao dịch
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="home-1" role="tabpanel">
+                                                    <div class="dashboardBox dashboardStatistic ovh dashboard-top">
+                                                        <div class="uln ovh pd0" style="border-bottom: 1px solid #c8ced3;">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <div class="c-callout total" style="border:none;">
+                                                                        <label class="dash_icon">
+                                                                            <i class="nav-icon icon-diamond"></i>
+                                                                        </label>
+                                                                        <label class="dash_title">Doanh số</label>
+                                                                        <span class="number">
+                                                                            <span class="txt">{{ responses.revenue | number }}</span>
+                                                                        </span>
+                                                                        <span class="yesterday">Doanh thu thuần</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <div class="c-callout return">
+                                                                        <label class="dash_icon">
+                                                                            <i class="nav-icon icon-plane"></i>
+                                                                        </label>
+                                                                        <label class="dash_title">Khách đặt</label>
+                                                                        <span class="number">
+                                                                            <span class="txt">{{ responses.guestsBooked }}</span>
+                                                                        </span>
+                                                                        <span class="yesterday">Số lượng khách đặt</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <div class="c-callout">
+                                                                        <label class="dash_icon">
+                                                                            <i class="nav-icon icon-share"></i>
+                                                                        </label>
+                                                                        <label class="dash_title">Lượt truy cập</label>
+                                                                        <span class="number">
+                                                                            <span class="txt">{{ responses.hits }}</span>
+                                                                        </span>
+                                                                        <span class="yesterday">Số lượt truy cập vào</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <div class="c-callout down">
+                                                                        <label class="dash_icon">
+                                                                            <i class="nav-icon icon-bag"></i>
+                                                                        </label>
+                                                                        <label class="dash_title">Hoa hồng</label>
+                                                                        <span class="number">
+                                                                            <span class="txt">{{ responses.profit | number }}</span>
+                                                                        </span>
+                                                                        <span class="yesterday">Tiền hoa hồng</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-list row row-padding-15 mb15" style="padding: 15px 20px;text-align: left;">
+                                                        <div class="col-md-6 col-sm-6" style="text-align: center;padding: 35px;">
+                                                            <img src="data:image/png;base64,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"
+                                                                 alt="">
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">Mã CTV:</label>
+                                                                <div class="form-wrap form-control-static">
+                                                                    <div class="input-group mb-3" id="product_coupon">
+                                                                        <input type="text" class="form-control"
+                                                                               value="<%= collaborator.code %>" disabled="">
+                                                                        <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="nav-icon icon-docs"></i>
+                                                                </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">Họ và tên:</label>
+                                                                <div class="form-wrap form-control-static">
+                                                                    <strong><%= collaborator.fullName %></strong>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">
+                                                                    Số điện thoại:
+                                                                </label>
+                                                                <div class="form-wrap form-control-static payOrder">
+                                                                    <a href="javascript:void(0)"><%= collaborator.phone ? collaborator.phone : 'N\A' %></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">Email:</label>
+                                                                <div class="form-wrap form-control-static payOrder">
+                                                                    <%= collaborator.email ? collaborator.email : 'N\A' %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <br>
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12" style="text-align: right;">
+                                                            <a href="/admin/collaborator/update/<%= collaborator.id %>"
+                                                               class="btn btn-success btn-sm">
+                                                                <i class="nav-icon icon-check"></i>
+                                                                Cập nhật
+                                                            </a>
+                                                            <a href="/admin/collaborator/change-password/<%= collaborator.id %>" class="btn btn-primary btn-sm">
+                                                                <i class="nav-icon icon-key"></i>
+                                                                Đổi mật khẩu
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm"
+                                                               href="/admin/product/inactive?id=4">
+                                                                <i class="nav-icon icon-lock"></i>
+                                                                Ngừng hoạt động
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <table class="table table-responsive-sm table-striped"
+                                                           style="margin-bottom: 0;">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width: 40px;">ID</th>
+                                                            <th>Mã chuyến bay</th>
+                                                            <th>Họ và tên</th>
+                                                            <th class="th-text-right">Số lượt đặt</th>
+                                                            <th class="th-text-right">Tổng tiền</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td class="th-text-right">0</td>
+                                                            <td class="th-text-right">0</td>
+                                                        </tr>
+                                                        <tr ng-repeat="(key, flight) in responses.flights">
+                                                            <td>{{ key+1 }}</td>
+                                                            <td>{{ flight.flightCode }}</td>
+                                                            <td>{{ flight.fullName }}</td>
+                                                            <td class="th-text-right">{{ flight.passengers.length }}</td>
+                                                            <td class="th-text-right">{{ flight.totalMoney | number }}</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane" id="profile-1" role="tabpanel">
+                                                    <table class="table table-responsive-sm table-striped"
+                                                           style="margin-bottom: 0;">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width: 40px;">STT</th>
+                                                            <th>Ngân hàng</th>
+                                                            <th>Số tài khoản</th>
+                                                            <th>Chủ thẻ</th>
+                                                            <th>Chi nhánh</th>
+                                                            <th>Trạng thái</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr ng-repeat="(key, flight) in responses.flights">
+                                                            <td>{{ key+1 }}</td>
+                                                            <td>{{ flight.flightCode }}</td>
+                                                            <td>{{ flight.fullName }}</td>
+                                                            <td>{{ flight.passengers.length }}</td>
+                                                            <td>{{ flight.totalMoney | number }}</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane" id="messages-1" role="tabpanel">
+                                                    <table class="table table-responsive-sm table-striped"
+                                                           style="margin-bottom: 0;">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width: 40px;">STT</th>
+                                                            <th>Thông tin giao dịch</th>
+                                                            <th>Ngày giao dịch</th>
+                                                            <th class="th-text-right">Tổng tiền</th>
+                                                            <th>Trạng thái</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td class="th-text-right">0</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr ng-repeat="(key, flight) in responses.flights">
+                                                            <td>{{ key+1 }}</td>
+                                                            <td>{{ flight.flightCode }}</td>
+                                                            <td>{{ flight.fullName }}</td>
+                                                            <td class="th-text-right">{{ flight.passengers.length }}</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+</body>
+</html>

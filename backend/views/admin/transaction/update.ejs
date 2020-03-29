@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | CTV - <%= collaborator.fullName %> - Chỉnh sửa</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="/admin/collaborator/index">Cộng tác viên</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/admin/collaborator/view/<%= collaborator.id %>"><%= collaborator.fullName %></a>
+            </li>
+            <li class="breadcrumb-item active">Cập nhật</li>
+        </ol>
+        <div class="container-fluid" data-select2-id="16">
+            <div id="ui-view" data-select2-id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <form action="update" method="post">
+                                    <div class="card">
+                                        <div class="card-header"><strong>Cộng tác viên</strong>
+                                            <small>Thêm mới</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="street">Số điện thoại <span
+                                                                    class="required">(*)</span></label>
+                                                        <input class="form-control" type="text" disabled=""
+                                                               value="<%= collaborator.username %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="street">Mã CTV <span
+                                                                    class="required">(*)</span></label>
+                                                        <div class="form-wrap form-control-static">
+                                                            <div class="input-group mb-3" id="product_coupon">
+                                                                <input type="text" class="form-control"
+                                                                       value="<%= collaborator.code %>" disabled="">
+                                                                <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="nav-icon icon-docs"></i>
+                                                                </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="company">Họ và tên <span class="required">(*)</span></label>
+                                                        <input name="fullName" class="form-control" type="text"
+                                                               placeholder="Nhập họ và tên">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="street">Email</label>
+                                                        <input name="email" class="form-control" type="text"
+                                                               placeholder="Ex: example@thinkflight.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="country">Địa chỉ</label>
+                                                <input name="address" class="form-control" type="text"
+                                                       placeholder="Ex: Số 127 Yên Xá, Tân Triều, Thanh Trì, Hà Nội">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="country">Ghi chú</label>
+                                                <textarea class="form-control" name="note" cols="30"
+                                                          rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-success pull-right" type="submit">
+                                                <i class="nav-icon icon-check"></i>
+                                                Lưu & Tiếp tục
+                                            </button>
+                                            <a href="index" class="btn btn-danger pull-left">
+                                                <i class="nav-icon icon-close"></i>
+                                                Hủy bỏ
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+</body>
+</html>

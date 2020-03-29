@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Tài khoản ngân hàng - Thêm mới</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="index">Tài khoản ngân hàng</a>
+            </li>
+            <li class="breadcrumb-item active">Thêm mới</li>
+        </ol>
+        <div class="container-fluid" data-select2-id="16">
+            <div id="ui-view" data-select2-id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <form action="create" method="post">
+                                    <div class="card">
+                                        <div class="card-header"><strong>Tài khoản ngân hàng</strong>
+                                            <small>Thêm mới</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <% if(typeof validateFormError !== "undefined") {%>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <i class="nav-icon icon-bell"></i>
+                                                    <%= validateFormError %>
+                                                </div>
+                                            <% } %>
+                                            <% if(typeof createBankFirst !== "undefined") {%>
+                                                <div class="alert alert-warning" role="alert">
+                                                    <i class="nav-icon icon-bell"></i>
+                                                    <%= createBankFirst %>
+                                                </div>
+                                            <% } %>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            Tên ngân hàng
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input name="name" class="form-control" type="text"
+                                                               placeholder="Nhập tên ngân hàng">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="company">Số tài khoản <span class="required">(*)</span></label>
+                                                        <input name="accountNumber" class="form-control" type="text"
+                                                               placeholder="Ex: 9704 36 68 12345678 111">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="street">Chủ tài khoản <span class="required">(*)</span></label>
+                                                        <input name="accountHolder" class="form-control" type="text"
+                                                               placeholder="Ex: Nguyễn Văn A">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="country">Chi nhánh <span class="required">(*)</span></label>
+                                                <input name="branch" class="form-control" type="text"
+                                                       placeholder="Ex: Chi nhánh Thanh Xuân">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-success pull-right" type="submit">
+                                                <i class="nav-icon icon-check"></i>
+                                                Lưu & Tiếp tục
+                                            </button>
+                                            <a href="index" class="btn btn-danger pull-left">
+                                                <i class="nav-icon icon-close"></i>
+                                                Hủy bỏ
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Lịch sử rút tiền - Yêu cầu rút tiền</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .required {
+            color: red;
+        }
+
+        .preview-image img {
+            width: 100%;
+            height: 280px;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<%- include('../layouts/header', {userLogin: userLogin}); %>
+<div class="app-body">
+    <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="index">Yêu cầu rút tiền</a>
+            </li>
+            <li class="breadcrumb-item active">Thêm mới</li>
+        </ol>
+        <div class="container-fluid" data-select2-id="16">
+            <div id="ui-view" data-select2-id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <form action="create" method="post">
+                                    <div class="card">
+                                        <div class="card-header"><strong>Yêu cầu rút tiền</strong>
+                                            <small>Thêm mới</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="alert alert-warning" role="alert">
+                                                <i class="nav-icon icon-bulb"></i>
+                                                Giới hạn số lần rút trong ngày: <strong>1 LƯỢT RÚT</strong>
+                                            </div>
+                                            <% if(typeof validateFormError !== "undefined") {%>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <i class="nav-icon icon-bell"></i>
+                                                    <%- validateFormError %>
+                                                </div>
+                                            <% } %>
+                                            <% if(typeof notEnoughMoney !== "undefined") {%>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <i class="nav-icon icon-bell"></i>
+                                                    <%- notEnoughMoney %>
+                                                </div>
+                                            <% } %>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            Tài khoản ngân hàng
+                                                        </label>
+                                                        <select class="form-control" name="bankId" id="">
+                                                            <% userLogin.banks.forEach(function(bank) { %>
+                                                                <option value="<%= bank.id %>"><%= bank.name %></option>
+                                                            <% }); %>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="company">
+                                                            Số tiền muốn rút
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <strong>₫</strong>
+                                                                </span>
+                                                            </div>
+                                                            <input class="form-control" id="input3-group1" type="text" name="amount" placeholder="0.00">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="checkbox"> Số dư cho phép rút (<strong>₫</strong><%= userLogin.wallet %>)
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-10">
+                                                                <label for="country">Phí rút tiền</label>
+                                                                <p><em>Phí rút tiền chỉ áp dụng cho các giao dịch thành công</em></p>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <p style="font-weight: bold;" class="pull-right">Miễn phí</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-success pull-right" type="submit">
+                                                <i class="nav-icon icon-printer"></i>
+                                                Đồng ý
+                                            </button>
+                                            <a href="index" class="btn btn-danger pull-left">
+                                                <i class="nav-icon icon-close"></i>
+                                                Hủy bỏ
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+</body>
+</html>

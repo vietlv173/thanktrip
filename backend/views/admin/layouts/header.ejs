@@ -1,0 +1,94 @@
+<style>
+    .dropdown-item {
+        border-bottom: none;
+    }
+
+    .c-avatar {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50em;
+        width: 36px;
+        height: 36px;
+        font-size: 14.4px;
+    }
+
+    .c-avatar-img {
+        width: 100%;
+        height: auto;
+        border-radius: 50em;
+    }
+
+    .main .container-fluid {
+         padding: 0 15px;
+    }
+
+    .btn{
+        border-radius: 1rem;
+    }
+</style>
+<header class="app-header navbar">
+    <button id="sidebar-toggler" class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        <img class="navbar-brand-full" src="https://duybnd-1659.github.io/images/logo.png"
+             style="width: 80%;height: auto;" alt="ThankTrip Logo">
+    </a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item d-md-down-none">
+            <a class="nav-link" href="#">
+                <i class="icon-bell"></i>
+                <span class="badge badge-pill badge-danger">5</span>
+            </a>
+        </li>
+        <li class="nav-item d-md-down-none">
+            <a class="nav-link" href="#">
+                <i class="icon-list"></i>
+            </a>
+        </li>
+        <li class="nav-item d-md-down-none">
+            <a class="nav-link" href="#">
+                <i class="icon-location-pin"></i>
+            </a>
+        </li>
+        <li class="c-header-nav-item dropdown">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="c-avatar">
+                    <img class="c-avatar-img" style="width: 100%;" src="https://ui-avatars.com/api/?size=50&name=<%= userLogin.fullName %>" alt="user@email.com">
+                </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right pt-0">
+                <div class="dropdown-header bg-light py-2">
+                    <strong>Account</strong>
+                </div>
+                <a class="dropdown-item" href="/">
+                    <i class="nav-icon icon-info"></i>
+                    Thông tin tài khoản
+                </a>
+                <a class="dropdown-item" href="/admin/bank/index">
+                    <i class="nav-icon icon-calculator"></i>
+                    Tài khoản ngân hàng
+                </a>
+                <a class="dropdown-item" href="/admin/transaction/index">
+                    <i class="nav-icon icon-clock"></i>
+                    Lịch sử rút tiền
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/admin/logout">
+                    <i class="nav-icon icon-logout"></i>
+                    Đăng xuất
+                </a>
+            </div>
+        </li>
+        <li style="min-width: 15px;"></li>
+    </ul>
+</header>
+
+<script src="/javascript/jquery.js"></script>
+<script src="/javascript/angular.min.js"></script>
+<script src="/javascript/coreui.bundle.js"></script>

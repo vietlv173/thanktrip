@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Lịch sử rút tiền</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+
+        .th-text-right {
+            text-align: right;
+        }
+
+        .wp-st-logo{
+            text-align: center;
+        }
+
+        .wp-st-logo .wrap-logo {
+            border: 1px dashed #b7b7b7;
+            padding: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            width: 202px;
+            margin: 0 auto;
+        }
+
+        .wp-ip-file {
+            margin: 15px 0 5px;
+        }
+
+        .preview-image img {
+            width: 100%;
+            height: 280px;
+        }
+
+        .wrap-logo{
+            min-height: 292px;
+        }
+    </style>
+
+    <style>
+        h2 {
+            line-height: 36px;
+            font-size: 20px;
+        }
+
+        h5 {
+            line-height: 18px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .r4_counter h4 {
+            margin: 0;
+        }
+
+        a {
+            color: #008ece;
+            text-decoration: none !important;
+        }
+
+        .dashboardStatistic {
+            position: relative;
+        }
+
+        .uln ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-custom .dashboardStatistic ul li {
+            max-width: calc(100% / 4);
+        }
+
+        .dashboardStatistic ul li {
+            position: relative;
+            color: #999;
+            font-size: 12px;
+            padding: 6px 0 6px 67px;
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            vertical-align: middle;
+            min-height: 72px;
+            white-space: nowrap;
+            margin: 4px 25px 8px 0;
+            box-sizing: border-box;
+        }
+
+        .dashboardStatistic .total .dash_icon {
+            background: #0094da;
+        }
+
+        .dashboardStatistic .dash_icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            position: absolute;
+            top: 25px;
+            left: 28px;
+            background: #4bac4d;
+            text-align: center;
+            border-radius: 100% !important;
+            color: #fff;
+            line-height: 32px;
+        }
+
+        .dashboardStatistic .dash_title {
+            font-weight: 700;
+            color: #666;
+            margin: 0 0 0 2px;
+        }
+
+        .c-callout {
+            text-align: left;
+            padding: 6px 0 6px 60px;
+            border-top: 1px solid #d6d6d6;
+        }
+
+        .dashboardStatistic .total span.number {
+            color: #0094da;
+        }
+
+        .dashboardStatistic span.number {
+            display: block;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        span.yesterday {
+            color: #999;
+            display: block;
+            font-size: 12px;
+            margin: 0 0 0 2px;
+        }
+
+        .btn-group-left a, .btn-group-left button {
+            text-transform: uppercase;
+        }
+
+        .dashboardStatistic .return .dash_icon {
+            background: #ff8030;
+        }
+
+        .dashboardStatistic .down .dash_icon {
+            background: #f94f5e;
+        }
+
+        @media (min-width: 768px){
+            .c-callout {
+                border-top: none;
+                border-left: 1px solid #d6d6d6;
+            }
+        }
+    </style>
+
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<%- include('../layouts/header', {userLogin: userLogin}); %>
+<div class="app-body">
+    <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active">Lịch sử rút tiền</li>
+        </ol>
+        <div class="container-fluid">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Tìm kiếm
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" id="name" type="text"
+                                                           placeholder="Theo mã, số điện thoại CTV">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for=""><strong>Theo trạng thái</strong></label>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="0" name="status">
+                                                            <label class="form-check-label" for="radio1">Tất cả</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="1" name="status">
+                                                            <label class="form-check-label" for="radio1">Chờ thanh toán</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio2" type="radio" value="2" name="status">
+                                                            <label class="form-check-label" for="radio2">Đã thanh toán</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Lịch sử rút tiền
+                                        </p>
+                                    </div>
+                                    <div class="card-body" style="padding: 0;">
+                                        <% if(userLogin.roleId != 1){ %>
+                                            <div class="dashboardBox dashboardStatistic ovh dashboard-top">
+                                                <div class="uln ovh pd0" style="border-bottom: 1px solid #c8ced3;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="c-callout total" style="border:none;">
+                                                                <label class="dash_icon">
+                                                                    <i class="nav-icon icon-diamond"></i>
+                                                                </label>
+                                                                <label class="dash_title">Thu nhập</label>
+                                                                <span class="number">
+                                                                    <strong class="txt">₫0</strong>
+                                                                </span>
+                                                                <span class="yesterday">Thu nhập từ hoa hồng</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="c-callout return">
+                                                                <label class="dash_icon">
+                                                                    <i class="nav-icon icon-plane"></i>
+                                                                </label>
+                                                                <label class="dash_title">Đã rút</label>
+                                                                <span class="number">
+                                                                <strong class="txt">₫0</strong>
+                                                            </span>
+                                                                <span class="yesterday">Số tiền đã rút</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="c-callout">
+                                                                <label class="dash_icon">
+                                                                    <i class="nav-icon icon-share"></i>
+                                                                </label>
+                                                                <label class="dash_title">Số dư</label>
+                                                                <span class="number">
+                                                                    <strong class="txt">₫0</strong>
+                                                                    <a class="btn btn-sm btn-danger" href="/admin/transaction/create">
+                                                                        <i class="nav-icon icon-wallet"></i>
+                                                                        Rút tiền
+                                                                    </a>
+                                                                </span>
+                                                                <span class="yesterday">Số tiền còn lại</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% } %>
+                                        <table class="table table-responsive-sm table-striped table-outline"
+                                               style="margin-bottom: 0;">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 40px;">STT</th>
+                                                <th>Người rút tiền</th>
+                                                <th>Ngân hàng</th>
+                                                <th>Ngày rút</th>
+                                                <th class="th-text-right">Số tiền rút</th>
+                                                <th>Trạng thái</th>
+                                                <th>Ngày xử lý</th>
+                                                <th>Xử lý</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <% transactions.forEach(function(transaction, key) { %>
+                                                <tr>
+                                                    <td><%= key + 1 %></td>
+                                                    <td>
+                                                        <div>
+                                                            <a href="/admin/collaborator/view/<%= transaction.user.id %>">
+                                                                <%= transaction.user.fullName %>
+                                                            </a>
+                                                        </div>
+                                                        <div class="small text-muted" style="font-size: 90%;">
+                                                            <%= transaction.user.code %>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <strong><%= transaction.bank.name %> - <%= transaction.bank.branch %></strong>
+                                                        </div>
+                                                        <div class="small text-muted" style="font-size: 90%;">
+                                                            <a href="javascript:void(0)"><strong><%= transaction.bank.accountNumber %></strong></a> - <%= transaction.bank.accountHolder %>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <%= _.convertDate(transaction.createdAt) %>
+                                                    </td>
+                                                    <td class="th-text-right">
+                                                        ₫<strong><%= _.formatNumber(transaction.amount) %></strong>
+                                                    </td>
+                                                    <td><span class="badge badge-success">Chờ xử lý</span></td>
+                                                    <td>
+                                                        --:--
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
+                                                            <i class="nav-icon icon-printer"></i>
+                                                            Xử lý nhanh
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                            </tbody>
+                                        </table>
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">
+                                                            <i class="nav-icon icon-printer"></i>
+                                                            Xử lý nhanh
+                                                        </h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="wp-st-logo">
+                                                            <div class="wrap-logo">
+                                                                <div class="preview-image">
+                                                                    <img src="" style="display:none;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="wp-ip-file">
+                                                                <input name="avatar" type="file" id="input-file" style="display: none;" accept="image/*">
+                                                                <button id="btn-upload-avatar" class="btn btn-outline-secondary" type="button">
+                                                                    <i class="nav-icon icon-cloud-upload"></i>
+                                                                    Chọn ảnh hóa đơn chuyển tiền
+                                                                </button>
+                                                            </div>
+                                                            <p class="ng-binding">Lưu ý: Ảnh không vượt quá 2MB</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer" style="display: block;">
+                                                        <button class="btn btn-danger pull-left" type="button" data-dismiss="modal">
+                                                            <i class="nav-icon icon-close"></i>
+                                                            Hủy bỏ
+                                                        </button>
+                                                        <button class="btn btn-success pull-right" type="button">
+                                                            <i class="nav-icon icon-printer"></i>
+                                                            Xác nhận chuyển tiền
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<!-- Plugins and scripts required by this view-->
+<script src="/javascript/jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        let imagesPreview = function(input) {
+            if (input.files) {
+                let filesAmount = input.files.length;
+                for (let i = 0; i < filesAmount; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function(event) {
+                        $('.preview-image img').attr("src", event.target.result);
+                        $('.preview-image img').css("display","block");
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $("#btn-upload-avatar").on("click",function () {
+            $("#input-file").click();
+        });
+
+        $('input[type=file]').change(function () {
+            imagesPreview(this);
+        });
+    });
+</script>
+</body>
+</html>

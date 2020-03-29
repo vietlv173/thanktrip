@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Cộng tác viên</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<%- include('../layouts/header', {userLogin: userLogin}); %>
+<div class="app-body">
+    <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active">Cộng tác viên</li>
+        </ol>
+        <div class="container-fluid">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-header" style="height: 60px;">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Tìm kiếm
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" id="name" type="text"
+                                                           placeholder="Theo mã, số điện thoại CTV">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for=""><strong>Theo trạng thái</strong></label>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="0" name="status">
+                                                            <label class="form-check-label" for="radio1">Tất cả</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="1" name="status">
+                                                            <label class="form-check-label" for="radio1">Chờ thanh toán</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio2" type="radio" value="2" name="status">
+                                                            <label class="form-check-label" for="radio2">Đã thanh toán</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Cộng tác viên
+                                        </p>
+                                        <div class="card-header-actions">
+                                            <a href="create" class="btn btn-block btn-success active">
+                                                <i class="nav-icon icon-plus"></i>
+                                                Thêm mới cộng tác viên
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding: 0;">
+                                        <table class="table table-responsive-sm table-striped table-outline"
+                                               style="margin-bottom: 0;">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 40px;">ID</th>
+                                                <th>Hình ảnh</th>
+                                                <th>Mã CTV</th>
+                                                <th>Họ và tên</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Email</th>
+                                                <th>Trạng thái</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <% collaborators.forEach(function(collaborator, key) { %>
+                                                <tr>
+                                                    <td><%= key + 1 %></td>
+                                                    <td>
+                                                        <img src="https://ui-avatars.com/api/?size=50&name=<%= collaborator.fullName %>" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <a href="view/<%= collaborator.id %>">
+                                                            <%= collaborator.code %>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <%= collaborator.fullName %>
+                                                    </td>
+                                                    <td>
+                                                        <%= collaborator.phone ? collaborator.phone : "---" %>
+                                                    </td>
+                                                    <td>
+                                                        <%= collaborator.email ? collaborator.email : "---" %>
+                                                    </td>
+                                                    <td>
+                                                        <% if(collaborator.status == 10){ %>
+                                                            <span class="badge badge-success">Hoạt động</span>
+                                                        <% } else {%>
+                                                            <span class="badge badge-danger">Ngừng hoạt động</span>
+                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+</body>
+</html>

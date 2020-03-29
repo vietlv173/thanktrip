@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+
+    </style>
+    <style>
+        h2 {
+            line-height: 36px;
+            font-size: 20px;
+        }
+
+        h5 {
+            line-height: 18px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .r4_counter h4 {
+            margin: 0;
+        }
+
+        a {
+            color: #008ece;
+            text-decoration: none !important;
+        }
+
+        .dashboardStatistic {
+            position: relative;
+        }
+
+        .uln ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-custom .dashboardStatistic ul li {
+            max-width: calc(100% / 4);
+        }
+
+        .dashboardStatistic ul li {
+            position: relative;
+            color: #999;
+            font-size: 12px;
+            padding: 6px 0 6px 67px;
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            vertical-align: middle;
+            min-height: 72px;
+            white-space: nowrap;
+            margin: 4px 25px 8px 0;
+            box-sizing: border-box;
+        }
+
+        .dashboardStatistic .total .dash_icon {
+            background: #0094da;
+        }
+
+        .dashboardStatistic .dash_icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            position: absolute;
+            top: 25px;
+            left: 28px;
+            background: #4bac4d;
+            text-align: center;
+            border-radius: 100% !important;
+            color: #fff;
+            line-height: 32px;
+        }
+
+        .dashboardStatistic .dash_title {
+            font-weight: 700;
+            color: #666;
+            margin: 0 0 0 2px;
+        }
+
+        .c-callout {
+            padding: 6px 0 6px 60px;
+            border-top: 1px solid #d6d6d6;
+        }
+
+        .dashboardStatistic .total span.number {
+            color: #0094da;
+        }
+
+        .dashboardStatistic span.number {
+            display: block;
+            font-size: 22px;
+            line-height: 28px;
+        }
+
+        span.yesterday {
+            color: #999;
+            display: block;
+            font-size: 12px;
+            margin: 0 0 0 2px;
+        }
+
+        .btn-group-left a, .btn-group-left button {
+            text-transform: uppercase;
+        }
+
+        .dashboardStatistic .return .dash_icon {
+            background: #ff8030;
+        }
+
+        .dashboardStatistic .down .dash_icon {
+            background: #f94f5e;
+        }
+
+        @media (min-width: 768px){
+            .c-callout {
+                border-top: none;
+                border-left: 1px solid #d6d6d6;
+            }
+        }
+    </style>
+
+    <link href="vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<%- include('../layouts/header', {userLogin: userLogin}); %>
+<div class="app-body">
+    <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Kết quả kinh doanh
+            </li>
+        </ol>
+        <div class="container-fluid">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-12"><div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            <i class="nav-icon icon-pie-chart"></i>
+                                            KẾT QUẢ KINH DOANH
+                                        </p>
+                                        <div class="card-header-actions">
+                                            <select class="form-control" id="ccmonth">
+                                                <option>Hôm nay</option>
+                                                <option>Hôm qua</option>
+                                                <option>7 ngày qua</option>
+                                                <option>Tháng này</option>
+                                                <option>Tháng trước</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-body dashboardStatistic">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="c-callout total" style="border:none;">
+                                                    <label class="dash_icon">
+                                                        <i class="nav-icon icon-diamond"></i>
+                                                    </label>
+                                                    <label class="dash_title">Doanh số</label>
+                                                    <span class="number">
+                                                                <span class="txt">0</span>
+                                                            </span>
+                                                    <span class="yesterday">Doanh thu thuần</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="c-callout return">
+                                                    <label class="dash_icon">
+                                                        <i class="nav-icon icon-plane"></i>
+                                                    </label>
+                                                    <label class="dash_title">Khách đặt</label>
+                                                    <span class="number"><span class="txt">0</span></span>
+                                                    <span class="yesterday">Số lượng khách đặt</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="c-callout">
+                                                    <label class="dash_icon">
+                                                        <i class="nav-icon icon-share"></i>
+                                                    </label>
+                                                    <label class="dash_title">Lượt truy cập</label>
+                                                    <span class="number"><span class="txt">0</span></span>
+                                                    <span class="yesterday">Số lượt truy cập vào</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="c-callout down">
+                                                    <label class="dash_icon">
+                                                        <i class="nav-icon icon-bag"></i>
+                                                    </label>
+                                                    <label class="dash_title">Thành công</label>
+                                                    <span class="number"><span class="txt">0</span></span>
+                                                    <span class="yesterday">Số khách hàng thành công</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                                    <i class="nav-icon icon-calendar"></i>
+                                                    BIỂU ĐỒ THỂ HIỆN DOANH SỐ THEO THỜI GIAN
+                                                </p>
+                                                <div class="card-header-actions">
+                                                    <select class="form-control" id="ccmonth">
+                                                        <option>Hôm nay</option>
+                                                        <option>Hôm qua</option>
+                                                        <option>7 ngày qua</option>
+                                                        <option>Tháng này</option>
+                                                        <option>Tháng trước</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="chart">
+                                                    <canvas id="barChart" style="height: 206px; width: 606px;" height="412" width="1212"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                                    <i class="nav-icon icon-shield"></i>
+                                                    TOP 10 HÀNG HÓA BÁN CHẠY HÔM QUA
+                                                </p>
+                                                <div class="card-header-actions">
+                                                    <select class="form-control" id="ccmonth">
+                                                        <option>Hôm nay</option>
+                                                        <option>Hôm qua</option>
+                                                        <option>7 ngày qua</option>
+                                                        <option>Tháng này</option>
+                                                        <option>Tháng trước</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="chart">
+                                                    <canvas id="areaChart" style="height: 206px; width: 606px;" height="412" width="1212"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            <i class="nav-icon icon-calendar"></i>
+                                            ĐƠN HÀNG MỚI
+                                        </p>
+                                        <div class="card-header-actions">
+                                            <select class="form-control" id="ccmonth">
+                                                <option>Hôm nay</option>
+                                                <option>Hôm qua</option>
+                                                <option>7 ngày qua</option>
+                                                <option>Tháng này</option>
+                                                <option>Tháng trước</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="min-height: 866px;">
+                                        <div class="list-group">
+                                            <a class="list-group-item list-group-item-action flex-column align-items-start active" href="#">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">List group item heading</h5><small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<!-- CoreUI and necessary plugins-->
+<script src="/javascript/chart.js"></script>
+<script src="/javascript/charts-example.js"></script>
+</body>
+</html>
