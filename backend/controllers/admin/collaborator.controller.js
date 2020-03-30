@@ -64,8 +64,8 @@ exports.createPost = function (req, res, next) {
                     port: 465,
                     secure: true,
                     auth: {
-                        user: 'levanviet_t58@hus.edu.vn',
-                        pass: 'Thangngo0'
+                        user: process.env.EMAIL,
+                        pass: process.env.EMAIL_PASSWORD
                     }
                 });
 
