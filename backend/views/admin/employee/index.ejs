@@ -9,7 +9,7 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>Thinkflight | Nhân viên</title>
     <!-- Icons-->
-    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link rel="icon" type="image/ico" href="/images/favicon.jpg" sizes="any"/>
     <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
             color: #000 !important;
             border-top: 1px solid #c5e7f2 !important;
             border-bottom: 1px solid #c5e7f2 !important;
-            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+            background: url(/images/thBg.png) right center no-repeat #dcf4fc !important;
         }
 
         .table th {
@@ -58,36 +58,9 @@
                 <div>
                     <div class="fade-in">
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <div class="card-header" style="height: 60px;">
-                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
-                                            Tìm kiếm
-                                        </p>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" id="name" type="text"
-                                                           placeholder="Theo tên, SĐT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="btn btn-sm btn-primary pull-right" type="submit">
-                                            <i class="nav-icon icon-check"></i>
-                                            Tìm kiếm
-                                        </button>
-                                        <button class="btn btn-sm btn-danger pull-left" type="reset">
-                                            <i class="nav-icon icon-close"></i>
-                                            Khôi phục
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="col-lg-1">
                             </div>
-                            <div class="col-lg-9">
+                            <div class="col-lg-10">
                                 <div class="card">
                                     <div class="card-header">
                                         <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
@@ -106,6 +79,7 @@
                                             <thead>
                                             <tr>
                                                 <th style="width: 40px;">ID</th>
+                                                <th>Ngày tạo</th>
                                                 <th>Mã CTV</th>
                                                 <th>Họ và tên</th>
                                                 <th>Số điện thoại</th>
@@ -118,13 +92,23 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
+                                                <td>
+                                                    <input class="form-control" id="name" type="text"
+                                                           placeholder="Tìm theo tên">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" id="phone" type="text"
+                                                           placeholder="Tìm theo số điện thoại">
+                                                </td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
                                             <% employees.forEach(function(employee, key) { %>
                                                 <tr>
                                                     <td><%= key + 1 %></td>
+                                                    <td>
+                                                        <%= employee.createdAt %>
+                                                    </td>
                                                     <td>
                                                         <a href="view/<%= employee.id %>">
                                                             <%= employee.code %>
@@ -140,11 +124,11 @@
                                                         <%= employee.email ? employee.email : "N/A" %>
                                                     </td>
                                                     <td>
-                                                        <%if (employee.status > 10) { %>
+                                                        <% if (employee.status > 10) { %>
                                                             <span class="badge badge-success">Hoạt động</span>
                                                         <% } else{ %>
-                                                                <span class="badge badge-danger">Ngừng hoạt động</span>
-                                                            <% }  %>
+                                                            <span class="badge badge-danger">Ngừng hoạt động</span>
+                                                        <% } %>
                                                     </td>
                                                 </tr>
                                             <% }); %>

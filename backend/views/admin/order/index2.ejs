@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Tài khoản ngân hàng</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <link href="/angular-xeditable/css/xeditable.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active">Giao dịch</li>
+        </ol>
+        <div class="container-fluid" data-ng-app="orderApp" data-ng-controller="orderCtrl">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Giao dịch
+                                        </p>
+                                        <% if(userLogin.roleId === 1) { %>
+                                            <div class="card-header-actions">
+                                                <a href="create" class="btn btn-block btn-success active">
+                                                    <i class="nav-icon icon-plus"></i>
+                                                    Thêm mới
+                                                </a>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="nav-tabs-boxed">
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#home-1"
+                                                       role="tab" aria-controls="home" aria-selected="true">
+                                                        <i class="nav-icon icon-info"></i>
+                                                        Giao dịch của tôi
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#profile-1" role="tab"
+                                                       aria-controls="profile" aria-selected="false">
+                                                        <i class="nav-icon icon-calculator"></i>
+                                                        Giao dịch Cấp 2/Cấp 3
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="home-1" role="tabpanel"
+                                                     style="padding: 0;">
+                                                    <table class="table table-responsive-sm table-striped"
+                                                           style="margin-bottom: 0;">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width: 40px;">STT</th>
+                                                            <th>Thời gian</th>
+                                                            <th>Cộng tác viên</th>
+                                                            <th>Mã đơn hàng</th>
+                                                            <th>Tổng thu</th>
+                                                            <th>Tổng hoa hồng</th>
+                                                            <th>Trạng thái</th>
+                                                            <% if(userLogin.roleId === 1) { %>
+                                                                <th>Thao tác</th>
+                                                            <% } %>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+                                                                <select name="" id="" class="form-control"
+                                                                        ng-model="queries.status"
+                                                                        ng-change="getStatistical()">
+                                                                    <option value="all">Tất cả</option>
+                                                                    <option value="1">Pending</option>
+                                                                    <option value="2">Đã thanh toán</option>
+                                                                    <option value="3">Đã hoàn thành</option>
+                                                                    <option value="4">Đã hủy</option>
+                                                                </select>
+                                                            </td>
+                                                            <% if(userLogin.roleId === 1) { %>
+                                                                <td></td>
+                                                            <% } %>
+                                                        </tr>
+                                                        <tr ng-repeat="(key,order) in responses.orders">
+                                                            <td>
+                                                                {{key + 1}}
+                                                            </td>
+                                                            <td>
+                                                                {{order.createdAt | date: 'dd/MM/yyyy HH:mm' }}
+                                                            </td>
+                                                            <td>
+                                                                {{order.user.fullName}}
+                                                            </td>
+                                                            <td>
+                                                                {{order.order_id}}
+                                                            </td>
+                                                            <td>
+                                                                ₫<strong>{{ order.revenue | number }}</strong>
+                                                            </td>
+                                                            <td>
+                                                                ₫<strong>
+                                                                    {{ order.commission * 70 / 100 | number}}
+                                                                </strong>
+                                                            </td>
+                                                            <td ng-show="order.status == 1">
+                                                                <span class="badge badge-warning">Pending</span>
+                                                            </td>
+                                                            <td ng-show="order.status == 2">
+                                                                <span class="badge badge-primary">Đã thanh toán</span>
+                                                            </td>
+                                                            <td ng-show="order.status == 3">
+                                                                <span class="badge badge-success">Đã hoàn thành</span>
+                                                            </td>
+                                                            <td ng-show="order.status == 4">
+                                                                <span class="badge badge-danger">Đã hủy</span>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane" id="profile-1" role="tabpanel"
+                                                     style="padding: 0;">
+                                                    <table class="table table-responsive-sm table-striped"
+                                                           style="margin-bottom: 0;">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width: 40px;">STT</th>
+                                                            <th>Thời gian</th>
+                                                            <th>Cộng tác viên</th>
+                                                            <th>Loại hình</th>
+                                                            <th>Mã đơn hàng</th>
+                                                            <th>Tổng thu</th>
+                                                            <th>Tổng hoa hồng</th>
+                                                            <th>Trạng thái</th>
+                                                            <% if(userLogin.roleId === 1) { %>
+                                                                <th>Thao tác</th>
+                                                            <% } %>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+                                                                <select name="" id="" class="form-control">
+                                                                    <option value="">Tất cả</option>
+                                                                    <option value="">Khách sạn</option>
+                                                                    <option value="">Tour</option>
+                                                                </select>
+                                                            </td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+                                                                <select name="" id="" class="form-control"
+                                                                        ng-model="queries.status"
+                                                                        ng-change="getStatistical()">
+                                                                    <option value="all">Tất cả</option>
+                                                                    <option value="1">Pending</option>
+                                                                    <option value="2">Đã thanh toán</option>
+                                                                    <option value="3">Đã hoàn thành</option>
+                                                                    <option value="4">Đã hủy</option>
+                                                                </select>
+                                                            </td>
+                                                            <% if(userLogin.roleId === 1) { %>
+                                                                <td></td>
+                                                            <% } %>
+                                                        </tr>
+                                                        <tr ng-repeat="(key,order) in responses2.orders">
+                                                            <td>
+                                                                {{key + 1}}
+                                                            </td>
+                                                            <td>
+                                                                {{order.createdAt | date: 'dd/MM/yyyy HH:mm' }}
+                                                            </td>
+                                                            <td>
+                                                                {{order.user.fullName}}
+                                                            </td>
+                                                            <td>
+                                                                {{order.tpe == 1 ? 'Khách sạn' : 'Tour'}}
+                                                            <td>
+                                                                {{order.order_id}}
+                                                            </td>
+                                                            <td>
+                                                                ₫<strong>{{ order.revenue | number }}</strong>
+                                                            </td>
+                                                            <td>
+                                                                ₫<strong>
+                                                                    {{ order.commission * 70 / 100 | number}}
+                                                                </strong>
+                                                            </td>
+                                                            <td ng-show="order.status == 1">
+                                                                <span class="badge badge-warning">Pending</span>
+                                                            </td>
+                                                            <td ng-show="order.status == 2">
+                                                                <span class="badge badge-primary">Đã thanh toán</span>
+                                                            </td>
+                                                            <td ng-show="order.status == 3">
+                                                                <span class="badge badge-success">Đã hoàn thành</span>
+                                                            </td>
+                                                            <td ng-show="order.status == 4">
+                                                                <span class="badge badge-danger">Đã hủy</span>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/angular-xeditable/js/xeditable.js"></script>
+<script src="/javascript/order.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>Thinkflight | Trang chủ</title>
     <!-- Icons-->
-    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <!--    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>-->
     <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -152,7 +152,7 @@
             background: #f94f5e;
         }
 
-        @media (min-width: 768px){
+        @media (min-width: 768px) {
             .c-callout {
                 border-top: none;
                 border-left: 1px solid #d6d6d6;
@@ -262,7 +262,7 @@
             box-sizing: content-box;
         }
 
-        .th-text-right{
+        .th-text-right {
             text-align: right;
         }
     </style>
@@ -273,15 +273,7 @@
 <div class="app-body">
     <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
     <main class="main">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="/admin/dashboard">Trang chủ</a>
-            </li>
-            <li class="breadcrumb-item active">
-                Kết quả kinh doanh
-            </li>
-        </ol>
-        <div class="container-fluid" data-ng-app="Application" data-ng-controller="collaboratorCtrl">
+        <div class="container-fluid mt-3" data-ng-app="Application" data-ng-controller="collaboratorCtrl">
             <input id="collaboratorId" type="hidden" value="<%= userLogin.id %>">
             <div class="loading-io" ng-show="pageLoading">
                 <div class="spinner">
@@ -305,19 +297,29 @@
                                 <div class="nav-tabs-boxed">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" data-toggle="tab" href="#home-1" role="tab" aria-controls="home" aria-selected="true">
+                                            <a class="nav-link active" data-toggle="tab" href="#home-1" role="tab"
+                                               aria-controls="home" aria-selected="true">
                                                 <i class="nav-icon icon-info"></i>
                                                 Thông tin cá nhân
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#profile-1" role="tab" aria-controls="profile" aria-selected="false">
+                                            <a class="nav-link" data-toggle="tab" href="#profile-2" role="tab"
+                                               aria-controls="profile" aria-selected="false">
+                                                <i class="nav-icon icon-user-following"></i>
+                                                Tài khoản cấp dưới
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#profile-1" role="tab"
+                                               aria-controls="profile" aria-selected="false">
                                                 <i class="nav-icon icon-calculator"></i>
                                                 Tài khoản ngân hàng
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#messages-1" role="tab" aria-controls="messages" aria-selected="false">
+                                            <a class="nav-link" data-toggle="tab" href="#messages-1" role="tab"
+                                               aria-controls="messages" aria-selected="false">
                                                 <i class="nav-icon icon-clock"></i>
                                                 Lịch sử rút tiền
                                             </a>
@@ -328,146 +330,188 @@
                                             <div class="dashboardBox dashboardStatistic ovh dashboard-top">
                                                 <div class="uln ovh pd0" style="border-bottom: 1px solid #c8ced3;">
                                                     <div class="row">
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <div class="c-callout total" style="border:none;">
                                                                 <label class="dash_icon">
-                                                                    <i class="nav-icon icon-diamond"></i>
+                                                                    <i class="nav-icon icon-wallet"></i>
                                                                 </label>
-                                                                <label class="dash_title">Doanh số</label>
+                                                                <label class="dash_title">Hoa hồng khả dụng</label>
                                                                 <span class="number">
-                                                                            <span class="txt">{{ responses.revenue | number }}</span>
-                                                                        </span>
-                                                                <span class="yesterday">Doanh thu thuần</span>
+                                                                    ₫<span class="txt">{{ responses.wallet | number }}</span>
+                                                                </span>
+                                                                <span class="yesterday">Khách đã thanh toán</span>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <div class="c-callout return">
                                                                 <label class="dash_icon">
-                                                                    <i class="nav-icon icon-plane"></i>
+                                                                    <i class="nav-icon icon-clock"></i>
                                                                 </label>
-                                                                <label class="dash_title">Khách đặt</label>
+                                                                <label class="dash_title">Hoa hồng chờ xác nhận</label>
                                                                 <span class="number">
-                                                                            <span class="txt">{{ responses.guestsBooked }}</span>
-                                                                        </span>
-                                                                <span class="yesterday">Số lượng khách đặt</span>
+                                                                    ₫<span class="txt">{{ responses.commission | number }}</span>
+                                                                </span>
+                                                                <span class="yesterday">Chờ khách thanh toán</span>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-md-3">
-                                                            <div class="c-callout">
-                                                                <label class="dash_icon">
-                                                                    <i class="nav-icon icon-share"></i>
-                                                                </label>
-                                                                <label class="dash_title">Lượt truy cập</label>
-                                                                <span class="number">
-                                                                            <span class="txt">{{ responses.hits }}</span>
-                                                                        </span>
-                                                                <span class="yesterday">Số lượt truy cập vào</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <div class="c-callout down">
                                                                 <label class="dash_icon">
-                                                                    <i class="nav-icon icon-bag"></i>
+                                                                    <i class="nav-icon icon-calculator"></i>
                                                                 </label>
-                                                                <label class="dash_title">Hoa hồng</label>
+                                                                <label class="dash_title">Tổng doanh thu</label>
                                                                 <span class="number">
-                                                                            <span class="txt">{{ responses.profit | number }}</span>
-                                                                        </span>
-                                                                <span class="yesterday">Tiền hoa hồng</span>
+                                                                    ₫<span class="txt">{{ responses.revenue | number }}</span>
+                                                                </span>
+                                                                <span class="yesterday">Tổng doanh thu</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="content-list row row-padding-15 mb15" style="padding: 15px 20px;text-align: left;">
-                                                <div class="col-md-6 col-sm-6" style="text-align: center;padding: 35px;">
-                                                    <img src="data:image/png;base64,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"
-                                                         alt="">
+                                            <div class="content-list row row-padding-15 mb15"
+                                                 style="padding: 15px 20px;text-align: left;">
+                                                <div class="col-md-6 col-sm-6"
+                                                     style="text-align: center;padding: 35px;">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label control-label">Mã CTV:</label>
-                                                        <div class="form-wrap form-control-static">
-                                                            <div class="input-group mb-3" id="product_coupon">
-                                                                <input type="text" class="form-control"
-                                                                       value="<%= userLogin.code %>" disabled="">
-                                                                <div class="input-group-append">
-                                                                            <span class="input-group-text">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">Mã CTV:</label>
+                                                                <div class="form-wrap form-control-static">
+                                                                    <div class="input-group mb-3" id="product_coupon">
+                                                                        <input id="p1" type="text" class="form-control"
+                                                                               value="<%= userLogin.code %>"
+                                                                               disabled="">
+                                                                        <div class="input-group-append">
+                                                                            <span style="position: absolute;top: -25px;right: -15px;display: none;">Đã sao chép</span>
+                                                                            <button type="button"
+                                                                                    onclick="copyToClipboard(event,'#p1')"
+                                                                                    class="btn btn-secondary">
                                                                                 <i class="nav-icon icon-docs"></i>
-                                                                            </span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">
+                                                                    Link chia sẻ:
+                                                                </label>
+                                                                <div class="form-wrap form-control-static">
+                                                                    <div class="input-group mb-3" id="product_coupon">
+                                                                        <input id="p2" type="text" class="form-control"
+                                                                               value="<%= process.env.DOMAIN %>/admin/register?r=<%= userLogin.code %>"
+                                                                               disabled="">
+                                                                        <div class="input-group-append">
+                                                                            <span style="position: absolute;top: -25px;right: -15px;display: none;">Đã sao chép</span>
+                                                                            <button type="button"
+                                                                                    onclick="copyToClipboard(event,'#p2')"
+                                                                                    class="btn btn-secondary">
+                                                                                <i class="nav-icon icon-docs"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label control-label">Link chia sẻ:</label>
-                                                        <div class="form-wrap form-control-static">
-                                                            <div class="input-group mb-3" id="product_coupon">
-                                                                <input type="text" class="form-control"
-                                                                       value="<%= userLogin.code %>" disabled="">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text">
-                                                                        <i class="nav-icon icon-docs"></i>
-                                                                    </span>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="">QR CODE</label>
+                                                                <div class="form-wrap form-control-static"
+                                                                     style="text-align: center;">
+                                                                    <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= process.env.DOMAIN %>/admin/register?r=<%= userLogin.code %>"
+                                                                         alt="" style="width:115px;">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label control-label">Họ và tên:</label>
-                                                        <div class="form-wrap form-control-static">
-                                                            <strong><%= userLogin.fullName %></strong>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">Họ và
+                                                                    tên:</label>
+                                                                <div class="form-wrap form-control-static">
+                                                                    <strong><%= userLogin.fullName %></strong>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label control-label">
-                                                            Số điện thoại:
-                                                        </label>
-                                                        <div class="form-wrap form-control-static payOrder">
-                                                            <a href="javascript:void(0)"><%= userLogin.phone ? userLogin.phone : 'N\A' %></a>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">
+                                                                    Số điện thoại:
+                                                                </label>
+                                                                <div class="form-wrap form-control-static payOrder">
+                                                                    <a href="javascript:void(0)"><%= userLogin.phone ? userLogin.phone : 'N\A' %></a>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label control-label">Email:</label>
-                                                        <div class="form-wrap form-control-static payOrder">
-                                                            <%= userLogin.email ? userLogin.email : 'N\A' %>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label control-label">Email:</label>
+                                                                <div class="form-wrap form-control-static payOrder">
+                                                                    <%= userLogin.email ? userLogin.email : 'N\A' %>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="tab-pane" id="profile-2" role="tabpanel" style="text-align: left;">
+                                            <h5>Tài khoản cấp 2</h5>
                                             <table class="table table-responsive-sm table-striped"
                                                    style="margin-bottom: 0;">
                                                 <thead>
                                                 <tr>
-                                                    <th style="width: 40px;">ID</th>
-                                                    <th>Mã chuyến bay</th>
+                                                    <th style="width: 40px;">STT</th>
                                                     <th>Họ và tên</th>
-                                                    <th class="th-text-right">Số lượt đặt</th>
-                                                    <th class="th-text-right">Tổng tiền</th>
+                                                    <th>Username</th>
+                                                    <th>Ngày đăng ký</th>
+                                                    <th>Doanh thu</th>
+                                                    <th>Trạng thái</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
+                                                <tr ng-repeat="(key, child) in responses.child1">
+                                                    <td>{{ key + 1 }}</td>
+                                                    <td>{{ child.fullName }}</td>
+                                                    <td>{{ child.username }}</td>
+                                                    <td>{{ child.createdAt | date:'yyyy-MM-dd' }}</td>
+                                                    <td>{{ child.wallet | number }}</td>
                                                     <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="th-text-right">0</td>
-                                                    <td class="th-text-right">0</td>
                                                 </tr>
-                                                <tr ng-repeat="(key, flight) in responses.flights">
-                                                    <td>{{ key+1 }}</td>
-                                                    <td>{{ flight.flightCode }}</td>
-                                                    <td>{{ flight.fullName }}</td>
-                                                    <td class="th-text-right">{{ flight.passengers.length }}</td>
-                                                    <td class="th-text-right">{{ flight.totalMoney | number }}</td>
+                                                </tbody>
+                                            </table>
+                                            <hr>
+                                            <h5>Tài khoản cấp 3</h5>
+                                            <table class="table table-responsive-sm table-striped"
+                                                   style="margin-bottom: 0;">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width: 40px;">STT</th>
+                                                    <th>Họ và tên</th>
+                                                    <th>Username</th>
+                                                    <th>Ngày đăng ký</th>
+                                                    <th>Doanh thu</th>
+                                                    <th>Trạng thái</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="(key, child) in responses.child2">
+                                                    <td>{{ key + 1 }}</td>
+                                                    <td>{{ child.fullName }}</td>
+                                                    <td>{{ child.username }}</td>
+                                                    <td>{{ child.createdAt | date:'yyyy-MM-dd' }}</td>
+                                                    <td>{{ child.wallet | number }}</td>
+                                                    <td>
+                                                        <span ng-if="child.status === 10" class="badge badge-success">Hoạt động</span>
+                                                        <span ng-if="child.status !== 10" class="badge badge-danger">Ngừng hoạt động</span>
+                                                    </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="tab-pane" id="profile-1" role="tabpanel">
+                                        <div class="tab-pane" id="profile-1" role="tabpanel" style="text-align: left;">
                                             <table class="table table-responsive-sm table-striped"
                                                    style="margin-bottom: 0;">
                                                 <thead>
@@ -482,17 +526,20 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr ng-repeat="(key, flight) in responses.flights">
-                                                    <td>{{ key+1 }}</td>
+                                                    <td>{{ key + 1 }}</td>
                                                     <td>{{ flight.flightCode }}</td>
                                                     <td>{{ flight.fullName }}</td>
                                                     <td>{{ flight.passengers.length }}</td>
                                                     <td>{{ flight.totalMoney | number }}</td>
-                                                    <td></td>
+                                                    <td>
+                                                        <span ng-if="child.status === 10" class="badge badge-success">Hoạt động</span>
+                                                        <span ng-if="child.status !== 10" class="badge badge-danger">Ngừng hoạt động</span>
+                                                    </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="tab-pane" id="messages-1" role="tabpanel">
+                                        <div class="tab-pane" id="messages-1" role="tabpanel" style="text-align: left;">
                                             <table class="table table-responsive-sm table-striped"
                                                    style="margin-bottom: 0;">
                                                 <thead>
@@ -513,7 +560,7 @@
                                                     <td></td>
                                                 </tr>
                                                 <tr ng-repeat="(key, flight) in responses.flights">
-                                                    <td>{{ key+1 }}</td>
+                                                    <td>{{ key + 1 }}</td>
                                                     <td>{{ flight.flightCode }}</td>
                                                     <td>{{ flight.fullName }}</td>
                                                     <td class="th-text-right">{{ flight.passengers.length }}</td>

@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const STATUS_FINISH = 2;
+const STATUS_FINISH = 4;
+const STATUS_REJECT = 3;
+const STATUS_CANCEL = 2;
 const STATUS_WAITING = 1;
 
 let TransactionSchema = new Schema({
@@ -17,23 +19,26 @@ let TransactionSchema = new Schema({
         ref: 'Bank'
     },
     amount: {
-        type: String,
+        type: Number,
         required: true
     },
-    note:{
+    note: {
+        type: String
+    },
+    image: {
         type: String
     },
     status: {
         type: Number,
-        default: 10
+        default: 1
     },
     createdAt: {
         type: Date,
-        default: new Date(moment().set({'hour': moment().hour()+7}).toDate())
+        default: new Date(moment().set({'hour': moment().hour() + 7}).toDate())
     },
     updatedAt: {
         type: Date,
-        default: new Date(moment().set({'hour': moment().hour()+7}).toDate())
+        default: new Date(moment().set({'hour': moment().hour() + 7}).toDate())
     }
 });
 

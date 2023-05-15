@@ -1,10 +1,10 @@
 <style>
     .ml-auto, .mx-auto {
-         margin-left: 0!important;
+        margin-left: 0 !important;
     }
 
-    @media (min-width: 768px){
-        .ml-auto{
+    @media (min-width: 768px) {
+        .ml-auto {
             margin-left: auto !important;
         }
     }
@@ -19,3 +19,29 @@
         <a href="#">ThankTrip</a>
     </div>
 </footer>
+
+<script src="/select2/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        let select = $('select');
+        if (select.length) {
+            select.select2();
+        }
+    });
+
+    function copyToClipboard(event, element) {
+        let $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).val()).select();
+        document.execCommand("copy");
+        $temp.remove();
+
+        let span = $(event.target).closest('div').find('span');
+
+        span.css('display', 'block');
+
+        setTimeout(function () {
+            span.css('display', 'none');
+        }, 1000);
+    }
+</script>

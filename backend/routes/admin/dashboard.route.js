@@ -6,10 +6,14 @@ const dashboardCtrl = require('../../controllers/admin/dashboard.controller');
 
 router.get('/login', dashboardCtrl.login);
 
-router.post('/login', dashboardCtrl.loginPost);
-
 router.get('/logout', dashboardCtrl.logout);
 
+router.post('/login', dashboardCtrl.loginPost);
+
+router.get('/register', dashboardCtrl.register);
+
 router.get('/dashboard', dashboardCtrl.dashboard);
+
+router.post('/register', dashboardCtrl.registerPost);
 
 module.exports = router;

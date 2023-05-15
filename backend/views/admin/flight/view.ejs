@@ -111,6 +111,7 @@
         .info-flight {
             padding: 25px 0 22px;
         }
+
         .mt-1 {
             margin-top: .25rem;
         }
@@ -253,11 +254,11 @@
             margin-right: auto;
         }
 
-        .info-flight__location .col-md-4, .info-flight__time .col-md-4{
+        .info-flight__location .col-md-4, .info-flight__time .col-md-4 {
             text-align: center;
         }
 
-        .info-flight__time .col-md-4 .img{
+        .info-flight__time .col-md-4 .img {
             padding: 1rem 0;
             margin-top: 1rem;
             margin-bottom: 1rem;
@@ -265,29 +266,29 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        @media (min-width: 768px){
+        @media (min-width: 768px) {
             .info-flight .type {
                 margin-left: 10px;
                 justify-content: flex-end;
             }
 
-            .info-flight__location .col-md-4:first-child{
+            .info-flight__location .col-md-4:first-child {
                 text-align: left;
             }
 
-            .info-flight__location .col-md-4:last-child{
+            .info-flight__location .col-md-4:last-child {
                 text-align: right;
             }
 
-            .info-flight__time .col-md-4:first-child{
+            .info-flight__time .col-md-4:first-child {
                 text-align: left;
             }
 
-            .info-flight__time .col-md-4:last-child{
+            .info-flight__time .col-md-4:last-child {
                 text-align: right;
             }
 
-            .info-flight__time .col-md-4 .img{
+            .info-flight__time .col-md-4 .img {
                 margin: 0;
                 padding: 0;
                 border: none;
@@ -348,7 +349,8 @@
                                                     <div class="form-wrap form-control-static">
                                                         <div class="input-group mb-3" id="product_coupon">
                                                             <input type="text" class="form-control"
-                                                                   value="<%= flight.collaboratorCode ? flight.collaboratorCode : "N/A" %>" disabled="">
+                                                                   value="<%= flight.collaboratorCode ? flight.collaboratorCode : "N/A" %>"
+                                                                   disabled="">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">
                                                                     <i class="nav-icon icon-docs"></i>
@@ -368,7 +370,7 @@
                                                                     <i class="nav-icon icon-clock"></i>
                                                                     Đang đặt chỗ
                                                                 </button>
-                                                            <% } else {%>
+                                                            <% } else { %>
                                                                 <button class="btn btn-block btn-success" type="button">
                                                                     <i class="nav-icon icon-check"></i>
                                                                     Đã thanh toán
@@ -391,7 +393,9 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="type">
-                                                                            <label><span class="serial__title">Ghế</span> <strong><%= flight.seatType %></strong></label>
+                                                                            <label><span
+                                                                                        class="serial__title">Ghế</span>
+                                                                                <strong><%= flight.seatType %></strong></label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -440,9 +444,9 @@
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <span class="time-title">ĐẾN NƠI</span>
-                                                                        <span class="time-content"><%=_.convertTime(flight.arrivalTime) %></span>
+                                                                        <span class="time-content"><%= _.convertTime(flight.arrivalTime) %></span>
                                                                         <br>
-                                                                        <span class="text-blue-sky"><%=_.convertDate(flight.arrivalTime) %></span>
+                                                                        <span class="text-blue-sky"><%= _.convertDate(flight.arrivalTime) %></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -465,7 +469,7 @@
                                                             </label>
                                                             <div class="form-wrap form-control-static">
                                                                 <a href="javascript:void(0)">
-                                                                   <%= flight.phone %>
+                                                                    <%= flight.phone %>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -513,7 +517,8 @@
                                                         <strong style="color: #e55353;"><%= flight.collaboratorCode %></strong>
                                                     </span>
                                                 </td>
-                                                <td class="th-text-right">-₫ <strong><%= _.formatNumber(flight.discount) %></strong></td>
+                                                <td class="th-text-right">-₫
+                                                    <strong><%= _.formatNumber(flight.discount) %></strong></td>
                                             </tr>
                                             <tr style="background-color: rgba(255, 219, 196, 0.46);">
                                                 <td colspan="2">

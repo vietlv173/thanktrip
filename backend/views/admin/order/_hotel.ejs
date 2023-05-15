@@ -1,0 +1,144 @@
+<div ng-if="detail.service_type == 2" class="col-md-11">
+    <div class="row">
+        <div class="col-md-12">
+            <strong>Khách sạn</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Chọn hotel</label>
+                <input type="hidden" value="2" name="service_detail[{{key}}][service_type]">
+                <input type="hidden" value="{{detail.surcharge}}" name="service_detail[{{key}}][surcharge]">
+                <input type="hidden" value="{{detail.commission}}" name="service_detail[{{key}}][commission]">
+                <select class="form-control" ng-model="detail.hotel_id" ng-change="selectHotel(detail)"
+                        name="service_detail[{{key}}][hotel_id]">
+                    <option ng-repeat="t in hotels"
+                            value="{{t._id}}">
+                        {{t.title}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Ngày đi</label>
+                <input type="date" name="service_detail[{{key}}][from]" class="form-control" ng-model="detail.from"
+                       min="{{minDate1[key] | date:'yyyy-MM-dd'}}" ng-change="updateMinDate2(detail, key)">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Ngày về</label>
+                <input type="date" name="service_detail[{{key}}][to]" class="form-control" ng-model="detail.to"
+                       min="{{minDate2[key] | date:'yyyy-MM-dd'}}">
+            </div>
+        </div>
+    </div>
+    <div class="row"
+         ng-repeat="(key2, room_detail) in detail.detail">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">Loại phòng</label>
+                <br ng-if="key2 == 0">
+                <input type="hidden" name="service_detail[{{key}}][detail][{{key2}}][title]"
+                       value="{{room_detail.title}}">
+                <p style="margin-top: 7px;">
+                    <strong>
+                        {{room_detail.title}}
+                    </strong>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">
+                    <input type="radio" value="1" name="service_detail[{{key}}][price_type]"
+                           ng-model="detail.price_type">
+                    Ngày thường
+                </label>
+                <p style="margin-top: 7px;">
+                    ₫<strong>
+                        {{ room_detail.price_normal | number}}
+                    </strong>
+                </p>
+                <input type="hidden" name="service_detail[{{key}}][detail][{{key2}}][price_normal]"
+                       value="{{room_detail.price_normal}}">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">
+                    <input type="radio" value="2" name="service_detail[{{key}}][price_type]"
+                           ng-model="detail.price_type">
+                    Cuối tuần
+                </label>
+                <p style="margin-top: 7px;">
+                    ₫<strong>
+                        {{ room_detail.price_weekend | number}}
+                    </strong>
+                </p>
+                <input type="hidden" name="service_detail[{{key}}][detail][{{key2}}][price_weekend]"
+                       value="{{room_detail.price_weekend}}">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">
+                    <input type="radio" value="3" name="service_detail[{{key}}][price_type]"
+                           ng-model="detail.price_type">
+                    Ngày lễ
+                </label>
+                <p style="margin-top: 7px;">
+                    ₫<strong>
+                        {{ room_detail.price_lunar | number}}
+                    </strong>
+                </p>
+                <input type="hidden" name="service_detail[{{key}}][detail][{{key2}}][price_lunar]"
+                       value="{{room_detail.price_lunar}}">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">Số phòng</label>
+                <input type="number" name="service_detail[{{key}}][detail][{{key2}}][quantity]"
+                       string-to-number ng-model="room_detail.quantity" class="form-control">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row"
+         ng-repeat="(key2, service) in detail.services">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">Tên dịch vụ</label>
+                <p style="margin-top: 7px;">
+                    <strong>
+                        {{ service.title }}
+                    </strong>
+                </p>
+                <input type="hidden" class="form-control" value="{{service.title}}"
+                       name="service_detail[{{key}}][services][{{key2}}][title]">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">Chi phí</label>
+                <p style="margin-top: 7px;">
+                    ₫<strong>
+                        {{ service.price | number }}
+                    </strong>
+                </p>
+                <input type="hidden" name="service_detail[{{key}}][services][{{key2}}][price]"
+                       value="{{service.price}}" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label ng-if="key2 == 0" for="">Số lượng</label>
+                <input type="number" name="service_detail[{{key}}][services][{{key2}}][quantity]"
+                       ng-model="service.quantity" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>

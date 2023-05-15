@@ -59,8 +59,8 @@
             </li>
             <li class="breadcrumb-item active">Thêm mới</li>
         </ol>
-        <div class="container-fluid" data-select2-id="16">
-            <div id="ui-view" data-select2-id="ui-view">
+        <div class="container-fluid">
+            <div id="ui-view">
                 <div>
                     <div class="fade-in">
                         <div class="row">
@@ -72,20 +72,26 @@
                                             <small>Thêm mới</small>
                                         </div>
                                         <div class="card-body">
-                                            <div class="alert alert-warning" role="alert">
-                                                <i class="nav-icon icon-bulb"></i>
-                                                Giới hạn số lần rút trong ngày: <strong>1 LƯỢT RÚT</strong>
+                                            <div class="form-group">
+                                                <div class="alert alert-warning" role="alert" style="opacity: 1;">
+                                                    <i class="nav-icon icon-bulb"></i>
+                                                    Giới hạn số lần rút trong ngày: <strong>1 LƯỢT RÚT</strong>
+                                                </div>
                                             </div>
-                                            <% if(typeof validateFormError !== "undefined") {%>
-                                                <div class="alert alert-danger" role="alert">
-                                                    <i class="nav-icon icon-bell"></i>
-                                                    <%- validateFormError %>
+                                            <% if(typeof validateFormError !== "undefined") { %>
+                                                <div class="form-group">
+                                                    <div class="alert alert-danger" role="alert" style="opacity: 1;">
+                                                        <i class="nav-icon icon-bell"></i>
+                                                        <%- validateFormError %>
+                                                    </div>
                                                 </div>
                                             <% } %>
-                                            <% if(typeof notEnoughMoney !== "undefined") {%>
-                                                <div class="alert alert-danger" role="alert">
-                                                    <i class="nav-icon icon-bell"></i>
-                                                    <%- notEnoughMoney %>
+                                            <% if(typeof notEnoughMoney !== "undefined") { %>
+                                                <div class="form-group">
+                                                    <div class="alert alert-danger" role="alert" style="opacity: 1;">
+                                                        <i class="nav-icon icon-bell"></i>
+                                                        <%- notEnoughMoney %>
+                                                    </div>
                                                 </div>
                                             <% } %>
                                             <div class="row">
@@ -110,21 +116,28 @@
                                                                     <strong>₫</strong>
                                                                 </span>
                                                             </div>
-                                                            <input class="form-control" id="input3-group1" type="text" name="amount" placeholder="0.00">
+                                                            <input class="form-control" id="input3-group1" type="text"
+                                                                   name="amount" placeholder="0.00">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="checkbox"> Số dư cho phép rút (<strong>₫</strong><%= userLogin.wallet %>)
+                                                        <input type="checkbox"> Số dư cho phép rút
+                                                        (<strong>₫</strong><%= userLogin.wallet %>)
                                                     </div>
                                                     <hr>
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <div class="col-md-10">
                                                                 <label for="country">Phí rút tiền</label>
-                                                                <p><em>Phí rút tiền chỉ áp dụng cho các giao dịch thành công</em></p>
+                                                                <p>
+                                                                    <em>Phí rút tiền chỉ áp dụng cho các giao dịch thành
+                                                                        công</em>
+                                                                </p>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <p style="font-weight: bold;" class="pull-right">Miễn phí</p>
+                                                                <p style="font-weight: bold;" class="pull-right">
+                                                                    Miễn phí
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>

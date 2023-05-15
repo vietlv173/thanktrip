@@ -9,7 +9,7 @@ exports.index = function (req, res, next) {
                 return res.redirect('/admin/login');
             } else {
                 User.find({roleId: 4}).exec(function (err, employees) {
-                    res.render('admin/employee/index', {employees: employees,userLogin: user});
+                    res.render('admin/employee/index', {employees: employees, userLogin: user});
                 });
             }
         }
@@ -24,7 +24,7 @@ exports.create = function (req, res, next) {
             if (user === null) {
                 return res.redirect('/admin/login');
             } else {
-                res.render('admin/employee/create',{userLogin: user});
+                res.render('admin/employee/create', {userLogin: user});
             }
         }
     });
@@ -38,23 +38,35 @@ exports.createPost = function (req, res, next) {
             if (user === null) {
                 return res.redirect('/admin/login');
             } else {
-                if (req.body.username && req.body.fullName) {
-                    let employee = new User({
-                        fullName: req.body.fullName,
-                        username: req.body.username,
-                        phone: req.body.username,
-                        password: req.body.username,
-                        address: req.body.address,
-                        note: req.body.note,
-                        roleId: 4,
-                        status: 10
-                    });
+                if (req.body.username && req.body.fullName && req.body.password) {
+                    User.findOne({username: req.body.username}).exec(function (err, user) {
+                        if (user) {
+                            req.flash('validateFormError', 'Số điện thoại hoặc email ' + req.body.username + ' đã được đăng ký!');
 
-                    employee.save(function (err) {
-                        if (err) return console.error(err);
+                            res.redirect('/admin/employee/create');
+                        } else {
+                            let employee = new User({
+                                fullName: req.body.fullName,
+                                username: req.body.username,
+                                phone: req.body.username,
+                                password: req.body.password,
+                                address: req.body.address,
+                                note: req.body.note,
+                                roleId: 4,
+                                status: 10
+                            });
 
-                        return res.redirect('/admin/employee/index');
-                    });
+                            employee.save(function (err) {
+                                if (err) return console.error(err);
+
+                                return res.redirect('/admin/employee/index');
+                            });
+                        }
+                    })
+                } else {
+                    req.flash('validateFormError', 'Vui lòng điền đẩy đủ các thông tin có dấu (*)');
+
+                    res.redirect('/admin/employee/create');
                 }
             }
         }
@@ -72,7 +84,7 @@ exports.update = function (req, res, next) {
                 User.findById(req.params.id, function (err, employee) {
                     if (err) return next(err);
 
-                    res.render('admin/employee/update', {employee: employee,userLogin: user});
+                    res.render('admin/employee/update', {employee: employee, userLogin: user});
                 })
             }
         }
@@ -113,10 +125,10 @@ exports.view = function (req, res, next) {
             if (user === null) {
                 return res.redirect('/admin/login');
             } else {
-                User.findById(req.params.id).populate('customers').exec( function (err, employee) {
+                User.findById(req.params.id).populate('customers').exec(function (err, employee) {
                     if (err) return next(err);
 
-                    res.render('admin/employee/view', {employee: employee,userLogin: user});
+                    res.render('admin/employee/view', {employee: employee, userLogin: user});
                 })
             }
         }
@@ -159,7 +171,7 @@ exports.changePasswordPost = function (req, res, next) {
                     collaborator.update(function (err) {
                         if (err) return console.error(err);
 
-                        return res.redirect('/admin/collaborator/view/'+req.params.id);
+                        return res.redirect('/admin/collaborator/view/' + req.params.id);
                     });
                 });
             }
@@ -183,7 +195,7 @@ exports.deActive = function (req, res, next) {
                     employee.update(function (err) {
                         if (err) return console.error(err);
 
-                        return res.redirect('/admin/employee/view/'+req.params.id);
+                        return res.redirect('/admin/employee/view/' + req.params.id);
                     });
                 });
             }

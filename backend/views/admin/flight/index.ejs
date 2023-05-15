@@ -45,7 +45,7 @@
             text-align: right;
         }
 
-        .btn-search-date-advanced:hover{
+        .btn-search-date-advanced:hover {
             text-decoration: none;
         }
 
@@ -156,11 +156,11 @@
             box-sizing: content-box;
         }
 
-        .th-text-right{
+        .th-text-right {
             text-align: right;
         }
 
-        .tab-content .tab-pane{
+        .tab-content .tab-pane {
             padding: 0 0 0;
         }
     </style>
@@ -192,13 +192,16 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <input ng-model="queries.flightSearch" ng-enter="getStatistical()" class="form-control" id="flightSearcg" type="text"
+                                                    <input ng-model="queries.flightSearch" ng-enter="getStatistical()"
+                                                           class="form-control" id="flightSearcg" type="text"
                                                            placeholder="Theo mã chuyến bay, SĐT khách hàng">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <input ng-model="queries.collaboratorCode" ng-enter="getStatistical()" class="form-control" id="collaboratorCode" type="text"
+                                                    <input ng-model="queries.collaboratorCode"
+                                                           ng-enter="getStatistical()" class="form-control"
+                                                           id="collaboratorCode" type="text"
                                                            placeholder="Theo mã CTV">
                                                 </div>
                                             </div>
@@ -208,7 +211,9 @@
                                             <div class="col-sm-12">
                                                 <label style="width: 100%;">
                                                     <strong>Thời gian đặt vé</strong>
-                                                    <a data-ng-click="showAndHideSearchDate()" class="pull-right btn-search-date-advanced" href="javascript:void(0)">
+                                                    <a data-ng-click="showAndHideSearchDate()"
+                                                       class="pull-right btn-search-date-advanced"
+                                                       href="javascript:void(0)">
                                                         <span class="nav-icon icon-calendar"></span>
                                                         Tìm tùy chọn
                                                     </a>
@@ -216,7 +221,9 @@
                                                 <div class="form-group" ng-show="!queries.searchDateAdvanced">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <select ng-model="queries.dateQuick" ng-change="getStatistical()" class="form-control" id="dateQuick">
+                                                            <select ng-model="queries.dateQuick"
+                                                                    ng-change="getStatistical()" class="form-control"
+                                                                    id="dateQuick">
                                                                 <option value="all">Toàn thời gian</option>
                                                                 <option value="today">Hôm nay</option>
                                                                 <option value="yesterday">Hôm qua</option>
@@ -232,17 +239,20 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Từ ngày</label>
-                                                                <input ng-model="queries.startDate" type="date" class="form-control">
+                                                                <input ng-model="queries.startDate" type="date"
+                                                                       class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Đến ngày</label>
-                                                                <input ng-model="queries.endDate" type="date" class="form-control">
+                                                                <input ng-model="queries.endDate" type="date"
+                                                                       class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <button class="btn btn-primary pull-right" data-ng-click="getStatistical()">
+                                                            <button class="btn btn-primary pull-right"
+                                                                    data-ng-click="getStatistical()">
                                                                 <i class="nav-icon icon-refresh"></i>
                                                                 Tìm kiếm
                                                             </button>
@@ -258,20 +268,28 @@
                                                     <label for=""><strong>Theo trạng thái</strong></label>
                                                     <div class="form-group">
                                                         <div class="form-check">
-                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="0" name="status">
+                                                            <input ng-model="queries.status"
+                                                                   ng-change="getStatistical()" class="form-check-input"
+                                                                   id="radio1" type="radio" value="0" name="status">
                                                             <label class="form-check-label" for="radio1">Tất cả</label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="form-check">
-                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="1" name="status">
-                                                            <label class="form-check-label" for="radio1">Đang đặt chỗ</label>
+                                                            <input ng-model="queries.status"
+                                                                   ng-change="getStatistical()" class="form-check-input"
+                                                                   id="radio1" type="radio" value="1" name="status">
+                                                            <label class="form-check-label" for="radio1">Đang đặt
+                                                                chỗ</label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="form-check">
-                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio2" type="radio" value="2" name="status">
-                                                            <label class="form-check-label" for="radio2">Đã thanh toán</label>
+                                                            <input ng-model="queries.status"
+                                                                   ng-change="getStatistical()" class="form-check-input"
+                                                                   id="radio2" type="radio" value="2" name="status">
+                                                            <label class="form-check-label" for="radio2">Đã thanh
+                                                                toán</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -327,9 +345,10 @@
                                                     <td></td>
                                                 </tr>
                                                 <tr ng-repeat="(key,flight) in responses.flights">
-                                                    <td>{{ key+1 }}</td>
+                                                    <td>{{ key + 1 }}</td>
                                                     <td>
-                                                        <a href="view/{{ flight._id }}" ng-bind-html="highlight(flight.flightCode, queries.flightSearch)"></a>
+                                                        <a href="view/{{ flight._id }}"
+                                                           ng-bind-html="highlight(flight.flightCode, queries.flightSearch)"></a>
                                                     </td>
                                                     <td>
                                                         <div>
@@ -361,8 +380,10 @@
                                                             <strong>Số chỗ đặt: {{ flight.passengers.length }}</strong>
                                                         </div>
                                                     </td>
-                                                    <td ng-show="flight.status == 1"><span class="badge badge-danger">Đang đặt chỗ</span></td>
-                                                    <td ng-show="flight.status == 2"><span class="badge badge-success">Đã thanh toán</span></td>
+                                                    <td ng-show="flight.status == 1"><span class="badge badge-danger">Đang đặt chỗ</span>
+                                                    </td>
+                                                    <td ng-show="flight.status == 2"><span class="badge badge-success">Đã thanh toán</span>
+                                                    </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -375,8 +396,12 @@
                                                                     <i class="nav-icon icon-control-start"></i>
                                                                 </a>
                                                             </li>
-                                                            <li ng-repeat="x in [].constructor(responses.pages) track by $index" data-ng-click="changePageActive($index+1)" class="page-item {{ ($index+1) == responses.currentPage ? 'active' : ''}}" ng-class="">
-                                                                <a class="page-link" href="javascript:void(0)">{{$index+1}}</a>
+                                                            <li ng-repeat="x in [].constructor(responses.pages) track by $index"
+                                                                data-ng-click="changePageActive($index+1)"
+                                                                class="page-item {{ ($index+1) == responses.currentPage ? 'active' : ''}}"
+                                                                ng-class="">
+                                                                <a class="page-link"
+                                                                   href="javascript:void(0)">{{$index + 1}}</a>
                                                             </li>
                                                             <li class="page-item">
                                                                 <a class="page-link" href="javascript:void(0)">

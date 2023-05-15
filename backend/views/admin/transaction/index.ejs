@@ -45,7 +45,7 @@
             text-align: right;
         }
 
-        .wp-st-logo{
+        .wp-st-logo {
             text-align: center;
         }
 
@@ -71,7 +71,7 @@
             height: 280px;
         }
 
-        .wrap-logo{
+        .wrap-logo {
             min-height: 292px;
         }
     </style>
@@ -186,7 +186,7 @@
             background: #f94f5e;
         }
 
-        @media (min-width: 768px){
+        @media (min-width: 768px) {
             .c-callout {
                 border-top: none;
                 border-left: 1px solid #d6d6d6;
@@ -206,108 +206,66 @@
             </li>
             <li class="breadcrumb-item active">Lịch sử rút tiền</li>
         </ol>
-        <div class="container-fluid">
+        <div class="container-fluid" data-ng-app="transactionApp" data-ng-controller="transactionCtrl">
             <div id="ui-view">
                 <div>
                     <div class="fade-in">
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
-                                            Tìm kiếm
-                                        </p>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" id="name" type="text"
-                                                           placeholder="Theo mã, số điện thoại CTV">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label for=""><strong>Theo trạng thái</strong></label>
-                                                    <div class="form-group">
-                                                        <div class="form-check">
-                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="0" name="status">
-                                                            <label class="form-check-label" for="radio1">Tất cả</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="form-check">
-                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio1" type="radio" value="1" name="status">
-                                                            <label class="form-check-label" for="radio1">Chờ thanh toán</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="form-check">
-                                                            <input ng-model="queries.status" ng-change="getStatistical()" class="form-check-input" id="radio2" type="radio" value="2" name="status">
-                                                            <label class="form-check-label" for="radio2">Đã thanh toán</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
+                            <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
                                             Lịch sử rút tiền
                                         </p>
                                     </div>
-                                    <div class="card-body" style="padding: 0;">
-                                        <% if(userLogin.roleId != 1){ %>
+                                    <div id="res-view" class="card-body" style="padding: 0;">
+                                        <% if(userLogin.roleId !== 1){ %>
                                             <div class="dashboardBox dashboardStatistic ovh dashboard-top">
                                                 <div class="uln ovh pd0" style="border-bottom: 1px solid #c8ced3;">
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="c-callout total" style="border:none;">
                                                                 <label class="dash_icon">
-                                                                    <i class="nav-icon icon-diamond"></i>
+                                                                    <i class="nav-icon icon-wallet"></i>
                                                                 </label>
-                                                                <label class="dash_title">Thu nhập</label>
+                                                                <label class="dash_title">Số dư khả dụng</label>
                                                                 <span class="number">
-                                                                    <strong class="txt">₫0</strong>
+                                                                    <strong class="txt">
+                                                                        ₫{{responses.wallet | number}}
+                                                                    </strong>
+                                                                    <a class="btn btn-sm btn-danger"
+                                                                       href="/admin/transaction/create">
+                                                                        <i class="nav-icon icon-wallet"></i>
+                                                                        Rút tiền
+                                                                    </a>
                                                                 </span>
-                                                                <span class="yesterday">Thu nhập từ hoa hồng</span>
+                                                                <span class="yesterday">Hoa hồng đã thanh toán</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-4">
                                                             <div class="c-callout return">
                                                                 <label class="dash_icon">
-                                                                    <i class="nav-icon icon-plane"></i>
+                                                                    <i class="nav-icon icon-clock"></i>
                                                                 </label>
-                                                                <label class="dash_title">Đã rút</label>
+                                                                <label class="dash_title">Chờ xử lý</label>
                                                                 <span class="number">
-                                                                <strong class="txt">₫0</strong>
+                                                                <strong class="txt">₫{{responses.waiting | number}}</strong>
                                                             </span>
-                                                                <span class="yesterday">Số tiền đã rút</span>
+                                                                <span class="yesterday">Số tiền đã rút chờ xử lý</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-4">
                                                             <div class="c-callout">
                                                                 <label class="dash_icon">
-                                                                    <i class="nav-icon icon-share"></i>
+                                                                    <i class="nav-icon icon-check"></i>
                                                                 </label>
-                                                                <label class="dash_title">Số dư</label>
+                                                                <label class="dash_title">Rút thành công</label>
                                                                 <span class="number">
-                                                                    <strong class="txt">₫0</strong>
-                                                                    <a class="btn btn-sm btn-danger" href="/admin/transaction/create">
-                                                                        <i class="nav-icon icon-wallet"></i>
-                                                                        Rút tiền
-                                                                    </a>
+                                                                    <strong class="txt">₫{{responses.success | number}}</strong>
                                                                 </span>
-                                                                <span class="yesterday">Số tiền còn lại</span>
+                                                                <span class="yesterday">Số tiền rút thành công</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -325,11 +283,13 @@
                                                 <th class="th-text-right">Số tiền rút</th>
                                                 <th>Trạng thái</th>
                                                 <th>Ngày xử lý</th>
+                                                <th>Hỉnh ảnh</th>
                                                 <th>Xử lý</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -354,10 +314,12 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <strong><%= transaction.bank.name %> - <%= transaction.bank.branch %></strong>
+                                                            <strong><%= transaction.bank.name %>
+                                                                - <%= transaction.bank.branch %></strong>
                                                         </div>
                                                         <div class="small text-muted" style="font-size: 90%;">
-                                                            <a href="javascript:void(0)"><strong><%= transaction.bank.accountNumber %></strong></a> - <%= transaction.bank.accountHolder %>
+                                                            <a href="javascript:void(0)"><strong><%= transaction.bank.accountNumber %></strong></a>
+                                                            - <%= transaction.bank.accountHolder %>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -366,29 +328,87 @@
                                                     <td class="th-text-right">
                                                         ₫<strong><%= _.formatNumber(transaction.amount) %></strong>
                                                     </td>
-                                                    <td><span class="badge badge-success">Chờ xử lý</span></td>
+                                                    <% if(transaction.status === 1) { %>
+                                                        <td><span class="badge badge-primary">Chờ xử lý</span></td>
+                                                    <% } else if(transaction.status === 2) { %>
+                                                        <td><span class="badge badge-secondary">Đã hủy</span></td>
+                                                    <% } else if(transaction.status === 3) { %>
+                                                        <td><span class="badge badge-danger">Từ chối</span></td>
+                                                    <% } else { %>
+                                                        <td><span class="badge badge-success">Thành công</span></td>
+                                                    <% } %>
                                                     <td>
-                                                        --:--
+                                                        <%= _.convertDate(transaction.updatedAt) %>
                                                     </td>
-                                                    <td>
-                                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
-                                                            <i class="nav-icon icon-printer"></i>
-                                                            Xử lý nhanh
-                                                        </button>
-                                                    </td>
+                                                    <% if(transaction.image) { %>
+                                                        <td>
+                                                            <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                                                    data-target="#myModal2"
+                                                                    data-ng-click="selectPreviewImage('<%= transaction.image %>')">
+                                                                <span class="fa fa-image"></span>
+                                                            </button>
+                                                        </td>
+                                                    <% } else { %>
+                                                        <td></td>
+                                                    <% } %>
+                                                    <% if(transaction.status !== 4 && userLogin.roleId === 1) { %>
+                                                        <td>
+                                                            <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                                                    data-target="#myModal"
+                                                                    data-ng-click="selectTran('<%= transaction._id %>',4)">
+                                                                <i class="nav-icon icon-check"></i>
+                                                                Xử lý nhanh
+                                                            </button>
+                                                        </td>
+                                                    <% } else if(transaction.status === 1) { %>
+                                                        <td>
+                                                            <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                                                    data-target="#myModal"
+                                                                    data-ng-click="selectTran('<%= transaction._id %>',2)">
+                                                                <i class="nav-icon icon-check"></i>
+                                                                Hủy giao dịch
+                                                            </button>
+                                                        </td>
+                                                    <% } else { %>
+                                                        <td></td>
+                                                    <% } %>
                                                 </tr>
                                             <% }); %>
                                             </tbody>
                                         </table>
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">
-                                                            <i class="nav-icon icon-printer"></i>
+                                                            <i class="nav-icon icon-info"></i>
+                                                            Ảnh giao dịch
+                                                        </h5>
+                                                        <button class="close" type="button" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body" style="text-align: center;">
+                                                        <div class="preview-image">
+                                                            <img data-ng-src="{{previewImage}}" style="height: auto;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">
+                                                            <i class="nav-icon icon-check"></i>
                                                             Xử lý nhanh
                                                         </h5>
-                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <button class="close" type="button" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">×</span>
+                                                        </button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="wp-st-logo">
@@ -398,8 +418,10 @@
                                                                 </div>
                                                             </div>
                                                             <div class="wp-ip-file">
-                                                                <input name="avatar" type="file" id="input-file" style="display: none;" accept="image/*">
-                                                                <button id="btn-upload-avatar" class="btn btn-outline-secondary" type="button">
+                                                                <input name="avatar" type="file" id="input-file"
+                                                                       style="display: none;" accept="image/*">
+                                                                <button id="btn-upload-avatar"
+                                                                        class="btn btn-outline-secondary" type="button">
                                                                     <i class="nav-icon icon-cloud-upload"></i>
                                                                     Chọn ảnh hóa đơn chuyển tiền
                                                                 </button>
@@ -408,12 +430,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer" style="display: block;">
-                                                        <button class="btn btn-danger pull-left" type="button" data-dismiss="modal">
+                                                        <button class="btn btn-danger pull-left" type="button"
+                                                                data-dismiss="modal">
                                                             <i class="nav-icon icon-close"></i>
                                                             Hủy bỏ
                                                         </button>
-                                                        <button class="btn btn-success pull-right" type="button">
-                                                            <i class="nav-icon icon-printer"></i>
+                                                        <button class="btn btn-success pull-right" type="button"
+                                                                data-ng-click="updateStatus()">
+                                                            <i class="nav-icon icon-check"></i>
                                                             Xác nhận chuyển tiền
                                                         </button>
                                                     </div>
@@ -433,23 +457,25 @@
 <% include ../layouts/footer %>
 <!-- Plugins and scripts required by this view-->
 <script src="/javascript/jquery.js"></script>
+<script src="/javascript/transaction.js"></script>
 <script>
-    $(document).ready(function() {
-        let imagesPreview = function(input) {
+    $(document).ready(function () {
+        let imagesPreview = function (input) {
             if (input.files) {
                 let filesAmount = input.files.length;
                 for (let i = 0; i < filesAmount; i++) {
                     let reader = new FileReader();
-                    reader.onload = function(event) {
-                        $('.preview-image img').attr("src", event.target.result);
-                        $('.preview-image img').css("display","block");
+                    reader.onload = function (event) {
+                        let previewImage = $('.preview-image img');
+                        previewImage.attr("src", event.target.result);
+                        previewImage.css("display", "block");
                     };
                     reader.readAsDataURL(input.files[i]);
                 }
             }
         };
 
-        $("#btn-upload-avatar").on("click",function () {
+        $("#btn-upload-avatar").on("click", function () {
             $("#input-file").click();
         });
 

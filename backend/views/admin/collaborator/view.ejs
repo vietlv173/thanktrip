@@ -153,7 +153,7 @@
             background: #f94f5e;
         }
 
-        @media (min-width: 768px){
+        @media (min-width: 768px) {
             .c-callout {
                 border-top: none;
                 border-left: 1px solid #d6d6d6;
@@ -263,11 +263,11 @@
             box-sizing: content-box;
         }
 
-        .th-text-right{
+        .th-text-right {
             text-align: right;
         }
 
-        .tab-content .tab-pane{
+        .tab-content .tab-pane {
             padding: 0 0 0;
         }
     </style>
@@ -287,7 +287,8 @@
             </li>
             <li class="breadcrumb-item active"><%= collaborator.fullName %></li>
         </ol>
-        <div class="container-fluid" data-ng-app="Application" data-ng-controller="collaboratorCtrl" style="text-align: center;">
+        <div class="container-fluid" data-ng-app="Application" data-ng-controller="collaboratorCtrl"
+             style="text-align: center;">
             <input id="collaboratorId" type="hidden" value="<%= collaborator.id %>">
             <div class="loading-io" ng-show="pageLoading">
                 <div class="spinner">
@@ -315,7 +316,8 @@
                                             <%= collaborator.fullName %>
                                         </p>
                                         <div class="card-header-actions">
-                                            <select class="form-control" id="filterDate" ng-model="file" ng-change="getStatistical()">
+                                            <select class="form-control" id="filterDate" ng-model="file"
+                                                    ng-change="getStatistical()">
                                                 <option value="">Hôm nay</option>
                                                 <option value="yesterday">Hôm qua</option>
                                                 <option value="seven-day-ago">7 ngày qua</option>
@@ -325,7 +327,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <% if(typeof changePasswordSuccess !== "undefined") {%>
+                                        <% if(typeof changePasswordSuccess !== "undefined") { %>
                                             <div class="alert alert-success" role="alert">
                                                 <i class="nav-icon icon-bell"></i>
                                                 <%- changePasswordSuccess %>
@@ -334,116 +336,143 @@
                                         <div class="nav-tabs-boxed">
                                             <ul class="nav nav-tabs" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#home-1" role="tab" aria-controls="home" aria-selected="true">
+                                                    <a class="nav-link active" data-toggle="tab" href="#home-1"
+                                                       role="tab" aria-controls="home" aria-selected="true">
                                                         <i class="nav-icon icon-info"></i>
                                                         Thông tin cá nhân
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#profile-1" role="tab" aria-controls="profile" aria-selected="false">
+                                                    <a class="nav-link" data-toggle="tab" href="#profile-2" role="tab"
+                                                       aria-controls="profile" aria-selected="false">
+                                                        <i class="nav-icon icon-user-following"></i>
+                                                        Tài khoản cấp 2
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#profile-3" role="tab"
+                                                       aria-controls="profile" aria-selected="false">
+                                                        <i class="nav-icon icon-user-following"></i>
+                                                        Tài khoản cấp 3
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#profile-1" role="tab"
+                                                       aria-controls="profile" aria-selected="false">
                                                         <i class="nav-icon icon-calculator"></i>
                                                         Tài khoản ngân hàng
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#messages-1" role="tab" aria-controls="messages" aria-selected="false">
+                                                    <a class="nav-link" data-toggle="tab" href="#messages-1" role="tab"
+                                                       aria-controls="messages" aria-selected="false">
                                                         <i class="nav-icon icon-clock"></i>
                                                         Lịch sử rút tiền
                                                     </a>
                                                 </li>
                                             </ul>
                                             <div class="tab-content">
-                                                <div class="tab-pane active" id="home-1" role="tabpanel">
+                                                <div class="tab-pane active" id="home-1" role="tabpanel"
+                                                     style="text-align: left;">
                                                     <div class="dashboardBox dashboardStatistic ovh dashboard-top">
-                                                        <div class="uln ovh pd0" style="border-bottom: 1px solid #c8ced3;">
+                                                        <div class="uln ovh pd0"
+                                                             style="border-bottom: 1px solid #c8ced3;">
                                                             <div class="row">
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <div class="c-callout total" style="border:none;">
                                                                         <label class="dash_icon">
                                                                             <i class="nav-icon icon-diamond"></i>
                                                                         </label>
-                                                                        <label class="dash_title">Doanh số</label>
-                                                                        <span class="number">
-                                                                            <span class="txt">{{ responses.revenue | number }}</span>
-                                                                        </span>
-                                                                        <span class="yesterday">Doanh thu thuần</span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-3">
-                                                                    <div class="c-callout return">
-                                                                        <label class="dash_icon">
-                                                                            <i class="nav-icon icon-plane"></i>
+                                                                        <label class="dash_title">
+                                                                            Hoa hồng khả dụng
                                                                         </label>
-                                                                        <label class="dash_title">Khách đặt</label>
                                                                         <span class="number">
-                                                                            <span class="txt">{{ responses.guestsBooked }}</span>
+                                                                            <span class="txt">{{ responses.wallet | number }}</span>
                                                                         </span>
-                                                                        <span class="yesterday">Số lượng khách đặt</span>
+                                                                        <span class="yesterday">Đã thanh toán</span>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-md-3">
-                                                                    <div class="c-callout">
+                                                                <div class="col-md-4">
+                                                                    <div class="c-callout total">
                                                                         <label class="dash_icon">
-                                                                            <i class="nav-icon icon-share"></i>
+                                                                            <i class="nav-icon icon-clock"></i>
                                                                         </label>
-                                                                        <label class="dash_title">Lượt truy cập</label>
+                                                                        <label class="dash_title">
+                                                                            Hoa hồng chờ xác nhận
+                                                                        </label>
                                                                         <span class="number">
-                                                                            <span class="txt">{{ responses.hits }}</span>
+                                                                            <span class="txt">{{ responses.commission | number }}</span>
                                                                         </span>
-                                                                        <span class="yesterday">Số lượt truy cập vào</span>
+                                                                        <span class="yesterday">Chờ thanh toán</span>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-md-3">
-                                                                    <div class="c-callout down">
+                                                                <div class="col-md-4">
+                                                                    <div class="c-callout total">
                                                                         <label class="dash_icon">
                                                                             <i class="nav-icon icon-bag"></i>
                                                                         </label>
-                                                                        <label class="dash_title">Hoa hồng</label>
+                                                                        <label class="dash_title">Tổng doanh thu</label>
                                                                         <span class="number">
-                                                                            <span class="txt">{{ responses.profit | number }}</span>
+                                                                            <span class="txt">{{ responses.revenue | number }}</span>
                                                                         </span>
-                                                                        <span class="yesterday">Tiền hoa hồng</span>
+                                                                        <span class="yesterday">Tổng doanh thu</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="content-list row row-padding-15 mb15" style="padding: 15px 20px;text-align: left;">
+                                                    <div class="content-list row row-padding-15 mb15"
+                                                         style="padding: 15px 20px;text-align: left;">
                                                         <div class="col-md-6 col-sm-6">
                                                             <div class="chart">
-                                                                <canvas id="barChart" style="height: 267px; width: 784px;" height="534" width="1568"></canvas>
+                                                                <canvas id="barChart"
+                                                                        style="height: 267px; width: 784px;"
+                                                                        height="534" width="1568"></canvas>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-6">
                                                             <div class="row">
                                                                 <div class="col-md-8">
                                                                     <div class="form-group">
-                                                                        <label class="form-label control-label">Mã CTV:</label>
+                                                                        <label class="form-label control-label">
+                                                                            Mã CTV:
+                                                                        </label>
                                                                         <div class="form-wrap form-control-static">
-                                                                            <div class="input-group mb-3" id="product_coupon">
-                                                                                <input type="text" class="form-control"
-                                                                                       value="<%= collaborator.code %>" disabled="">
+                                                                            <div class="input-group mb-3">
+                                                                                <input id="p1" type="text"
+                                                                                       class="form-control"
+                                                                                       value="<%= collaborator.code %>"
+                                                                                       disabled="">
                                                                                 <div class="input-group-append">
-                                                                            <span class="input-group-text">
-                                                                                <i class="nav-icon icon-docs"></i>
-                                                                            </span>
+                                                                                    <span style="position: absolute;top: -25px;right: -15px;display: none;">Đã sao chép</span>
+                                                                                    <button type="button"
+                                                                                            onclick="copyToClipboard(event,'#p1')"
+                                                                                            class="btn btn-secondary">
+                                                                                        <i class="nav-icon icon-docs"></i>
+                                                                                    </button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="form-label control-label">Link chia sẻ:</label>
+                                                                        <label class="form-label control-label">
+                                                                            Link chia sẻ:
+                                                                        </label>
                                                                         <div class="form-wrap form-control-static">
-                                                                            <div class="input-group mb-3" id="product_coupon">
-                                                                                <input type="text" class="form-control"
-                                                                                       value="<%= collaborator.code %>" disabled="">
+                                                                            <div class="input-group mb-3">
+                                                                                <input id="p2" type="text"
+                                                                                       class="form-control"
+                                                                                       value="<%= process.env.DOMAIN %>/admin/register?r=<%= collaborator.code %>"
+                                                                                       disabled="">
                                                                                 <div class="input-group-append">
-                                                                            <span class="input-group-text">
-                                                                                <i class="nav-icon icon-docs"></i>
-                                                                            </span>
+                                                                                    <span style="position: absolute;top: -25px;right: -15px;display: none;">Đã sao chép</span>
+                                                                                    <button type="button"
+                                                                                            onclick="copyToClipboard(event,'#p2')"
+                                                                                            class="btn btn-secondary">
+                                                                                        <i class="nav-icon icon-docs"></i>
+                                                                                    </button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -452,8 +481,9 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label for=""><strong>QR CODE</strong></label>
-                                                                        <div class="form-wrap form-control-static" style="text-align: center;">
-                                                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAOiElEQVR4Xu2d7dXkRhGF2xEYIrCJABzB4kjWG4EhAkMEhgjYjWQhAuMIvESAiQBO747RvH5np56W7rQ0nkfnzK8pVVffvrerP9TSJ621/zavjsA/Wmu/D0HR/bwFvr5srf0d2BGT7udFYUjrSHyRmO7e5hMF8v82pOQhja5ACEp3YKNAlkZSIAsWZpATFgpEgVzqxxWIAnnGCzOIGeQZKcwgZhAzyJW5kAJRIApEgaDlEodYDrEcYl2RigJRIKsF0smT2tBC3XnY6KvW2mehTTTiqw9dyfW6tfauMPy8tfYSOCNl9rJ6mdVFVrH+BX1VZe31f9+rqjZWG52D/Lm19qe9ahIolzQ4zSBJX6Rq977pSOq4h03n8zdVwQpkfJKuQD5gRjuUioN7/a9AzpBPkjrpi5DDDEJQGrdRIApknDWnO2Z3AqsD3XCjAlEgq+mjQE7QOQdxDnJJRQpEgTzjBZ10ziaPc5DVifDqjQ6xHGKtZtbsTmB1oBtuVCAKZDV9FMiNhlizj+/SDczZDb7HsGi1Gi7cmMQL9dTJ4Ft7vwFeXSiu9CRdgXxoFgWy0BMRsWLz4P8K5ASYGWSQOdDcDOIQa/UqFuGYGcQMcpEnDrEcYv2cGA6xzhBRIApEgVwZYygQBaJAFEg5DXEO4hzEOcgVmSgQBfKwAjnqkds34PhumfpOBi7zusy7epk3SR5C2D2yUbKOrmI92CpWkjwKhCAwbuNO+o476QrkA/j0eIAZxAyyerhG+kaHWASlpzZmEDPIM9Yc9WM8ZhAziBnkSievQBSIAlEg7M2Kj/CoiZN0J+nP+gN67kKBjJGHTD+dpBOUnKRfRIkKd3avT5uUxEV9ETu6NEvior6cgzzYHIQQkdoQIlJfxI6SmsRFfSkQBUK4edGGEHG18ws3UlKTuKgvBaJAVnOYEHG1cwVyFTokXN9qsmBIe8QkYRVIEs3FlzvpJyycpI8RjHYCRLjUF+qpx6pRWisQBVKS5JIBJbUCOaHnEMsh1iUhKRAF8owXtHdd1XV/5CZCxGR5tI4kLurLIdZZC87+0GdvyP6rrmSD0yO35KmCV+Dru/RrsiQuSuokXv1JgP6beREeIuGmh1gzQRgpK9ngxNdIbJXtHqQmdaRxVfXb638FcoZ8ssGJr2SjUyKSuPbwlcQi6UuBKJDV86yk2JKkTvpSIApEgVxRlAJRIApEgbCkmxwyEF8sKma1x7yB1JHGxWo538oMYgYxg5hBWM+T7BGJLxYVs6I9NYlrD1+slvOtzCBmEDPIrAzSd3N/mC/yskS60flFa+3Twluyd/2+tfaHMvrW/tJa++3EuJJ1/E9r7TtQR9pGwNX7r9eSJxSIr9+ApxiiBZKgjmyTJM8j+DpyW8ZiSyoyFtROjh6B1Mk67tRMc4tVIAveSfI8gq+5TN2pNAWiQC5Rj6yI7UTZucUqEAWiQK5oToEoEAWiQFBafoR5Q7KOCNR7NzKDmEHMIEUGIUdW770jIPH/c2Bz73eFQ+qLTIb7puPXoAJ/DW469g3Mqo4gpPs3Ie8Puv9aHrcGRCDJ6OkQK1nmXftSIPs2nwLZF/+ydAVSQnRTAwVyU3i3O1cg2zHc4kGBbEFvwr0KZALIV4pQIPviX5auQEqIbmqgQG4K73bnCmQ7hls8KJAt6E24V4FMANkh1r4gbyldgWxBb/u9ZpDtGN7UQxfIW1BC8pGUpK83rbXXIH5ytJXGReyITQ+7x/8OxE9MSB3pMdk/ttb60wDXrr7T/i0IjLYR4eF0X7QhAQ67mCS/MLVHBb6Eb6cnsSWzEYmLfr+dthE5az7dlwIh1LudDSEiLV2BLEjFxKZAKP1uY6dAbkBq+OYTlI0UyG2IT70qEAVCubLKDvUCp3H+i1Ul3PYmBaJAbsowBbLA6xzkBmJziHVT/ZbOzSA3ILVzkAVUM4gZ5FIvNH0Vq7+bN7Wh9Tl5J2rZ934woAIhR0h/BY6s9jL7Edgfi/ior9kZpG8UVhuAvWr9vcKVXXofhBz97jZkQ5H46puOf6t4RodYlIhVef1/9Np54mhAIMQdbXBC6qQvEnu3IXOQ5JFbWsejcgfhqkAWmGiDK5APmFG8FAiS4mJkBlmwIGKj8JpBKFIDdmYQM8gAXZ6YmkHO4DhqmkzGRRuc9PpJX5TAZhCK1ICdGcQMMkAXM8jHwEr21M5BnIOsFWWSOygGM4gZBBHlghEdRh61c0X1ViAKBBHlkQXSe4Lq6jbkadg+ga2uZJqkvRM5jtqfFiDHd78CTwL8emBX/t8FYLQTI8d3+1MML6sGaq2RI7f9aQHyguskd3r8/Tftoi9toKQm/qgvAgIVSHKFh/gisadtjrq6RtubcCeNWemPBpWsJPVVBj/wqAkhNX0Mg/gisadtFEga0dbefyedXJTUxB/1ReIygywoKRDCmEEbQujukpKa+KO+SFUUiAIhPFltQwitQJ7C6xBrjG60Q6RcHCt9ozUNKllJ6otUzQxiBiE8WW2jQBbonKSPiY2SjnaIlIu03IgdDSpZSeqLVNAMMkZquvtNJvykfdLDc1pmzK4LhG4A0g3FKjgqkN6jV1ff2CObe+TIbT9SXB7BbK2Rr8nSo619o+3TopLUFzkm28vrWFQX8UWPFfeN1f6rLtJZJ49ro2PkdJeW9tQVCEfuUWjvSuqYHK5RXySupE0Srx4XEQjtXEk9EacVyAJlssEpqcmKGPVFSJG0SeKlQM5ahvYCpEc5aoNTUiuQpQVJe1PuEF6YQQhKZzbJHlGBDILvEGsBjPYCpEcZb4aP36FAxtBM4uUQyyHWRfY5xHKI9YwYZpAFEgWiQBTIlZGLAlEgCkSBoMkNmXPS0QcpEK9i0R1yuuNeBUePTX5TOTqtfJA3eZP9HnpMFoTVkqtYe3yZNnnktu+ik2O+5IXTHVdiR9qoPzlRvpCdqLYXRpVL/ZEKEOITP3vYJAVC4yfPT9GVJ+KLxkW5Q/yhXp84ojaU0LSS1B+JT4EQlBYbQmoFMoYpev7FDDIIamvRIRYtXYFQpAbsaI9vBhkAVYE8AYtyhyDsEOsMJYdYhDIOscZQGrQ2gwwCBs2dpC9AmUHOSEMFR3hmBiEomUHGUBq0poSmvQD1R8JUIAQlBTKG0qA1JTQ9Nkk2HWmIqQ0hWh61I8dk+xdi+7HV6noF3jVLj7b2zb3vigK/aK19WwV1ejdv5Ytsvvai+upaihf0K7egiu9XcMtOmAqEFPgoNuT5KYpFcmmWljnbLrnyREcysToqkHEoFcgYZgpkDK+7t1YgY02oQMbwuntrBTLWhApkDK+7t1YgY02oQMbwuntrBTLWhApkDK+7t1YgY02oQMbwuntrBTLWhApkDK+7t1YgY0149wJ5C+qLdh2Bn7QJjYvYfQ93v4lAqK++4/5jAQr9miz5ki+Ni/iibUkFQniYPHKL4ifEQY5+AUbJJ3CpryRsRLg0LuKLxk4FUj72MfDRVhpbaadAFoiS5KG+ygYaMCCkpnERXzQ0BUKROrhdkjzUVxISQmoaF/FFY1cgFKmD2yXJQ30lISGkpnERXzR2BUKROrhdkjzUVxISQmoaF/FFY1cgFKmD2yXJQ30lISGkpnERXzR2BUKROrhdkjzUVxISQmoaF/FFY1cgFKmD2yXJQ30lISGkpnERXzT2hxAI+iIoRWwHO3JMlpKHfDGXHrklUNAjt+Tru32j8GtQKKkj/fouPSbbhVRd1Fdvy+pCX8yl+yC0F6iC2ut/0iNSgcyuA31d6Oy4KF70mCw53TrdlwJZaEUbfDYRFciCuAK5EfvMIHlgaYcyndTJD4KaQcwga6WjQM6Qcw6ylkbb73OI5RBrO4sKDw6x8hCbQcwgeVat8GgGMYOsoM3YLWaQMbyItRnEDEJ4cnMbM8gvKIMkv0xLmNd7sZ4dqiuZQfqLvD8rCuxPHryugoL/9x3fXmZ1zY6rx0NOAZINwMP6Si/zEsCqhh75n66uJQWS9DVS18p2dlw0s9E2ItyZ7kuBLLSjY+rZRKyE8dP/s+NSICvmIKQXoA1O7GiPkiRP0hepI7WZHZcCUSAXuTmbiApkQYB2iKSjRr4cYjnEogL8uZ0ZxAxiBrmiHgWiQBSIAmFr2Wi8BtfF16b0S/fRuJLzhqSvJBaz4zKDmEHMIGYQM8hPHEjug9DMQL5yS33NziA0rqMemELxu4p1m1UsBP7pG+LkURniT4EsKNHHW0pcFYgCKUmy0cAMcgYg2aDZiPeT2486Sad1dIg11usnxYbayAxiBkFE2WCUJHXSF6qSAlEgiCgbjJKkTvpCVVIgCgQRZYNRktRJX6hKCkSBIKJsMEqSOukLVUmBKBBElA1GSVInfaEqKZDbCIQeue3Hct8VLdWP3L4ErUnX/slK45uDxtVX/V4EsShdKZDbCITuypcN1FqjzzyRJeM9fNGleCJcgle3oZ1F6U+BKJBLJEmKTYGcIZzsBUp1D3w3O/kYRtIXqeMevb4CObWMGcQMYga50k0pEAWiQBTI+5fLVasfdGKd9OUQa0EgOTx3kn7ClU4Ak6RO+lIgCoRwYLWNAlmgS06sk75oG5lBVsvg4zdS8JO9ftIXgcRVLILSU5vDDrHGqzLnjiSpiS9aK9JTU1+z7ahwaVyE1Hf/qAkFY7YdIXVykk7rp0AWpBQIZc0N7BRIHlQzyBmmdKyfb4aMRwWSwfHciwJRIBdZRcRG6egQyyEW5cpN7QipnYOMNYEZxAxiBrmiGQWiQBSIAsm+enQsSc+zdoiVx9oMcoZpJ1jqFZn0CWLSpNTXK/Bl2j3mIP1o6w9FRWkdk8dkiS8qEPolYvKoCdkr6XASXyguCj4h673b7CGQJGZkRYySOumLbhEQUk/3pUAWiiqQBQsFcsJCgSiQS1lMgSiQZ7wwg5hBnpHCDGIGMYNcmQkqEAWiQBQIWixyiOUQyyHWFakoEAWiQBRIewvyqatYJ5D+B7L1cGFn3Nt1AAAAAElFTkSuQmCC"
+                                                                        <div class="form-wrap form-control-static"
+                                                                             style="text-align: center;">
+                                                                            <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= process.env.DOMAIN %>/admin/register?r=<%= userLogin.code %>"
                                                                                  alt="" style="width:115px;">
                                                                         </div>
                                                                     </div>
@@ -463,7 +493,9 @@
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label class="form-label control-label">Họ và tên:</label>
+                                                                        <label class="form-label control-label">
+                                                                            Họ và tên:
+                                                                        </label>
                                                                         <div class="form-wrap form-control-static">
                                                                             <strong><%= collaborator.fullName %></strong>
                                                                         </div>
@@ -487,57 +519,32 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label control-label">Hoa hồng CTV:</label>
-                                                                        <div class="form-wrap form-control-static payOrder">
-                                                                            ₫<strong><%= _.formatNumber(collaborator.commission) %></strong>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label control-label">Chiết khấu KH:</label>
-                                                                        <div class="form-wrap form-control-static payOrder">
-                                                                            ₫<strong><%= _.formatNumber(collaborator.discount) %></strong>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="form-label control-label">Trạng thái:</label>
-                                                                        <div class="form-wrap form-control-static payOrder">
-                                                                            <% if(collaborator.status == 10){ %>
-                                                                                <span class="badge badge-success">Hoạt động</span>
-                                                                            <% } else {%>
-                                                                                <span class="badge badge-danger">Ngừng hoạt động</span>
-                                                                            <% } %>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 col-sm-12">
                                                             <br>
                                                         </div>
                                                         <div class="col-md-12 col-sm-12" style="text-align: right;">
-                                                            <form action="/admin/collaborator/de-active/<%= collaborator.id %>" method="post">
+                                                            <form action="/admin/collaborator/de-active/<%= collaborator.id %>"
+                                                                  method="post">
                                                                 <a href="/admin/collaborator/update/<%= collaborator.id %>"
                                                                    class="btn btn-success btn-sm">
                                                                     <i class="nav-icon icon-check"></i>
                                                                     Cập nhật
                                                                 </a>
-                                                                <a href="/admin/collaborator/change-password/<%= collaborator.id %>" class="btn btn-primary btn-sm">
+                                                                <a href="/admin/collaborator/change-password/<%= collaborator.id %>"
+                                                                   class="btn btn-primary btn-sm">
                                                                     <i class="nav-icon icon-key"></i>
                                                                     Đổi mật khẩu
                                                                 </a>
-                                                                <% if(collaborator.status == 10){ %>
+                                                                <% if(userLogin.roleId === 1 && collaborator.status === 10){ %>
                                                                     <button type="submit" class="btn btn-danger btn-sm">
                                                                         <i class="nav-icon icon-lock"></i>
                                                                         Ngừng hoạt động
                                                                     </button>
-                                                                <% } else {%>
-                                                                    <button type="submit" class="btn btn-warning btn-sm">
+                                                                <% } else if(userLogin.roleId === 1) { %>
+                                                                    <button type="submit"
+                                                                            class="btn btn-warning btn-sm">
                                                                         <i class="nav-icon icon-lock-open"></i>
                                                                         Cho hoạt động
                                                                     </button>
@@ -545,36 +552,71 @@
                                                             </form>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="tab-pane" id="profile-2" role="tabpanel"
+                                                     style="text-align: left;">
                                                     <table class="table table-responsive-sm table-striped"
                                                            style="margin-bottom: 0;">
                                                         <thead>
                                                         <tr>
-                                                            <th style="width: 40px;">ID</th>
-                                                            <th>Mã chuyến bay</th>
+                                                            <th style="width: 40px;">STT</th>
                                                             <th>Họ và tên</th>
-                                                            <th class="th-text-right">Số lượt đặt</th>
-                                                            <th class="th-text-right">Tổng tiền</th>
+                                                            <th>Số tài khoản</th>
+                                                            <th>Ngày đăng ký</th>
+                                                            <th>Doanh thu</th>
+                                                            <th>Trạng thái</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td class="th-text-right">0</td>
-                                                            <td class="th-text-right">0</td>
-                                                        </tr>
-                                                        <tr ng-repeat="(key, flight) in responses.flights">
-                                                            <td>{{ key+1 }}</td>
-                                                            <td>{{ flight.flightCode }}</td>
-                                                            <td>{{ flight.fullName }}</td>
-                                                            <td class="th-text-right">{{ flight.passengers.length }}</td>
-                                                            <td class="th-text-right">{{ flight.totalMoney | number }}</td>
+                                                        <tr ng-repeat="(key, child) in responses.child1">
+                                                            <td>{{ key + 1 }}</td>
+                                                            <td>{{ child.fullName }}</td>
+                                                            <td>{{ child.username }}</td>
+                                                            <td>{{ child.createdAt | date }}</td>
+                                                            <td>{{ child.wallet | number }}</td>
+                                                            <td>
+                                                                <span ng-if="child.status === 10"
+                                                                      class="badge badge-success">Hoạt động</span>
+                                                                <span ng-if="child.status !== 10"
+                                                                      class="badge badge-danger">Ngừng hoạt động</span>
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="tab-pane" id="profile-1" role="tabpanel">
+                                                <div class="tab-pane" id="profile-3" role="tabpanel"
+                                                     style="text-align: left;">
+                                                    <table class="table table-responsive-sm table-striped"
+                                                           style="margin-bottom: 0;">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width: 40px;">STT</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Số tài khoản</th>
+                                                            <th>Ngày đăng ký</th>
+                                                            <th>Doanh thu</th>
+                                                            <th>Trạng thái</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr ng-repeat="(key, child) in responses.child2">
+                                                            <td>{{ key + 1 }}</td>
+                                                            <td>{{ child.fullName }}</td>
+                                                            <td>{{ child.username }}</td>
+                                                            <td>{{ child.createdAt | date }}</td>
+                                                            <td>{{ child.wallet | number }}</td>
+                                                            <td>
+                                                                <span ng-if="child.status === 10"
+                                                                      class="badge badge-success">Hoạt động</span>
+                                                                <span ng-if="child.status !== 10"
+                                                                      class="badge badge-danger">Ngừng hoạt động</span>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane" id="profile-1" role="tabpanel"
+                                                     style="text-align: left;">
                                                     <table class="table table-responsive-sm table-striped"
                                                            style="margin-bottom: 0;">
                                                         <thead>
@@ -589,30 +631,36 @@
                                                         </thead>
                                                         <tbody>
                                                         <% collaborator.banks.forEach(function(bank, key) { %>
-                                                        <tr>
-                                                            <td><%= key+1 %></td>
-                                                            <td><%= bank.name %></td>
-                                                            <td><%= bank.accountNumber %></td>
-                                                            <td><%= bank.accountHolder %></td>
-                                                            <td><%= bank.branch %></td>
-                                                            <td><span class="badge badge-success">Hoạt động</span></td>
-                                                        </tr>
+                                                            <tr>
+                                                                <td><%= key + 1 %></td>
+                                                                <td><%= bank.name %></td>
+                                                                <td><%= bank.accountNumber %></td>
+                                                                <td><%= bank.accountHolder %></td>
+                                                                <td><%= bank.branch %></td>
+                                                                <td>
+                                                                    <span class="badge badge-success">Hoạt động</span>
+                                                                </td>
+                                                            </tr>
                                                         <% }); %>
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="tab-pane" id="messages-1" role="tabpanel">
+                                                <div class="tab-pane" id="messages-1" role="tabpanel"
+                                                     style="text-align: left;">
                                                     <div class="dashboardBox dashboardStatistic ovh dashboard-top">
-                                                        <div class="uln ovh pd0" style="border-bottom: 1px solid #c8ced3;">
+                                                        <div class="uln ovh pd0"
+                                                             style="border-bottom: 1px solid #c8ced3;">
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <div class="c-callout total" style="border:none;">
                                                                         <label class="dash_icon">
                                                                             <i class="nav-icon icon-diamond"></i>
                                                                         </label>
-                                                                        <label class="dash_title">Thu nhập</label>
+                                                                        <label class="dash_title">Số dư khả dụng</label>
                                                                         <span class="number">
-                                                                            ₫ <strong class="txt"><%= collaborator.wallet %></strong>
+                                                                            ₫ <strong class="txt">
+                                                                                <%= collaborator.wallet %>
+                                                                            </strong>
                                                                         </span>
                                                                         <span class="yesterday">Thu nhập từ hoa hồng</span>
                                                                     </div>
@@ -623,11 +671,11 @@
                                                                         <label class="dash_icon">
                                                                             <i class="nav-icon icon-plane"></i>
                                                                         </label>
-                                                                        <label class="dash_title">Đã rút</label>
+                                                                        <label class="dash_title">Chờ xử lý</label>
                                                                         <span class="number">
                                                                             ₫ <strong class="txt">0</strong>
                                                                         </span>
-                                                                        <span class="yesterday">Số tiền đã rút</span>
+                                                                        <span class="yesterday">Số tiền rút chờ xử lý</span>
                                                                     </div>
                                                                 </div>
 
@@ -636,11 +684,11 @@
                                                                         <label class="dash_icon">
                                                                             <i class="nav-icon icon-share"></i>
                                                                         </label>
-                                                                        <label class="dash_title">Số dư</label>
+                                                                        <label class="dash_title">Rút thành công</label>
                                                                         <span class="number">
                                                                             ₫ <strong class="txt">0</strong>
                                                                         </span>
-                                                                        <span class="yesterday">Số tiền còn lại</span>
+                                                                        <span class="yesterday">Số tiền đã xử lý</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -652,9 +700,11 @@
                                                         <tr>
                                                             <th style="width: 40px;">STT</th>
                                                             <th>Thông tin giao dịch</th>
-                                                            <th>Ngày giao dịch</th>
-                                                            <th>Trạng thái</th>
+                                                            <th>Ngày rút</th>
                                                             <th class="th-text-right">Tổng tiền</th>
+                                                            <th>Ngày xử lý</th>
+                                                            <th>Ảnh giao dịch</th>
+                                                            <th>Trạng thái</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -662,25 +712,46 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
-                                                            <td></td>
                                                             <td class="th-text-right">0</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
                                                         </tr>
                                                         <tr ng-repeat="(key, transaction) in responses.transactions">
-                                                            <td>{{ key+1 }}</td>
+                                                            <td>{{ key + 1 }}</td>
                                                             <td>
                                                                 <div>
-                                                                    {{ transaction.bank.name }} - {{ transaction.bank.branch }}
+                                                                    {{ transaction.bank.name }} -
+                                                                    {{ transaction.bank.branch }}
                                                                 </div>
                                                                 <div class="small text-muted" style="font-size: 90%;">
-                                                                    <strong>{{ transaction.bank.accountNumber }}</strong> - {{ transaction.bank.accountHolder }}
+                                                                    <strong>{{ transaction.bank.accountNumber}}</strong>
+                                                                    - {{ transaction.bank.accountHolder}}
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                {{ transaction.createdAt }}
+                                                                {{ transaction.createdAt | date }}
                                                             </td>
-                                                            <td><span class="badge badge-success">Chờ xử lý</span></td>
                                                             <td class="th-text-right">
                                                                 ₫ <strong>{{ transaction.amount | number }}</strong>
+                                                            </td>
+                                                            <td>
+                                                                {{ transaction.updatedAt | date }}
+                                                            </td>
+                                                            <td>
+                                                                <img src="{{ transaction.image }}" alt="">
+                                                            </td>
+                                                            <td ng-if="transaction.status === 1">
+                                                                <span class="badge badge-primary">Chờ xử lý</span>
+                                                            </td>
+                                                            <td ng-if="transaction.status === 2">
+                                                                <span class="badge badge-secondary">Đã hủy</span>
+                                                            </td>
+                                                            <td ng-if="transaction.status === 3">
+                                                                <span class="badge badge-danger">Từ chối</span>
+                                                            </td>
+                                                            <td ng-if="transaction.status === 4">
+                                                                <span class="badge badge-success">Thành công</span>
                                                             </td>
                                                         </tr>
                                                         </tbody>

@@ -1,3 +1,10 @@
+require('dotenv').config();
+
+const mongoUri = process.env.MONGO_URI;
+
+const adminUsername = process.env.ADMIN_USERNAME;
+const adminPassword = process.env.ADMIN_PASSWORD;
+
 let createError = require('http-errors');
 
 let express = require('express');
@@ -14,7 +21,7 @@ const mongoose = require('mongoose');
 let session = require('express-session');
 let MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb://127.0.0.1:27017/thinkflight', {
+mongoose.connect(mongoUri, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -29,12 +36,12 @@ db.once('open', function () {
 
 const User = require('./models/user.model');
 
-User.find({username: 'admin@thinkflight.com'}, function (err, results) {
+User.find({username: adminUsername}, function (err, results) {
     if (!results.length) {
         let userNew = new User({
             fullName: 'Admin',
-            username: 'admin@thinkflight.com',
-            password: '123456',
+            username: adminUsername,
+            password: adminPassword,
             roleId: 1,
             status: 10
         });
@@ -65,10 +72,15 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 let bankRouter = require('./routes/admin/bank.route');
 
 let userRouter = require('./routes/admin/user.route');
+
+let tourRouter = require('./routes/admin/tour.route');
+
+let orderRouter = require('./routes/admin/order.route');
+
+let hotelRouter = require('./routes/admin/hotel.route');
 
 let flightRouter = require('./routes/admin/flight.route');
 
@@ -96,7 +108,13 @@ app.use('/admin', dashboardRouter);
 
 app.use('/admin/user', userRouter);
 
+app.use('/admin/tour', tourRouter);
+
 app.use('/admin/bank', bankRouter);
+
+app.use('/admin/order', orderRouter);
+
+app.use('/admin/hotel', hotelRouter);
 
 app.use('/admin/flight', flightRouter);
 

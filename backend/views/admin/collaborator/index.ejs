@@ -161,7 +161,7 @@
                                                         <%= collaborator.email ? collaborator.email : "---" %>
                                                     </td>
                                                     <td>
-                                                        <% if(collaborator.status == 10){ %>
+                                                        <% if(collaborator.status === 10){ %>
                                                             <span class="badge badge-success">Hoạt động</span>
                                                         <% } else {%>
                                                             <span class="badge badge-danger">Ngừng hoạt động</span>

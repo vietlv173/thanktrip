@@ -32,11 +32,11 @@
             <div class="card-group">
                 <div class="card p-4">
                     <div class="card-body">
-                        <% if(typeof error !== "undefined") {%>
-                        <div class="alert alert-danger" role="alert">
-                            <i class="nav-icon icon-bell"></i>
-                            <%= error %>
-                        </div>
+                        <% if(typeof error !== "undefined") { %>
+                            <div class="alert alert-danger" role="alert" style="opacity: 1;">
+                                <i class="nav-icon icon-bell"></i>
+                                <%= error %>
+                            </div>
                         <% } %>
                         <form action="/admin/login" method="post">
                             <h1>Đăng nhập</h1>
@@ -49,13 +49,16 @@
                                 </div>
                                 <input name="username" class="form-control" type="text" placeholder="Tên đăng nhập">
                             </div>
-                            <div class="input-group mb-4">
+                            <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text">
                                   <i class="icon-lock"></i>
                                 </span>
                                 </div>
                                 <input name="password" class="form-control" type="password" placeholder="Mật khẩu">
+                            </div>
+                            <div class="input-group mb-2">
+                                <button class="btn btn-link px-0" type="button">Quên mật khẩu?</button>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -65,7 +68,9 @@
                                     </button>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <button class="btn btn-link px-0" type="button">Quên mật khẩu?</button>
+                                    <a href="/admin/register" class="btn btn-link px-0">
+                                        Đăng ký
+                                    </a>
                                 </div>
                             </div>
                         </form>

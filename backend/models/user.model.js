@@ -24,8 +24,8 @@ let UserSchema = new Schema({
         required: true,
         trim: true
     },
-    avatar:{
-        type:String
+    avatar: {
+        type: String
     },
     fullName: {
         type: String,
@@ -58,28 +58,24 @@ let UserSchema = new Schema({
     note: {
         type: String
     },
-    commission:{
-        type:Number,
-        default:0
+    wallet: {
+        type: Number,
+        default: 0
     },
-    wallet:{
-        type:Number,
-        default:0
+    parent: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
-    discount:{
-        type:Number,
-        default:0
-    },
-    flights: [{ type: Schema.Types.ObjectId, ref: 'Flight' }],
-    banks:[{ type: Schema.Types.ObjectId, ref: 'Bank' }],
-    transactions:[{ type: Schema.Types.ObjectId, ref: 'Transaction' }],
+    flights: [{type: Schema.Types.ObjectId, ref: 'Flight'}],
+    banks: [{type: Schema.Types.ObjectId, ref: 'Bank'}],
+    transactions: [{type: Schema.Types.ObjectId, ref: 'Transaction'}],
     createdAt: {
         type: Date,
-        default: new Date(moment().set({'hour': moment().hour()+7}).toDate())
+        default: new Date(moment().set({'hour': moment().hour() + 7}).toDate())
     },
     updatedAt: {
         type: Date,
-        default: new Date(moment().set({'hour': moment().hour()+7}).toDate())
+        default: new Date(moment().set({'hour': moment().hour() + 7}).toDate())
     }
 });
 

@@ -7,6 +7,25 @@
                     Trang chủ
                 </a>
             </li>
+            <li class="nav-title">Dịch vụ</li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/hotel/index">
+                    <i class="nav-icon icon-home"></i>
+                    Khách sạn
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tour/index">
+                    <i class="nav-icon icon-globe"></i>
+                    Tour
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/order/index">
+                    <i class="nav-icon icon-envelope"></i>
+                    Giao dịch
+                </a>
+            </li>
             <li class="nav-title">Giao dịch</li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/flight/index">
@@ -21,26 +40,26 @@
                 </a>
             </li>
             <% if(userLogin.roleId === 1) { %>
-            <li class="nav-title">Cộng tác viên</li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/collaborator/index">
-                    <i class="nav-icon icon-shield"></i>
-                    Danh sách CTV
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/transaction/index">
-                    <i class="nav-icon icon-calculator"></i>
-                    Lịch sử rút tiền
-                </a>
-            </li>
-            <li class="nav-title">Permission</li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/employee/index">
-                    <i class="nav-icon icon-people"></i>
-                    Nhân viên
-                </a>
-            </li>
+                <li class="nav-title">Cộng tác viên</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/collaborator/index">
+                        <i class="nav-icon icon-shield"></i>
+                        Danh sách CTV
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/transaction/index">
+                        <i class="nav-icon icon-calculator"></i>
+                        Lịch sử rút tiền
+                    </a>
+                </li>
+                <li class="nav-title">Permission</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/employee/index">
+                        <i class="nav-icon icon-people"></i>
+                        Nhân viên
+                    </a>
+                </li>
             <% } %>
             <% if(userLogin.roleId === 2) { %>
                 <li class="nav-title">Thông tin tài khoản</li>
@@ -69,8 +88,8 @@
 </div>
 
 <style>
-    .is-active{
-        margin-left: 0!important;
+    .is-active {
+        margin-left: 0 !important;
     }
 </style>
 

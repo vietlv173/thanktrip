@@ -1,0 +1,38 @@
+<div ng-if="detail.service_type == 3" class="col-md-11">
+    <div class="row">
+        <div class="col-md-12">
+            <strong>Vé máy bay</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="">Mã đặt chỗ</label>
+                <input type="hidden" value="3" name="service_detail[{{key}}][service_type]">
+                <input type="text" name="service_detail[{{key}}][flight_id]" class="form-control"
+                       ng-model="detail.flight_id">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="">Số lượng vé</label>
+                <input type="number" name="service_detail[{{key}}][quantity]" class="form-control"
+                       ng-model="detail.quantity">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="">Giá vé</label>
+                <input type="number" name="service_detail[{{key}}][price]" class="form-control"
+                       ng-model="detail.price">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="">Hoa hồng mỗi vé</label>
+                <input type="number" name="service_detail[{{key}}][commission]" class="form-control"
+                       ng-model="detail.commission">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Tour - <%= tour.title %> - Chỉnh sửa</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="/admin/tour/index">Tour</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/admin/tour/view/<%= tour.id %>"><%= tour.title %></a>
+            </li>
+            <li class="breadcrumb-item active">Cập nhật</li>
+        </ol>
+        <div class="container-fluid" data-ng-app="tourApp" data-ng-controller="tourCtrl">
+            <input id="tourId" type="hidden" value="<%= tour.id %>">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <form action="/admin/tour/update/<%= tour.id %>" method="post">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong><%= tour.title %></strong>
+                                            <small>Cập nhật</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <% if(typeof validateFormError !== "undefined") { %>
+                                                <div class="alert alert-danger" role="alert" style="opacity: 1;">
+                                                    <i class="nav-icon icon-bell"></i>
+                                                    <%= validateFormError %>
+                                                </div>
+                                            <% } %>
+                                            <% if(typeof createBankFirst !== "undefined") { %>
+                                                <div class="alert alert-warning" role="alert">
+                                                    <i class="nav-icon icon-bell"></i>
+                                                    <%= createBankFirst %>
+                                                </div>
+                                            <% } %>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            Tên tour
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input name="title" class="form-control" type="text"
+                                                               value="<%= tour.title %>" placeholder="Nhập tên tour">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            Khởi hành từ
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input type="hidden" id="from-id"
+                                                               value="<%= tour.from_id %>">
+                                                        <select name="from_id" class="form-control"
+                                                                ng-options="option.name for option in provinces track by option.code"
+                                                                ng-model="fromId"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            Điểm đến
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input type="hidden" id="to-id"
+                                                               value="<%= tour.to_id %>">
+                                                        <select name="to_id" class="form-control"
+                                                                ng-options="option.name for option in provinces track by option.code"
+                                                                ng-model="toId"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <strong>Thông tin về giá</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-repeat="(key,detail) in price_detail track by $index" class="row">
+                                                <div class="col-md-2">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <div ng-if="key == 0">
+                                                                    <strong style="color: #fff;">STT</strong>
+                                                                    <br>
+                                                                    <br>
+                                                                </div>
+                                                                <button ng-if="key == 0" type="button"
+                                                                        class="btn btn-sm btn-danger"
+                                                                        style="margin-top: 15px;"
+                                                                        data-ng-click="deleteDetail(key)">
+                                                                    <span class="fa fa-trash"></span>
+                                                                </button>
+                                                                <button ng-if="key != 0" type="button"
+                                                                        class="btn btn-sm btn-danger"
+                                                                        style="margin-top: 8px;"
+                                                                        data-ng-click="deleteDetail(key)">
+                                                                    <span class="fa fa-trash"></span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <div ng-if="key == 0">
+                                                                    <strong style="color: #fff;">STT</strong>
+                                                                    <br>
+                                                                    <label for="">STT</label>
+                                                                    <br>
+                                                                </div>
+                                                                <strong style="line-height: 3;">{{key + 1}}</strong>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <label ng-if="key == 0" for="">Độ tuổi</label>
+                                                                <select name="price_detail[age_type][]"
+                                                                        class="form-control"
+                                                                        ng-options="option.name for option in ages track by option.id"
+                                                                        ng-model="detail.age_type"></select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <label ng-if="key == 0" for="">Từ</label>
+                                                                <input type="number" name="price_detail[from][]"
+                                                                       ng-model="detail.from" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <label ng-if="key == 0" for="">Đến</label>
+                                                                <input type="number" name="price_detail[to][]"
+                                                                       ng-model="detail.to" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <label ng-if="key == 0" for="">Giá ngày thường</label>
+                                                                <input type="number" name="price_detail[price_normal][]"
+                                                                       ng-model="detail.price_normal"
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <label ng-if="key == 0" for="">Giá cuối tuần</label>
+                                                                <input type="number"
+                                                                       name="price_detail[price_weekend][]"
+                                                                       ng-model="detail.price_weekend"
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <label ng-if="key == 0" for="">Giá ngày lễ</label>
+                                                                <input type="number" name="price_detail[price_lunar][]"
+                                                                       ng-model="detail.price_lunar"
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button type="button" class="btn btn-primary"
+                                                                data-ng-click="addDetail()">
+                                                            <span class="fa fa-plus"></span>
+                                                            Thêm độ tuổi
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            Thông tin tour
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input name="link" class="form-control" type="text"
+                                                               value="<%= tour.link %>"
+                                                               placeholder="Nhập thông tin tour">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            Khoản phụ trội
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input name="surcharge" class="form-control" type="number"
+                                                               value="<%= tour.surcharge %>"
+                                                               placeholder="Nhập tên ngân hàng">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="company">
+                                                            Hoa hồng
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input name="commission" class="form-control" type="number"
+                                                               value="<%= tour.commission %>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-success pull-right" type="submit">
+                                                <i class="nav-icon icon-check"></i>
+                                                Lưu & Tiếp tục
+                                            </button>
+                                            <a href="index" class="btn btn-danger pull-left">
+                                                <i class="nav-icon icon-close"></i>
+                                                Hủy bỏ
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/angular-xeditable/js/xeditable.js"></script>
+<script src="/javascript/tour.js"></script>
+</body>
+</html>

@@ -41,7 +41,7 @@
             color: red;
         }
 
-        .wp-st-logo{
+        .wp-st-logo {
             text-align: center;
         }
 
@@ -67,7 +67,7 @@
             height: 280px;
         }
 
-        .wrap-logo{
+        .wrap-logo {
             min-height: 292px;
         }
     </style>
@@ -84,8 +84,8 @@
             </li>
             <li class="breadcrumb-item active">Thêm mới</li>
         </ol>
-        <div class="container-fluid" data-select2-id="16">
-            <div id="ui-view" data-select2-id="ui-view">
+        <div class="container-fluid">
+            <div id="ui-view">
                 <div>
                     <div class="fade-in">
                         <form action="create" method="post">
@@ -94,6 +94,14 @@
                                     <small>Thêm mới</small>
                                 </div>
                                 <div class="card-body">
+                                    <div class="form-group">
+                                        <% if(typeof validateFormError !== "undefined") { %>
+                                            <div class="alert alert-danger" role="alert" style="opacity: 1;">
+                                                <i class="nav-icon icon-bell"></i>
+                                                <%= validateFormError %>
+                                            </div>
+                                        <% } %>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="wp-st-logo">
@@ -103,10 +111,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="wp-ip-file">
-                                                    <input name="avatar" type="file" id="input-file" style="display: none;" accept="image/*">
-                                                    <button id="btn-upload-avatar" class="btn btn-outline-secondary" type="button">
+                                                    <input name="avatar" type="file" id="input-file"
+                                                           style="display: none;" accept="image/*">
+                                                    <button id="btn-upload-avatar" class="btn btn-outline-secondary"
+                                                            type="button">
                                                         <i class="nav-icon icon-cloud-upload"></i>
-                                                       Chọn ảnh đại diện
+                                                        Chọn ảnh đại diện
                                                     </button>
                                                 </div>
                                                 <p class="ng-binding">Lưu ý: Ảnh không vượt quá 2MB</p>
@@ -144,8 +154,7 @@
                                                 <input name="address" class="form-control" type="text"
                                                        placeholder="Ex: Số 127 Yên Xá, Tân Triều, Thanh Trì, Hà Nội">
                                             </div>
-                                            <hr>
-                                            <div class="row">
+                                            <div class="row" style="display: none;">
                                                 <div class="col-md-12">
                                                     <label for=""><strong>Hoa hồng và chiết khấu</strong></label>
                                                 </div>
@@ -157,7 +166,8 @@
                                                                 <strong>₫</strong>
                                                             </span>
                                                         </div>
-                                                        <input class="form-control" id="input3-group1" type="number" name="commission" placeholder="0.00">
+                                                        <input class="form-control" id="input3-group1" type="number"
+                                                               name="commission" placeholder="0.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -168,7 +178,8 @@
                                                                 <strong>₫</strong>
                                                             </span>
                                                         </div>
-                                                        <input class="form-control" id="input3-group1" type="number" name="discount" placeholder="0.00">
+                                                        <input class="form-control" id="input3-group1" type="number"
+                                                               name="discount" placeholder="0.00">
                                                     </div>
                                                 </div>
                                             </div>
@@ -196,22 +207,23 @@
 <% include ../layouts/footer %>
 <!-- Plugins and scripts required by this view-->
 <script>
-    $(document).ready(function() {
-        let imagesPreview = function(input) {
+    $(document).ready(function () {
+        let imagesPreview = function (input) {
             if (input.files) {
                 let filesAmount = input.files.length;
                 for (let i = 0; i < filesAmount; i++) {
                     let reader = new FileReader();
-                    reader.onload = function(event) {
-                        $('.preview-image img').attr("src", event.target.result);
-                        $('.preview-image img').css("display","block");
+                    reader.onload = function (event) {
+                        let previewImage = $('.preview-image img');
+                        previewImage.attr("src", event.target.result);
+                        previewImage.css("display", "block");
                     };
                     reader.readAsDataURL(input.files[i]);
                 }
             }
         };
 
-        $("#btn-upload-avatar").on("click",function () {
+        $("#btn-upload-avatar").on("click", function () {
             $("#input-file").click();
         });
 

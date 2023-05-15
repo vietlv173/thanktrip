@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Danh sách tour</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <link href="/angular-xeditable/css/xeditable.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active">Danh sách tour</li>
+        </ol>
+        <div class="container-fluid" data-ng-app="tourApp" data-ng-controller="tourCtrl">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Danh sách tour ({{responses.tourCount}})
+                                        </p>
+                                        <% if(userLogin.roleId === 1) { %>
+                                            <div class="card-header-actions">
+                                                <a href="create" class="btn btn-block btn-success active">
+                                                    <i class="nav-icon icon-plus"></i>
+                                                    Thêm tour mới
+                                                </a>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                    <div class="card-body" style="padding: 0;">
+                                        <table class="table table-responsive-sm table-striped"
+                                               style="margin-bottom: 0;">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 40px;">STT</th>
+                                                <th>Tour</th>
+                                                <th>Khởi hành từ</th>
+                                                <th>Điểm đến</th>
+                                                <th>Ngày khởi hành</th>
+                                                <% if(userLogin.roleId === 1) { %>
+                                                    <th>Khoản phụ trội</th>
+                                                <% } %>
+                                                <th>Hoa hồng/Khách</th>
+                                                <% if(userLogin.roleId === 1) { %>
+                                                    <th>Người tạo</th>
+                                                <% } %>
+                                                <th>Trạng thái</th>
+                                                <% if(userLogin.roleId === 1) { %>
+                                                    <th>Thao tác</th>
+                                                <% } %>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <input type="text" class="form-control" ng-model="queries.title"
+                                                           placeholder="Tìm kiếm theo tên tour"
+                                                           ng-change="getStatistical()">
+                                                </td>
+                                                <td>
+                                                    <select class="form-control" ng-model="queries.from_id"
+                                                            ng-change="getStatistical()">
+                                                        <option value="">Tất cả</option>
+                                                        <option ng-repeat="province in provinces"
+                                                                value="{{province.code}}">
+                                                            {{province.name}}
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select class="form-control" ng-model="queries.to_id"
+                                                            ng-change="getStatistical()">
+                                                        <option value="">Tất cả</option>
+                                                        <option ng-repeat="province in provinces"
+                                                                value="{{province.code}}">
+                                                            {{province.name}}
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <% if(userLogin.roleId === 1) { %>
+                                                    <td></td>
+                                                    <td></td>
+                                                <% } %>
+                                                <td>
+                                                    <select name="" id="" class="form-control" ng-model="queries.status"
+                                                            ng-change="getStatistical()">
+                                                        <option value="all">Tất cả</option>
+                                                        <option value="1">Pending</option>
+                                                        <option value="2">Mở bán</option>
+                                                        <option value="3">Đã đóng</option>
+                                                    </select>
+                                                </td>
+                                                <% if(userLogin.roleId === 1) { %>
+                                                    <td></td>
+                                                <% } %>
+                                            </tr>
+                                            <tr ng-repeat="(key,tour) in responses.tours">
+                                                <td>{{key + 1}}</td>
+                                                <td>
+                                                    <a href="/admin/tour/view/{{ tour._id }}">
+                                                        {{tour.title}}
+                                                    </a>
+                                                    <br>
+                                                    <a target="_blank" href="{{tour.link}}" style="color: #23282c">
+                                                        <small>{{tour.link}}</small>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span ng-repeat="province in provinces">
+                                                        <span ng-if="province.code == tour.from_id">
+                                                            {{province.name}}
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span ng-repeat="province in provinces">
+                                                        <span ng-if="province.code == tour.to_id">
+                                                            {{province.name}}
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{tour.departure_date}}
+                                                </td>
+                                                <% if(userLogin.roleId === 1) { %>
+                                                    <td>
+                                                        ₫<strong>{{ tour.surcharge | number }}</strong>
+                                                    </td>
+                                                    <td>
+                                                        ₫<strong>{{ tour.commission | number }}</strong>
+                                                    </td>
+                                                <% } else { %>
+                                                    <td>
+                                                        ₫<strong>{{ tour.commission * 70 / 100 | number }}</strong>
+                                                    </td>
+                                                <% } %>
+
+                                                <% if(userLogin.roleId === 1) { %>
+                                                    <td>
+                                                        {{tour.createdBy.fullName}}
+                                                        <br>
+                                                        <small>{{tour.createdBy.username}}</small>
+                                                    </td>
+                                                    <td>
+                                                        <div class="popover-wrapper">
+                                                            <a href="#" editable-select="tour.status"
+                                                               e-ng-options="s.value as s.text for s in statuses"
+                                                               onbeforesave="updateStatus(tour._id, $data)">
+                                                                {{showStatus(tour.status)}}
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-primary"
+                                                           href="/admin/tour/update/{{ tour._id }}">
+                                                            <span class="fa fa-edit"></span>
+                                                        </a>
+                                                    </td>
+                                                <% } else { %>
+                                                    <td ng-show="tour.status == 1">
+                                                        <span class="badge badge-warning">Pending</span>
+                                                    </td>
+                                                    <td ng-show="tour.status == 2">
+                                                        <span class="badge badge-primary">Mở bán</span>
+                                                    </td>
+                                                    <td ng-show="tour.status == 3">
+                                                        <span class="badge badge-danger">Đã đóng</span>
+                                                    </td>
+                                                <% } %>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/angular-xeditable/js/xeditable.js"></script>
+<script src="/javascript/tour.js"></script>
+</body>
+</html>

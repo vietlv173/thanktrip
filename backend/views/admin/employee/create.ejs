@@ -41,7 +41,7 @@
             color: red;
         }
 
-        .wp-st-logo{
+        .wp-st-logo {
             text-align: center;
         }
 
@@ -67,7 +67,7 @@
             height: 280px;
         }
 
-        .wrap-logo{
+        .wrap-logo {
             min-height: 292px;
         }
     </style>
@@ -84,85 +84,107 @@
             </li>
             <li class="breadcrumb-item active">Thêm mới</li>
         </ol>
-        <div class="container-fluid" data-select2-id="16">
-            <div id="ui-view" data-select2-id="ui-view">
-                <div>
-                    <div class="fade-in">
-                        <form action="create" method="post">
-                            <div class="card">
-                                <div class="card-header"><strong>Nhân viên</strong>
-                                    <small>Thêm mới</small>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="wp-st-logo">
-                                                <div class="wrap-logo">
-                                                    <div class="preview-image">
-                                                        <img src="" style="display:none;">
-                                                    </div>
-                                                </div>
-                                                <div class="wp-ip-file">
-                                                    <input name="avatar" type="file" id="input-file" style="display: none;" accept="image/*">
-                                                    <button id="btn-upload-avatar" class="btn btn-outline-secondary" type="button">
-                                                        <i class="nav-icon icon-cloud-upload"></i>
-                                                       Chọn ảnh đại diện
-                                                    </button>
-                                                </div>
-                                                <p class="ng-binding">Lưu ý: Ảnh không vượt quá 2MB</p>
+        <div class="container-fluid">
+            <div id="ui-view">
+                <div class="fade-in">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <form action="create" method="post">
+                                <div class="card">
+                                    <div class="card-header"><strong>Nhân viên</strong>
+                                        <small>Thêm mới</small>
+                                    </div>
+                                    <div class="card-body">
+                                        <% if(typeof validateFormError !== "undefined") { %>
+                                            <div class="alert alert-danger" role="alert" style="opacity: 1;">
+                                                <i class="nav-icon icon-bell"></i>
+                                                <%= validateFormError %>
                                             </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="street">Số điện thoại <span
-                                                                    class="required">(*)</span></label>
-                                                        <input name="username" class="form-control" type="text"
-                                                               placeholder="Nhập số điện thoại">
+                                        <% } %>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="wp-st-logo">
+                                                    <div class="wrap-logo">
+                                                        <div class="preview-image">
+                                                            <img src="" style="display:none;">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="company">Họ và tên <span class="required">(*)</span></label>
-                                                        <input name="fullName" class="form-control" type="text"
-                                                               placeholder="Nhập họ và tên">
+                                                    <div class="wp-ip-file">
+                                                        <input name="avatar" type="file" id="input-file"
+                                                               style="display: none;" accept="image/*">
+                                                        <button id="btn-upload-avatar" class="btn btn-outline-secondary"
+                                                                type="button">
+                                                            <i class="nav-icon icon-cloud-upload"></i>
+                                                            Chọn ảnh đại diện
+                                                        </button>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="street">Email</label>
-                                                        <input name="email" class="form-control" type="text"
-                                                               placeholder="Ex: example@thinkflight.com">
-                                                    </div>
+                                                    <p class="ng-binding">Lưu ý: Ảnh không vượt quá 2MB</p>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="country">Địa chỉ</label>
-                                                <input name="address" class="form-control" type="text"
-                                                       placeholder="Ex: Số 127 Yên Xá, Tân Triều, Thanh Trì, Hà Nội">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="country">Ghi chú</label>
-                                                <textarea class="form-control" name="note" cols="30" rows="3"></textarea>
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="street">Số điện thoại <span
+                                                                        class="required">(*)</span></label>
+                                                            <input name="username" class="form-control" type="text"
+                                                                   placeholder="Nhập số điện thoại">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="street">Mật khẩu
+                                                                <span class="required">(*)</span>
+                                                            </label>
+                                                            <input name="password" class="form-control" type="text"
+                                                                   placeholder="Nhật mật khẩu">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="company">Họ và tên <span
+                                                                        class="required">(*)</span></label>
+                                                            <input name="fullName" class="form-control" type="text"
+                                                                   placeholder="Nhập họ và tên">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="street">Email</label>
+                                                            <input name="email" class="form-control" type="text"
+                                                                   placeholder="Ex: example@thinkflight.com">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="country">Địa chỉ</label>
+                                                    <input name="address" class="form-control" type="text"
+                                                           placeholder="Ex: Số 127 Yên Xá, Tân Triều, Thanh Trì, Hà Nội">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="country">Ghi chú</label>
+                                                    <textarea class="form-control" name="note" cols="30"
+                                                              rows="3"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-success pull-right" type="submit">
+                                            <i class="nav-icon icon-check"></i>
+                                            Lưu & Tiếp tục
+                                        </button>
+                                        <a href="index" class="btn btn-danger pull-left">
+                                            <i class="nav-icon icon-close"></i>
+                                            Hủy bỏ
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-success pull-right" type="submit">
-                                        <i class="nav-icon icon-check"></i>
-                                        Lưu & Tiếp tục
-                                    </button>
-                                    <a href="index" class="btn btn-danger pull-left">
-                                        <i class="nav-icon icon-close"></i>
-                                        Hủy bỏ
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,22 +195,23 @@
 <!-- Plugins and scripts required by this view-->
 <script src="/javascript/jquery.js"></script>
 <script>
-    $(document).ready(function() {
-        let imagesPreview = function(input) {
+    $(document).ready(function () {
+        let imagesPreview = function (input) {
             if (input.files) {
                 let filesAmount = input.files.length;
                 for (let i = 0; i < filesAmount; i++) {
                     let reader = new FileReader();
-                    reader.onload = function(event) {
-                        $('.preview-image img').attr("src", event.target.result);
-                        $('.preview-image img').css("display","block");
+                    reader.onload = function (event) {
+                        let previewImg = $('.preview-image img');
+                        previewImg.attr("src", event.target.result);
+                        previewImg.css("display", "block");
                     };
                     reader.readAsDataURL(input.files[i]);
                 }
             }
         };
 
-        $("#btn-upload-avatar").on("click",function () {
+        $("#btn-upload-avatar").on("click", function () {
             $("#input-file").click();
         });
 

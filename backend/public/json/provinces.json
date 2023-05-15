@@ -1,0 +1,1419 @@
+[
+  {
+    "name": "Hà Nội",
+    "slug": "ha-noi",
+    "type": "thanh-pho",
+    "name_with_type": "Thành phố Hà Nội",
+    "code": "01"
+  },
+  {
+    "name": "Hà Giang",
+    "slug": "ha-giang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Hà Giang",
+    "code": "02"
+  },
+  {
+    "name": "Cao Bằng",
+    "slug": "cao-bang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Cao Bằng",
+    "code": "04"
+  },
+  {
+    "name": "Bắc Kạn",
+    "slug": "bac-kan",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bắc Kạn",
+    "code": "06"
+  },
+  {
+    "name": "Tuyên Quang",
+    "slug": "tuyen-quang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Tuyên Quang",
+    "code": "08"
+  },
+  {
+    "name": "Lào Cai",
+    "slug": "lao-cai",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Lào Cai",
+    "code": "10"
+  },
+  {
+    "name": "Điện Biên",
+    "slug": "dien-bien",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Điện Biên",
+    "code": "11"
+  },
+  {
+    "name": "Lai Châu",
+    "slug": "lai-chau",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Lai Châu",
+    "code": "12"
+  },
+  {
+    "name": "Sơn La",
+    "slug": "son-la",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Sơn La",
+    "code": "14"
+  },
+  {
+    "name": "Yên Bái",
+    "slug": "yen-bai",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Yên Bái",
+    "code": "15"
+  },
+  {
+    "name": "Hoà Bình",
+    "slug": "hoa-binh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Hoà Bình",
+    "code": "17"
+  },
+  {
+    "name": "Thái Nguyên",
+    "slug": "thai-nguyen",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Thái Nguyên",
+    "code": "19"
+  },
+  {
+    "name": "Lạng Sơn",
+    "slug": "lang-son",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Lạng Sơn",
+    "code": "20"
+  },
+  {
+    "name": "Quảng Ninh",
+    "slug": "quang-ninh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Quảng Ninh",
+    "code": "22"
+  },
+  {
+    "name": "Bắc Giang",
+    "slug": "bac-giang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bắc Giang",
+    "code": "24"
+  },
+  {
+    "name": "Phú Thọ",
+    "slug": "phu-tho",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Phú Thọ",
+    "code": "25"
+  },
+  {
+    "name": "Vĩnh Phúc",
+    "slug": "vinh-phuc",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Vĩnh Phúc",
+    "code": "26"
+  },
+  {
+    "name": "Bắc Ninh",
+    "slug": "bac-ninh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bắc Ninh",
+    "code": "27"
+  },
+  {
+    "name": "Hải Dương",
+    "slug": "hai-duong",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Hải Dương",
+    "code": "30"
+  },
+  {
+    "name": "Hải Phòng",
+    "slug": "hai-phong",
+    "type": "thanh-pho",
+    "name_with_type": "Thành phố Hải Phòng",
+    "code": "31"
+  },
+  {
+    "name": "Hưng Yên",
+    "slug": "hung-yen",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Hưng Yên",
+    "code": "33"
+  },
+  {
+    "name": "Thái Bình",
+    "slug": "thai-binh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Thái Bình",
+    "code": "34"
+  },
+  {
+    "name": "Hà Nam",
+    "slug": "ha-nam",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Hà Nam",
+    "code": "35"
+  },
+  {
+    "name": "Nam Định",
+    "slug": "nam-dinh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Nam Định",
+    "code": "36"
+  },
+  {
+    "name": "Ninh Bình",
+    "slug": "ninh-binh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Ninh Bình",
+    "code": "37"
+  },
+  {
+    "name": "Thanh Hóa",
+    "slug": "thanh-hoa",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Thanh Hóa",
+    "code": "38"
+  },
+  {
+    "name": "Nghệ An",
+    "slug": "nghe-an",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Nghệ An",
+    "code": "40"
+  },
+  {
+    "name": "Hà Tĩnh",
+    "slug": "ha-tinh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Hà Tĩnh",
+    "code": "42"
+  },
+  {
+    "name": "Quảng Bình",
+    "slug": "quang-binh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Quảng Bình",
+    "code": "44"
+  },
+  {
+    "name": "Quảng Trị",
+    "slug": "quang-tri",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Quảng Trị",
+    "code": "45"
+  },
+  {
+    "name": "Thừa Thiên Huế",
+    "slug": "thua-thien-hue",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Thừa Thiên Huế",
+    "code": "46"
+  },
+  {
+    "name": "Đà Nẵng",
+    "slug": "da-nang",
+    "type": "thanh-pho",
+    "name_with_type": "Thành phố Đà Nẵng",
+    "code": "48"
+  },
+  {
+    "name": "Quảng Nam",
+    "slug": "quang-nam",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Quảng Nam",
+    "code": "49"
+  },
+  {
+    "name": "Quảng Ngãi",
+    "slug": "quang-ngai",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Quảng Ngãi",
+    "code": "51"
+  },
+  {
+    "name": "Bình Định",
+    "slug": "binh-dinh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bình Định",
+    "code": "52"
+  },
+  {
+    "name": "Phú Yên",
+    "slug": "phu-yen",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Phú Yên",
+    "code": "54"
+  },
+  {
+    "name": "Khánh Hòa",
+    "slug": "khanh-hoa",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Khánh Hòa",
+    "code": "56"
+  },
+  {
+    "name": "Ninh Thuận",
+    "slug": "ninh-thuan",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Ninh Thuận",
+    "code": "58"
+  },
+  {
+    "name": "Bình Thuận",
+    "slug": "binh-thuan",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bình Thuận",
+    "code": "60"
+  },
+  {
+    "name": "Kon Tum",
+    "slug": "kon-tum",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Kon Tum",
+    "code": "62"
+  },
+  {
+    "name": "Gia Lai",
+    "slug": "gia-lai",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Gia Lai",
+    "code": "64"
+  },
+  {
+    "name": "Đắk Lắk",
+    "slug": "dak-lak",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Đắk Lắk",
+    "code": "66"
+  },
+  {
+    "name": "Đắk Nông",
+    "slug": "dak-nong",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Đắk Nông",
+    "code": "67"
+  },
+  {
+    "name": "Lâm Đồng",
+    "slug": "lam-dong",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Lâm Đồng",
+    "code": "68"
+  },
+  {
+    "name": "Bình Phước",
+    "slug": "binh-phuoc",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bình Phước",
+    "code": "70"
+  },
+  {
+    "name": "Tây Ninh",
+    "slug": "tay-ninh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Tây Ninh",
+    "code": "72"
+  },
+  {
+    "name": "Bình Dương",
+    "slug": "binh-duong",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bình Dương",
+    "code": "74"
+  },
+  {
+    "name": "Đồng Nai",
+    "slug": "dong-nai",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Đồng Nai",
+    "code": "75"
+  },
+  {
+    "name": "Bà Rịa - Vũng Tàu",
+    "slug": "ba-ria-vung-tau",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bà Rịa - Vũng Tàu",
+    "code": "77"
+  },
+  {
+    "name": "Hồ Chí Minh",
+    "slug": "ho-chi-minh",
+    "type": "thanh-pho",
+    "name_with_type": "Thành phố Hồ Chí Minh",
+    "code": "79"
+  },
+  {
+    "name": "Long An",
+    "slug": "long-an",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Long An",
+    "code": "80"
+  },
+  {
+    "name": "Tiền Giang",
+    "slug": "tien-giang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Tiền Giang",
+    "code": "82"
+  },
+  {
+    "name": "Bến Tre",
+    "slug": "ben-tre",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bến Tre",
+    "code": "83"
+  },
+  {
+    "name": "Trà Vinh",
+    "slug": "tra-vinh",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Trà Vinh",
+    "code": "84"
+  },
+  {
+    "name": "Vĩnh Long",
+    "slug": "vinh-long",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Vĩnh Long",
+    "code": "86"
+  },
+  {
+    "name": "Đồng Tháp",
+    "slug": "dong-thap",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Đồng Tháp",
+    "code": "87"
+  },
+  {
+    "name": "An Giang",
+    "slug": "an-giang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh An Giang",
+    "code": "89"
+  },
+  {
+    "name": "Kiên Giang",
+    "slug": "kien-giang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Kiên Giang",
+    "code": "91"
+  },
+  {
+    "name": "Cần Thơ",
+    "slug": "can-tho",
+    "type": "thanh-pho",
+    "name_with_type": "Thành phố Cần Thơ",
+    "code": "92"
+  },
+  {
+    "name": "Hậu Giang",
+    "slug": "hau-giang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Hậu Giang",
+    "code": "93"
+  },
+  {
+    "name": "Sóc Trăng",
+    "slug": "soc-trang",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Sóc Trăng",
+    "code": "94"
+  },
+  {
+    "name": "Bạc Liêu",
+    "slug": "bac-lieu",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Bạc Liêu",
+    "code": "95"
+  },
+  {
+    "name": "Cà Mau",
+    "slug": "ca-mau",
+    "type": "tinh",
+    "name_with_type": "Tỉnh Cà Mau",
+    "code": "96"
+  },
+  {
+    "name": "Afghanistan",
+    "code": 100
+  },
+  {
+    "name": "Albania",
+    "code": 101
+  },
+  {
+    "name": "Algeria",
+    "code": 102
+  },
+  {
+    "name": "American Samoa",
+    "code": 103
+  },
+  {
+    "name": "Andorra",
+    "code": 104
+  },
+  {
+    "name": "Angola",
+    "code": 105
+  },
+  {
+    "name": "Anguilla",
+    "code": 106
+  },
+  {
+    "name": "Antarctica",
+    "code": 107
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "code": 108
+  },
+  {
+    "name": "Argentina",
+    "code": 109
+  },
+  {
+    "name": "Armenia",
+    "code": 110
+  },
+  {
+    "name": "Aruba",
+    "code": 111
+  },
+  {
+    "name": "Australia",
+    "code": 112
+  },
+  {
+    "name": "Austria",
+    "code": 113
+  },
+  {
+    "name": "Azerbaijan",
+    "code": 114
+  },
+  {
+    "name": "Bahamas",
+    "code": 115
+  },
+  {
+    "name": "Bahrain",
+    "code": 116
+  },
+  {
+    "name": "Bangladesh",
+    "code": 117
+  },
+  {
+    "name": "Barbados",
+    "code": 118
+  },
+  {
+    "name": "Belarus",
+    "code": 119
+  },
+  {
+    "name": "Belgium",
+    "code": 120
+  },
+  {
+    "name": "Belize",
+    "code": 121
+  },
+  {
+    "name": "Benin",
+    "code": 122
+  },
+  {
+    "name": "Bermuda",
+    "code": 123
+  },
+  {
+    "name": "Bhutan",
+    "code": 124
+  },
+  {
+    "name": "Bolivia",
+    "code": 125
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "code": 126
+  },
+  {
+    "name": "Botswana",
+    "code": 127
+  },
+  {
+    "name": "Bouvet Island",
+    "code": 128
+  },
+  {
+    "name": "Brazil",
+    "code": 129
+  },
+  {
+    "name": "British Indian Ocean Territory",
+    "code": 130
+  },
+  {
+    "name": "Brunei",
+    "code": 131
+  },
+  {
+    "name": "Bulgaria",
+    "code": 132
+  },
+  {
+    "name": "Burkina Faso",
+    "code": 854
+  },
+  {
+    "name": "Burundi",
+    "code": 108
+  },
+  {
+    "name": "Cambodia",
+    "code": 133
+  },
+  {
+    "name": "Cameroon",
+    "code": 134
+  },
+  {
+    "name": "Canada",
+    "code": 135
+  },
+  {
+    "name": "Cape Verde",
+    "code": 136
+  },
+  {
+    "name": "Cayman Islands",
+    "code": 137
+  },
+  {
+    "name": "Central African Republic",
+    "code": 140
+  },
+  {
+    "name": "Chad",
+    "code": 148
+  },
+  {
+    "name": "Chile",
+    "code": 152
+  },
+  {
+    "name": "China",
+    "code": 156
+  },
+  {
+    "name": "Christmas Island",
+    "code": 162
+  },
+  {
+    "name": "Cocos (Keeling) Islands",
+    "code": 138
+  },
+  {
+    "name": "Colombia",
+    "code": 170
+  },
+  {
+    "name": "Comoros",
+    "code": 174
+  },
+  {
+    "name": "Congo",
+    "code": 139
+  },
+  {
+    "name": "Cook Islands",
+    "code": 184
+  },
+  {
+    "name": "Costa Rica",
+    "code": 188
+  },
+  {
+    "name": "Croatia",
+    "code": 191
+  },
+  {
+    "name": "Cuba",
+    "code": 192
+  },
+  {
+    "name": "Cyprus",
+    "code": 196
+  },
+  {
+    "name": "Czech Republic",
+    "code": 203
+  },
+  {
+    "name": "Denmark",
+    "code": 208
+  },
+  {
+    "name": "Djibouti",
+    "code": 262
+  },
+  {
+    "name": "Dominica",
+    "code": 212
+  },
+  {
+    "name": "Dominican Republic",
+    "code": 214
+  },
+  {
+    "name": "East Timor",
+    "code": 626
+  },
+  {
+    "name": "Ecuador",
+    "code": 218
+  },
+  {
+    "name": "Egypt",
+    "code": 818
+  },
+  {
+    "name": "El Salvador",
+    "code": 222
+  },
+  {
+    "name": "England",
+    "code": 917
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": 226
+  },
+  {
+    "name": "Eritrea",
+    "code": 232
+  },
+  {
+    "name": "Estonia",
+    "code": 233
+  },
+  {
+    "name": "Ethiopia",
+    "code": 231
+  },
+  {
+    "name": "Falkland Islands",
+    "code": 238
+  },
+  {
+    "name": "Faroe Islands",
+    "code": 234
+  },
+  {
+    "name": "Fiji Islands",
+    "code": 916
+  },
+  {
+    "name": "Finland",
+    "code": 246
+  },
+  {
+    "name": "France",
+    "code": 250
+  },
+  {
+    "name": "French Guiana",
+    "code": 254
+  },
+  {
+    "name": "French Polynesia",
+    "code": 258
+  },
+  {
+    "name": "French Southern territories",
+    "code": 260
+  },
+  {
+    "name": "Gabon",
+    "code": 266
+  },
+  {
+    "name": "Gambia",
+    "code": 270
+  },
+  {
+    "name": "Georgia",
+    "code": 268
+  },
+  {
+    "name": "Germany",
+    "code": 276
+  },
+  {
+    "name": "Ghana",
+    "code": 288
+  },
+  {
+    "name": "Gibraltar",
+    "code": 292
+  },
+  {
+    "name": "Greece",
+    "code": 300
+  },
+  {
+    "name": "Greenland",
+    "code": 304
+  },
+  {
+    "name": "Grenada",
+    "code": 308
+  },
+  {
+    "name": "Guadeloupe",
+    "code": 312
+  },
+  {
+    "name": "Guam",
+    "code": 316
+  },
+  {
+    "name": "Guatemala",
+    "code": 320
+  },
+  {
+    "name": "Guinea",
+    "code": 324
+  },
+  {
+    "name": "Guinea-Bissau",
+    "code": 624
+  },
+  {
+    "name": "Guyana",
+    "code": 328
+  },
+  {
+    "name": "Haiti",
+    "code": 332
+  },
+  {
+    "name": "Heard Island and McDonald Islands",
+    "code": 334
+  },
+  {
+    "name": "Holy See (Vatican City State)",
+    "code": 915
+  },
+  {
+    "name": "Honduras",
+    "code": 340
+  },
+  {
+    "name": "Hong Kong",
+    "code": 344
+  },
+  {
+    "name": "Hungary",
+    "code": 348
+  },
+  {
+    "name": "Iceland",
+    "code": 352
+  },
+  {
+    "name": "India",
+    "code": 356
+  },
+  {
+    "name": "Indonesia",
+    "code": 360
+  },
+  {
+    "name": "Iran",
+    "code": 364
+  },
+  {
+    "name": "Iraq",
+    "code": 368
+  },
+  {
+    "name": "Ireland",
+    "code": 372
+  },
+  {
+    "name": "Israel",
+    "code": 376
+  },
+  {
+    "name": "Italy",
+    "code": 380
+  },
+  {
+    "name": "Ivory Coast",
+    "code": 384
+  },
+  {
+    "name": "Jamaica",
+    "code": 388
+  },
+  {
+    "name": "Japan",
+    "code": 392
+  },
+  {
+    "name": "Jordan",
+    "code": 400
+  },
+  {
+    "name": "Kazakhstan",
+    "code": 914
+  },
+  {
+    "name": "Kenya",
+    "code": 404
+  },
+  {
+    "name": "Kiribati",
+    "code": 296
+  },
+  {
+    "name": "Kuwait",
+    "code": 414
+  },
+  {
+    "name": "Kyrgyzstan",
+    "code": 417
+  },
+  {
+    "name": "Laos",
+    "code": 418
+  },
+  {
+    "name": "Latvia",
+    "code": 428
+  },
+  {
+    "name": "Lebanon",
+    "code": 422
+  },
+  {
+    "name": "Lesotho",
+    "code": 426
+  },
+  {
+    "name": "Liberia",
+    "code": 430
+  },
+  {
+    "name": "Libyan Arab Jamahiriya",
+    "code": 913
+  },
+  {
+    "name": "Liechtenstein",
+    "code": 438
+  },
+  {
+    "name": "Lithuania",
+    "code": 440
+  },
+  {
+    "name": "Luxembourg",
+    "code": 442
+  },
+  {
+    "name": "Macao",
+    "code": 446
+  },
+  {
+    "name": "North Macedonia",
+    "code": 807
+  },
+  {
+    "name": "Madagascar",
+    "code": 450
+  },
+  {
+    "name": "Malawi",
+    "code": 454
+  },
+  {
+    "name": "Malaysia",
+    "code": 458
+  },
+  {
+    "name": "Maldives",
+    "code": 462
+  },
+  {
+    "name": "Mali",
+    "code": 466
+  },
+  {
+    "name": "Malta",
+    "code": 470
+  },
+  {
+    "name": "Marshall Islands",
+    "code": 584
+  },
+  {
+    "name": "Martinique",
+    "code": 474
+  },
+  {
+    "name": "Mauritania",
+    "code": 478
+  },
+  {
+    "name": "Mauritius",
+    "code": 480
+  },
+  {
+    "name": "Mayotte",
+    "code": 175
+  },
+  {
+    "name": "Mexico",
+    "code": 484
+  },
+  {
+    "name": "Micronesia, Federated States of",
+    "code": 912
+  },
+  {
+    "name": "Moldova",
+    "code": 498
+  },
+  {
+    "name": "Monaco",
+    "code": 492
+  },
+  {
+    "name": "Mongolia",
+    "code": 496
+  },
+  {
+    "name": "Montenegro",
+    "code": "382"
+  },
+  {
+    "name": "Montserrat",
+    "code": 500
+  },
+  {
+    "name": "Morocco",
+    "code": 504
+  },
+  {
+    "name": "Mozambique",
+    "code": 508
+  },
+  {
+    "name": "Myanmar",
+    "code": 911
+  },
+  {
+    "name": "Namibia",
+    "code": 516
+  },
+  {
+    "name": "Nauru",
+    "code": 520
+  },
+  {
+    "name": "Nepal",
+    "code": 524
+  },
+  {
+    "name": "Netherlands",
+    "code": 528
+  },
+  {
+    "name": "Netherlands Antilles",
+    "code": 910
+  },
+  {
+    "name": "New Caledonia",
+    "code": 540
+  },
+  {
+    "name": "New Zealand",
+    "code": 554
+  },
+  {
+    "name": "Nicaragua",
+    "code": 558
+  },
+  {
+    "name": "Niger",
+    "code": 562
+  },
+  {
+    "name": "Nigeria",
+    "code": 566
+  },
+  {
+    "name": "Niue",
+    "code": 570
+  },
+  {
+    "name": "Norfolk Island",
+    "code": 574
+  },
+  {
+    "name": "North Korea",
+    "code": 408
+  },
+  {
+    "name": "Northern Ireland",
+    "code": 909
+  },
+  {
+    "name": "Northern Mariana Islands",
+    "code": 580
+  },
+  {
+    "name": "Norway",
+    "code": 578
+  },
+  {
+    "name": "Oman",
+    "code": 512
+  },
+  {
+    "name": "Pakistan",
+    "code": 586
+  },
+  {
+    "name": "Palau",
+    "code": 585
+  },
+  {
+    "name": "Palestine",
+    "code": 275
+  },
+  {
+    "name": "Panama",
+    "code": 591
+  },
+  {
+    "name": "Papua New Guinea",
+    "code": 598
+  },
+  {
+    "name": "Paraguay",
+    "code": 600
+  },
+  {
+    "name": "Peru",
+    "code": 604
+  },
+  {
+    "name": "Philippines",
+    "code": 608
+  },
+  {
+    "name": "Pitcairn",
+    "code": 908
+  },
+  {
+    "name": "Poland",
+    "code": 616
+  },
+  {
+    "name": "Portugal",
+    "code": 620
+  },
+  {
+    "name": "Puerto Rico",
+    "code": 630
+  },
+  {
+    "name": "Qatar",
+    "code": 634
+  },
+  {
+    "name": "Reunion",
+    "code": 638
+  },
+  {
+    "name": "Romania",
+    "code": 642
+  },
+  {
+    "name": "Russian Federation",
+    "code": 907
+  },
+  {
+    "name": "Rwanda",
+    "code": 646
+  },
+  {
+    "name": "Saint Helena",
+    "code": 654
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "code": 659
+  },
+  {
+    "name": "Saint Lucia",
+    "code": 662
+  },
+  {
+    "name": "Saint Pierre and Miquelon",
+    "code": 666
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "code": 670
+  },
+  {
+    "name": "Samoa",
+    "code": 882
+  },
+  {
+    "name": "San Marino",
+    "code": 674
+  },
+  {
+    "name": "Sao Tome and Principe",
+    "code": 678
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": 682
+  },
+  {
+    "name": "Scotland",
+    "code": 906
+  },
+  {
+    "name": "Senegal",
+    "code": 686
+  },
+  {
+    "name": "Serbia",
+    "code": 688
+  },
+  {
+    "name": "Seychelles",
+    "code": 690
+  },
+  {
+    "name": "Sierra Leone",
+    "code": 694
+  },
+  {
+    "name": "Singapore",
+    "code": 702
+  },
+  {
+    "name": "Slovakia",
+    "code": 703
+  },
+  {
+    "name": "Slovenia",
+    "code": 705
+  },
+  {
+    "name": "Solomon Islands",
+    "code": 90
+  },
+  {
+    "name": "Somalia",
+    "code": 706
+  },
+  {
+    "name": "South Africa",
+    "code": 710
+  },
+  {
+    "name": "South Georgia and the South Sandwich Islands",
+    "code": 239
+  },
+  {
+    "name": "South Korea",
+    "code": 410
+  },
+  {
+    "name": "South Sudan",
+    "code": 728
+  },
+  {
+    "name": "Spain",
+    "code": 724
+  },
+  {
+    "name": "Sri Lanka",
+    "code": 905
+  },
+  {
+    "name": "Sudan",
+    "code": 729
+  },
+  {
+    "name": "Suriname",
+    "code": 740
+  },
+  {
+    "name": "Svalbard and Jan Mayen",
+    "code": 744
+  },
+  {
+    "name": "Swaziland",
+    "code": 748
+  },
+  {
+    "name": "Sweden",
+    "code": 752
+  },
+  {
+    "name": "Switzerland",
+    "code": 756
+  },
+  {
+    "name": "Syria",
+    "code": 760
+  },
+  {
+    "name": "Tajikistan",
+    "code": 762
+  },
+  {
+    "name": "Tanzania",
+    "code": 834
+  },
+  {
+    "name": "Thailand",
+    "code": 764
+  },
+  {
+    "name": "The Democratic Republic of Congo",
+    "code": 904
+  },
+  {
+    "name": "Togo",
+    "code": 768
+  },
+  {
+    "name": "Tokelau",
+    "code": 772
+  },
+  {
+    "name": "Tonga",
+    "code": 776
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "code": 780
+  },
+  {
+    "name": "Tunisia",
+    "code": 788
+  },
+  {
+    "name": "Turkey",
+    "code": 792
+  },
+  {
+    "name": "Turkmenistan",
+    "code": 795
+  },
+  {
+    "name": "Turks and Caicos Islands",
+    "code": 796
+  },
+  {
+    "name": "Tuvalu",
+    "code": 798
+  },
+  {
+    "name": "Uganda",
+    "code": 800
+  },
+  {
+    "name": "Ukraine",
+    "code": 804
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": 784
+  },
+  {
+    "name": "United Kingdom",
+    "code": 826
+  },
+  {
+    "name": "United States",
+    "code": 840
+  },
+  {
+    "name": "United States Minor Outlying Islands",
+    "code": 903
+  },
+  {
+    "name": "Uruguay",
+    "code": 858
+  },
+  {
+    "name": "Uzbekistan",
+    "code": 860
+  },
+  {
+    "name": "Vanuatu",
+    "code": 548
+  },
+  {
+    "name": "Venezuela",
+    "code": 862
+  },
+  {
+    "name": "Vietnam",
+    "code": 704
+  },
+  {
+    "name": "Virgin Islands, British",
+    "code": 902
+  },
+  {
+    "name": "Virgin Islands, U.S.",
+    "code": 901
+  },
+  {
+    "name": "Wales",
+    "code": 900
+  },
+  {
+    "name": "Wallis and Futuna",
+    "code": 876
+  },
+  {
+    "name": "Western Sahara",
+    "code": 732
+  },
+  {
+    "name": "Yemen",
+    "code": 887
+  },
+  {
+    "name": "Zambia",
+    "code": 894
+  },
+  {
+    "name": "Zimbabwe",
+    "code": 716
+  }
+]

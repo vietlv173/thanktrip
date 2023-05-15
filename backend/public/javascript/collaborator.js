@@ -23,11 +23,11 @@ let collaboratorApp = angular.module('Application', []).run(function ($rootScope
         require: '?ngModel',
         link: function (scope, elem, attrs, ctrl) {
             if (!ctrl) return;
-            ctrl.$formatters.unshift(function (a) {
+            ctrl.$formatters.unshift(function () {
                 return $filter(attrs.format)(ctrl.$modelValue)
             });
 
-            elem.bind('blur', function (event) {
+            elem.bind('blur', function () {
                 let plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
                 elem.val($filter(attrs.format)(plainNumber));
             });
@@ -47,7 +47,9 @@ collaboratorApp.controller('collaboratorCtrl', ['$scope', '$http', function ($sc
     $scope.getStatistical = function () {
         $scope.searching = true;
 
-        $http.get('/api/collaborator/5e6138c8c766ec25b356d28c/'+ (!$('#filterDate').val() ? 'today' : $('#filterDate').val())).success(function (response) {
+        let filterDate = $('#filterDate');
+
+        $http.get('/api/collaborator/' + $('#collaboratorId').val() + '/' + (!filterDate.val() ? 'today' : filterDate.val())).success(function (response) {
             $scope.responses = response;
 
             $scope.searching = false;
