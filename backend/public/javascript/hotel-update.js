@@ -46,9 +46,12 @@ let hotelUpdateApp = angular.module('hotelUpdateApp', []).run(function ($rootSco
 
 hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSerializer', function ($scope, $http, $httpParamSerializer) {
 
+    $scope.banks = [];
     $scope.provinces = [];
     $scope.room_detail = [];
 
+    $scope.currentTpe = $('#tpe-id').val();
+    $scope.currentBank = $('#bank-id').val();
     $scope.currentProvince = $('#province-id').val();
 
     $scope.beds = [
@@ -57,6 +60,24 @@ hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSeri
         }, {
             id: 2, name: 'Double (DBL)',
         }
+    ];
+
+    $scope.tpes = [
+        {
+            id: 3, name: '3 sao',
+        }, {
+            id: 4, name: '4 sao',
+        }, {
+            id: 5, name: '5 sao',
+        }, {
+            id: 6, name: '6 sao',
+        }, {
+            id: 7, name: 'Resort',
+        }, {
+            id: 8, name: 'Villa',
+        }, {
+            id: 9, name: 'Homestay',
+        },
     ];
 
     $scope.service_detail = [];
@@ -111,6 +132,16 @@ hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSeri
         });
     });
 
+    $http.get('/json/vietnam-banks.json').then(r => {
+        $scope.banks = r.data.banksnapas;
+
+        r.data.banksnapas.forEach(x => {
+            if (parseInt(x.bankCode) === parseInt($('#bank-id').val())) {
+                $scope.currentBank = x;
+            }
+        });
+    });
+
     $scope.queries = {
         id: $('#hotelId').val()
     };
@@ -156,6 +187,12 @@ hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSeri
                     $scope.room_detail[i].bed_type = {id: 2, name: 'Double (DBL)'};
                 }
             }
+
+            $scope.tpes.forEach(t => {
+                if (t.id === parseInt($('#tpe-id').val())) {
+                    $scope.currentTpe = t;
+                }
+            })
 
             $scope.searching = false;
             $scope.pageLoading = false;

@@ -101,16 +101,11 @@
                                                             Loại hình khách sạn
                                                             <span class="required">(*)</span>
                                                         </label>
-                                                        <select name="tpe" class="form-control">
-                                                            <option value="">Chọn loại hình</option>
-                                                            <option value="3">3 sao</option>
-                                                            <option value="4">4 sao</option>
-                                                            <option value="5">5 sao</option>
-                                                            <option value="6">6 sao</option>
-                                                            <option value="7">Resort</option>
-                                                            <option value="8">Villa</option>
-                                                            <option value="9">Homestay</option>
-                                                        </select>
+                                                        <input type="hidden" id="tpe-id"
+                                                               value="<%= hotel.tpe %>">
+                                                        <select name="tpe" class="form-control"
+                                                                ng-options="option.name for option in tpes track by option.id"
+                                                                ng-model="currentTpe"></select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -172,23 +167,18 @@
                                                     <div class="form-group">
                                                         <label for="province-id">
                                                             Ngân hàng
-                                                            <span class="required">(*)</span>
                                                         </label>
-                                                        <select name="bank_id" id="bank-id"
-                                                                class="form-control">
-                                                            <option value="">Chọn ngân hàng</option>
-                                                            <option ng-repeat="province in provinces"
-                                                                    value="{{province.code}}">
-                                                                {{province.name}}
-                                                            </option>
-                                                        </select>
+                                                        <input type="hidden" id="bank-id"
+                                                               value="<%= hotel.bank_id %>">
+                                                        <select name="bank_id" class="form-control"
+                                                                ng-options="option.vn_name for option in banks track by option.bankCode"
+                                                                ng-model="currentBank"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="province-id">
                                                             Số tài khoản
-                                                            <span class="required">(*)</span>
                                                         </label>
                                                         <input value="<%= hotel.accountNumber %>" name="accountNumber"
                                                                class="form-control" type="text">
@@ -198,7 +188,6 @@
                                                     <div class="form-group">
                                                         <label for="address">
                                                             Tên tài khoản
-                                                            <span class="required">(*)</span>
                                                         </label>
                                                         <input value="<%= hotel.accountHolder %>" name="accountHolder"
                                                                class="form-control" type="text">

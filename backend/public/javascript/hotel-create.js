@@ -48,10 +48,15 @@ hotelCrudApp.controller('hotelCrudCtrl', ['$scope', '$http', function ($scope, $
 
     $scope.responses = {};
 
+    $scope.banks = [];
     $scope.provinces = [];
 
     $http.get('/json/provinces.json').then(r => {
         $scope.provinces = r.data;
+    });
+
+    $http.get('/json/vietnam-banks.json').then(r => {
+        $scope.banks = r.data.banksnapas;
     });
 
     $scope.room_detail = [{

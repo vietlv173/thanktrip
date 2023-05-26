@@ -216,7 +216,7 @@ exports.updatePost = function (req, res, next) {
                 } else {
                     req.flash('validateFormError', 'Vui lòng điền đẩy đủ các thông tin có dấu (*)');
 
-                    res.redirect('/admin/hotel/create');
+                    res.redirect('/admin/hotel/update/' + hotel);
                 }
             }
         }
@@ -269,7 +269,7 @@ function resultDetails(body) {
 }
 
 function validateBody(body) {
-    let fieldRequires = ['title', 'phone', 'email', 'bank_id', 'accountHolder', 'accountNumber', 'tpe', 'province_id', 'address', 'check_in', 'check_out', 'refund_policy', 'commission', 'surcharge', 'room_included'];
+    let fieldRequires = ['title', 'phone', 'email', 'tpe', 'province_id', 'address', 'check_in', 'check_out', 'refund_policy', 'commission', 'surcharge', 'room_included'];
 
     for (let i = 0; i < fieldRequires.length; i++) {
         let field = fieldRequires[i];

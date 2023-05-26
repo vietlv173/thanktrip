@@ -19,13 +19,13 @@ let HotelSchema = new Schema({
         type: String, required: true
     },
     bank_id: {
-        type: String, required: true
+        type: String,
     },
     accountHolder: {
-        type: String, required: true
+        type: String,
     },
     accountNumber: {
-        type: String, required: true
+        type: String,
     },
     tpe: {
         type: Number, required: true
