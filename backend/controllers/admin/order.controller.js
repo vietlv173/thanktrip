@@ -1,5 +1,12 @@
+require('dotenv').config();
+
+const domain = process.env.DOMAIN;
+
 const User = require("../../models/user.model");
 const Order = require('../../models/order.model');
+const Hotel = require("../../models/hotel.model");
+const ejsHelpers = require("../../helpers/ejs-helpers");
+const puppeteer = require("puppeteer");
 
 exports.index = function (req, res, next) {
     User.findById(req.session.userid).exec(function (error, user) {
@@ -61,10 +68,28 @@ exports.createPost = function (req, res, next) {
                             service_detail: result.service_detail
                         });
 
-                        order.save(function (err) {
+                        order.save(async function (err) {
                             if (err) return console.error(err);
 
-                            return res.redirect('/admin/order/index');
+                            await (async () => {
+                                const browser = await puppeteer.launch({
+                                    // executablePath: '/usr/bin/chromium-browser',
+                                    headless: true,
+                                    args: ['--no-sandbox']
+                                });
+
+                                const page = await browser.newPage();
+                                await page.goto(domain + '/admin/order/public/' + quote._id, {waitUntil: 'networkidle2'});
+                                await page.pdf({
+                                    path: './public/uploads/orders/' + order._id + '.pdf',
+                                    format: 'A4',
+                                    printBackground: true,
+                                });
+
+                                await browser.close();
+                            })();
+
+                            return res.redirect('/admin/order/view/' + order._id);
                         });
                     });
 
@@ -76,6 +101,83 @@ exports.createPost = function (req, res, next) {
             }
         }
     });
+};
+
+exports.view = function (req, res, next) {
+    User.findById(req.session.userid).exec(function (err, user) {
+        if (err) {
+            return next(err);
+        } else {
+            if (user === null) {
+                return res.redirect('/admin/login');
+            } else {
+                Order.findById(req.params.id).exec(function (err, order) {
+                    if (err) return next(err);
+
+                    let ids = [];
+
+                    for (let i = 0; i < order.service_detail.length; i++) {
+                        if (order.service_detail[i].service_type === 2) {
+                            ids.push(order.service_detail[i].hotel_id);
+                        }
+                    }
+
+                    Hotel.find({_id: ids}).exec(function (err, hotels) {
+                        if (err) return next(err);
+
+                        for (let i = 0; i < order.service_detail.length; i++) {
+                            for (let j = 0; j < hotels.length; j++) {
+                                if (hotels[j]._id.toString() === order.service_detail[i].hotel_id && order.service_detail[i].service_type === 2) {
+                                    order.service_detail[i].hotel = hotels[j];
+
+                                    break;
+                                }
+                            }
+                        }
+
+                        res.render('admin/order/view', {
+                            order: order,
+                            _: ejsHelpers,
+                            userLogin: user
+                        });
+                    });
+                })
+            }
+        }
+    });
+};
+
+exports.public = function (req, res, next) {
+    Order.findById(req.params.id).exec(function (err, order) {
+        if (err) return next(err);
+
+        let ids = [];
+
+        for (let i = 0; i < order.service_detail.length; i++) {
+            if (order.service_detail[i].service_type === 2) {
+                ids.push(order.service_detail[i].hotel_id);
+            }
+        }
+
+        Hotel.find({_id: ids}).exec(function (err, hotels) {
+            if (err) return next(err);
+
+            for (let i = 0; i < order.service_detail.length; i++) {
+                for (let j = 0; j < hotels.length; j++) {
+                    if (hotels[j]._id.toString() === order.service_detail[i].hotel_id && order.service_detail[i].service_type === 2) {
+                        order.service_detail[i].hotel = hotels[j];
+
+                        break;
+                    }
+                }
+            }
+
+            res.render('admin/order/public', {
+                order: order,
+                _: ejsHelpers
+            });
+        });
+    })
 };
 
 exports.update = function (req, res, next) {
@@ -118,10 +220,28 @@ exports.updatePost = function (req, res, next) {
                         service_detail: result.service_detail
                     };
 
-                    Order.updateOne({_id: order.id}, {$set: queries}, function (err) {
+                    Order.updateOne({_id: order.id}, {$set: queries}, async function (err) {
                         if (err) return console.error(err);
 
-                        return res.redirect('/admin/order/index');
+                        await (async () => {
+                            const browser = await puppeteer.launch({
+                                // executablePath: '/usr/bin/chromium-browser',
+                                headless: true,
+                                args: ['--no-sandbox']
+                            });
+
+                            const page = await browser.newPage();
+                            await page.goto(domain + '/admin/order/public/' + order._id, {waitUntil: 'networkidle2'});
+                            await page.pdf({
+                                path: './public/uploads/orders/' + order._id + '.pdf',
+                                format: 'A4',
+                                printBackground: true,
+                            });
+
+                            await browser.close();
+                        })();
+
+                        return res.redirect('/admin/order/view/' + order._id);
                     });
                 });
             }
@@ -178,7 +298,7 @@ function serviceDetail(service_detail) {
             }
         }
 
-        if (service_detail[i].service_type === 3) {
+        if (service_detail[i].service_type === 3 || service_detail[i].service_type === 4) {
             service_detail[i].price = parseInt(service_detail[i].price);
             service_detail[i].quantity = parseInt(service_detail[i].quantity);
 

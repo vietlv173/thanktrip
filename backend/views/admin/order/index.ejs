@@ -82,8 +82,8 @@
                                             <tr>
                                                 <th style="width: 40px;">STT</th>
                                                 <th>Thời gian</th>
-                                                <th>Cộng tác viên</th>
                                                 <th>Mã đơn hàng</th>
+                                                <th>Cộng tác viên</th>
                                                 <th>Tổng thu</th>
                                                 <th>Tổng hoa hồng</th>
                                                 <th>Trạng thái</th>
@@ -128,10 +128,12 @@
                                                     {{order.createdAt | date: 'dd/MM/yyyy' }}
                                                 </td>
                                                 <td>
-                                                    {{order.user.fullName}}
+                                                    <a href="/admin/order/view/{{order._id}}">
+                                                        {{order.order_id}}
+                                                    </a>
                                                 </td>
                                                 <td>
-                                                    {{order.order_id}}
+                                                    {{order.user.fullName}}
                                                 </td>
                                                 <td>
                                                     ₫<strong>{{ order.revenue | number }}</strong>

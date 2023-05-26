@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Hóa đơn </title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+
+    </style>
+
+    <style>
+        h2 {
+            line-height: 36px;
+            font-size: 20px;
+        }
+
+        h5 {
+            line-height: 18px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .r4_counter h4 {
+            margin: 0;
+        }
+
+        a {
+            color: #008ece;
+            text-decoration: none !important;
+        }
+
+        .dashboardStatistic {
+            position: relative;
+        }
+
+        .uln ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-custom .dashboardStatistic ul li {
+            max-width: calc(100% / 4);
+        }
+
+        .dashboardStatistic ul li {
+            position: relative;
+            color: #999;
+            font-size: 12px;
+            padding: 6px 0 6px 67px;
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            vertical-align: middle;
+            min-height: 72px;
+            white-space: nowrap;
+            margin: 4px 25px 8px 0;
+            box-sizing: border-box;
+        }
+
+        .dashboardStatistic .total .dash_icon {
+            background: #0094da;
+        }
+
+        .dashboardStatistic .dash_icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            position: absolute;
+            top: 25px;
+            left: 28px;
+            background: #4bac4d;
+            text-align: center;
+            border-radius: 100% !important;
+            color: #fff;
+            line-height: 32px;
+        }
+
+        .dashboardStatistic .dash_title {
+            font-weight: 700;
+            color: #666;
+            margin: 0 0 0 2px;
+        }
+
+        .c-callout {
+            text-align: left;
+            padding: 6px 0 6px 60px;
+            border-top: 1px solid #d6d6d6;
+        }
+
+        .dashboardStatistic .total span.number {
+            color: #0094da;
+        }
+
+        .dashboardStatistic span.number {
+            display: block;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        span.yesterday {
+            color: #999;
+            display: block;
+            font-size: 12px;
+            margin: 0 0 0 2px;
+        }
+
+        .btn-group-left a, .btn-group-left button {
+            text-transform: uppercase;
+        }
+
+        .dashboardStatistic .return .dash_icon {
+            background: #ff8030;
+        }
+
+        .dashboardStatistic .down .dash_icon {
+            background: #f94f5e;
+        }
+
+        @media (min-width: 768px) {
+            .c-callout {
+                border-top: none;
+                border-left: 1px solid #d6d6d6;
+            }
+        }
+    </style>
+
+    <style type="text/css">
+        @keyframes spinner {
+            0% {
+                opacity: 1
+            }
+            100% {
+                opacity: 0
+            }
+        }
+
+        .spinner div {
+            left: 95px;
+            top: 75px;
+            position: absolute;
+            animation: spinner linear 1s infinite;
+            background: #1d3f72;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px / 5px;
+            transform-origin: 5px 25px;
+        }
+
+        .spinner div:nth-child(1) {
+            transform: rotate(0deg);
+            animation-delay: -0.9s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(2) {
+            transform: rotate(36deg);
+            animation-delay: -0.8s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(3) {
+            transform: rotate(72deg);
+            animation-delay: -0.7s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(4) {
+            transform: rotate(108deg);
+            animation-delay: -0.6s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(5) {
+            transform: rotate(144deg);
+            animation-delay: -0.5s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: -0.4s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(7) {
+            transform: rotate(216deg);
+            animation-delay: -0.3s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(8) {
+            transform: rotate(252deg);
+            animation-delay: -0.2s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(9) {
+            transform: rotate(288deg);
+            animation-delay: -0.1s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(10) {
+            transform: rotate(324deg);
+            animation-delay: 0s;
+            background: #1d3f72;
+        }
+
+        .loading-io {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .spinner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: translateZ(0) scale(1);
+            backface-visibility: hidden;
+            transform-origin: 0 0; /* see note above */
+        }
+
+        .spinner div {
+            box-sizing: content-box;
+        }
+
+        .th-text-right {
+            text-align: right;
+        }
+
+        .tab-content .tab-pane {
+            padding: 0 0 0;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="/admin/order/index">Giao dịch</a>
+            </li>
+            <li class="breadcrumb-item active">Chi tiết</li>
+        </ol>
+        <div class="container-fluid">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-1">
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="card">
+                                    <div class="card-body" style="padding: 0;">
+                                        <div style="padding: 1.25rem;">
+                                            <strong style="text-transform: uppercase;">Hóa đơn thanh toán</strong>
+                                            <br>
+                                            <span><%= order.createdAt %></span>
+                                        </div>
+                                        <div>
+                                            <div style="background: #F2F2F2;padding: 10px 20px;font-weight: bold;text-transform: uppercase;">
+                                                Chi tiết giao dịch
+                                            </div>
+                                            <div style="padding: 1.25rem;">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <% if(order.service_detail.filter(o => o.service_type === 5).length) { %>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <strong>
+                                                                            <svg width="24" height="24"
+                                                                                 viewBox="0 0 24 24"
+                                                                                 fill="none"
+                                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M22.5 4.96497H1.5C0.8775 4.96497 0.375 5.46747 0.375 6.08997V8.91747C0.375 9.53997 0.8775 10.0425 1.5 10.0425C2.58 10.0425 3.4575 10.92 3.4575 12C3.4575 13.08 2.58 13.9575 1.5 13.9575C0.8775 13.9575 0.375 14.46 0.375 15.0825V17.91C0.375 18.5325 0.8775 19.035 1.5 19.035H22.5C23.1225 19.035 23.625 18.5325 23.625 17.91V15.0825C23.625 14.46 23.1225 13.9575 22.5 13.9575C21.42 13.9575 20.5425 13.08 20.5425 12C20.5425 10.92 21.42 10.0425 22.5 10.0425C23.1225 10.0425 23.625 9.53997 23.625 8.91747V6.08997C23.625 5.46747 23.1225 4.96497 22.5 4.96497ZM16.875 14.625C16.875 15.24 16.3725 15.75 15.75 15.75C15.1275 15.75 14.625 15.24 14.625 14.625V9.37497C14.625 8.75997 15.1275 8.24997 15.75 8.24997C16.3725 8.24997 16.875 8.75997 16.875 9.37497V14.625Z"
+                                                                                      fill="#00BFA8"/>
+                                                                            </svg>
+                                                                            Vé thăm quan
+                                                                        </strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <% } %>
+                                                        <% if(order.service_detail.filter(o => o.service_type === 2).length) { %>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <strong>
+                                                                            <svg width="24" height="18"
+                                                                                 viewBox="0 0 24 18"
+                                                                                 fill="none"
+                                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M1.71428 10.7143H24.8571C25.0893 10.7143 25.2902 10.7991 25.4598 10.9688C25.6295 11.1384 25.7143 11.3393 25.7143 11.5714V17.5714H22.2857V14.1429H1.71428V17.5714H-1.71429V1.28573C-1.71429 1.05359 -1.62947 0.852696 -1.45983 0.683053C-1.29019 0.51341 -1.08929 0.428589 -0.857152 0.428589H0.857134C1.08928 0.428589 1.29017 0.51341 1.45981 0.683053C1.62946 0.852696 1.71428 1.05359 1.71428 1.28573V10.7143ZM9.42856 6.42859C9.42856 5.48216 9.09374 4.67412 8.4241 4.00448C7.75446 3.33484 6.94642 3.00002 5.99999 3.00002C5.05356 3.00002 4.24553 3.33484 3.57588 4.00448C2.90624 4.67412 2.57142 5.48216 2.57142 6.42859C2.57142 7.37502 2.90624 8.18305 3.57588 8.8527C4.24553 9.52234 5.05356 9.85716 5.99999 9.85716C6.94642 9.85716 7.75446 9.52234 8.4241 8.8527C9.09374 8.18305 9.42856 7.37502 9.42856 6.42859ZM25.7143 9.85716V9.00002C25.7143 7.58037 25.212 6.36832 24.2076 5.36386C23.2031 4.35939 21.9911 3.85716 20.5714 3.85716H11.1428C10.9107 3.85716 10.7098 3.94198 10.5402 4.11162C10.3705 4.28127 10.2857 4.48216 10.2857 4.7143V9.85716H25.7143Z"
+                                                                                      fill="#00BFA8"/>
+                                                                            </svg>
+                                                                            Khách sạn
+                                                                        </strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <% order.service_detail.filter(o => o.service_type === 2).forEach(function(detail, key1) { %>
+                                                                <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;">
+                                                                    <% detail.detail.forEach(function(room, key) { %>
+                                                                        <% if(room.quantity) { %>
+                                                                            <div class="row">
+                                                                                <div class="col-md-4"
+                                                                                     style="flex: 0 0 32.3333%;">
+                                                                                    <% if(key === 0) { %>
+                                                                                        <label for="">
+                                                                                            <strong>
+                                                                                                Tên khách sạn
+                                                                                            </strong>
+                                                                                        </label>
+                                                                                    <% } %>
+                                                                                    <p style="margin-top: 7px;">
+                                                                                        <strong>
+                                                                                            <%= detail.hotel.title %>
+                                                                                        </strong>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="col-md-2"
+                                                                                     style="flex: 0 0 10%;">
+                                                                                    <div class="form-group">
+                                                                                        <% if(key === 0) { %>
+                                                                                            <label for="">
+                                                                                                <strong>
+                                                                                                    Nhận phòng
+                                                                                                </strong>
+                                                                                            </label>
+                                                                                        <% } %>
+                                                                                        <p style="margin-top: 7px;">
+                                                                                            <%= detail.from %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-2"
+                                                                                     style="flex: 0 0 10%;">
+                                                                                    <div class="form-group">
+                                                                                        <% if(key === 0) { %>
+                                                                                            <label for="">
+                                                                                                <strong>
+                                                                                                    Trả phòng
+                                                                                                </strong>
+                                                                                            </label>
+                                                                                        <% } %>
+                                                                                        <p style="margin-top: 7px;">
+                                                                                            <%= detail.to %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-2">
+                                                                                    <div class="form-group">
+                                                                                        <% if(key === 0) { %>
+                                                                                            <label for="">
+                                                                                                <strong>
+                                                                                                    Loại phòng
+                                                                                                </strong>
+                                                                                            </label>
+                                                                                        <% } %>
+                                                                                        <p style="margin-top: 7px;">
+                                                                                            <%= room.title %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-1"
+                                                                                     style="text-align: right;">
+                                                                                    <div class="form-group">
+                                                                                        <% if(key === 0) { %>
+                                                                                            <label for="">
+                                                                                                <strong>
+                                                                                                    Số phòng
+                                                                                                </strong>
+                                                                                            </label>
+                                                                                        <% } %>
+                                                                                        <p style="margin-top: 7px;">
+                                                                                            <%= room.quantity %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-2"
+                                                                                     style="text-align: right;flex: 0 0 10%;">
+                                                                                    <div class="form-group">
+                                                                                        <% if(key === 0) { %>
+                                                                                            <label for="">
+                                                                                                <strong>
+                                                                                                    Đơn giá VNĐ
+                                                                                                </strong>
+                                                                                            </label>
+                                                                                        <% } %>
+                                                                                        <p style="margin-top: 7px;">
+                                                                                            <%= _.formatNumber(room.price_normal + detail.hotel.surcharge) %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-2"
+                                                                                     style="text-align: right;flex: 0 0 12%;">
+                                                                                    <div class="form-group">
+                                                                                        <% if(key === 0) { %>
+                                                                                            <label for="">
+                                                                                                <strong>
+                                                                                                    Tổng cộng VNĐ
+                                                                                                </strong>
+                                                                                            </label>
+                                                                                        <% } %>
+                                                                                        <p style="margin-top: 7px;">
+                                                                                            <%= _.formatNumber((room.price_normal + detail.hotel.surcharge) * room.quantity) %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        <% } %>
+                                                                    <% }); %>
+                                                                </div>
+                                                                <% if(detail.services.filter(s => s.quality > 0).length) { %>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 mb-2 mt-2"></div>
+                                                                    </div>
+                                                                    <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;">
+                                                                        <% detail.services.forEach(function(service, key) { %>
+                                                                            <% if(service.quantity) { %>
+                                                                                <div class="row">
+                                                                                    <div class="col-md-1">
+                                                                                        <% if(key === 0) { %>
+                                                                                            <label for="">
+                                                                                                <strong>STT</strong>
+                                                                                            </label>
+                                                                                        <% } %>
+                                                                                        <p style="margin-top: 7px;">
+                                                                                            <%= key + 1 %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <% if(key === 0) { %>
+                                                                                                <label for="">
+                                                                                                    <strong>Phụ
+                                                                                                        thu</strong>
+                                                                                                </label>
+                                                                                            <% } %>
+                                                                                            <p style="margin-top: 7px;">
+                                                                                                <%= service.title %>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-1"></div>
+                                                                                    <div class="col-md-2"></div>
+                                                                                    <div class="col-md-2"
+                                                                                         style="text-align: right;">
+                                                                                        <div class="form-group">
+                                                                                            <% if(key === 0) { %>
+                                                                                                <label for="">
+                                                                                                    <strong>
+                                                                                                        Tổng cộng VNĐ
+                                                                                                    </strong>
+                                                                                                </label>
+                                                                                            <% } %>
+                                                                                            <p style="margin-top: 7px;">
+                                                                                                <%= _.formatNumber(service.price) %>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            <% } %>
+                                                                        <% }); %>
+                                                                    </div>
+                                                                <% } %>
+                                                            <% }); %>
+                                                        <% } %>
+                                                        <% if(order.service_detail.filter(o => o.service_type === 3).length) { %>
+                                                            <div class="row mt-3">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <strong>
+                                                                            <svg width="22" height="24"
+                                                                                 viewBox="0 0 22 24"
+                                                                                 fill="none"
+                                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M12.2047 14.6203C12.2234 14.2969 12.5938 14.4094 12.5938 14.4094L15.5 15L21.5 17.2828C21.5 16.1578 21.3219 16.0406 21.0594 15.8438L12.5 9.70312C12.5 9.70312 12.2703 6.89062 12.2703 4.41094C12.2703 3.2625 11.7172 0.75 11 0.75C10.2828 0.75 9.72969 3.3 9.72969 4.41094C9.72969 6.76406 9.5 9.70312 9.5 9.70312L0.940625 15.8438C0.607813 16.0781 0.5 16.2047 0.5 17.2828L6.5 15L9.40156 14.4094C9.40156 14.4094 9.77187 14.2969 9.79062 14.6203C9.80937 14.9437 9.73438 17.8594 10.0672 19.4062C10.1094 19.6125 9.95 19.6266 9.84219 19.7531L7.40937 21.2906C7.32969 21.3797 7.29219 21.6328 7.29219 21.6328L7.24531 22.5L10.4328 21.75L10.9953 23.25L11.5578 21.75L14.7453 22.5L14.6984 21.6328C14.7031 21.6328 14.6656 21.3797 14.5859 21.2906L12.1531 19.7531C12.0453 19.6266 11.8859 19.6125 11.9281 19.4062C12.2516 17.8594 12.1859 14.9437 12.2047 14.6203Z"
+                                                                                      fill="#00BFA8"/>
+                                                                            </svg>
+                                                                            Vé máy bay
+                                                                        </strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;">
+                                                                <div class="row">
+                                                                    <div class="col-md-4"
+                                                                         style="flex: 0 0 32.3333%;">
+                                                                        <label for="">
+                                                                            <strong>Mã đặt chỗ</strong>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-3"></div>
+                                                                    <div class="col-md-2" style="flex: 0 0 10%;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Ngày đến</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-1"
+                                                                         style="text-align: right;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Số lượng</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2"
+                                                                         style="text-align: right;flex: 0 0 10%;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Đơn giá VNĐ</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2"
+                                                                         style="text-align: right;flex: 0 0 12%;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Tổng cộng VNĐ</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% order.service_detail.filter(o => o.service_type === 3).forEach(function(detail, key1) { %>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4"
+                                                                             style="flex: 0 0 32.3333%;">
+                                                                            <p style="margin-top: 7px;">
+                                                                                <strong>
+                                                                                    <%= detail.flight_id %>
+                                                                                </strong>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-md-3"></div>
+                                                                        <div class="col-md-2" style="flex: 0 0 10%;">
+                                                                            <div class="form-group">
+                                                                                <p style="margin-top: 7px;">
+                                                                                    <%= detail.pick_up_date %>
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-1"
+                                                                             style="text-align: right;">
+                                                                            <div class="form-group">
+                                                                                <p style="margin-top: 7px;">
+                                                                                    <%= detail.quantity %>
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-2"
+                                                                             style="text-align: right;flex: 0 0 10%;">
+                                                                            <div class="form-group">
+                                                                                <p style="margin-top: 7px;">
+                                                                                    <%= _.formatNumber(detail.price) %>
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-2"
+                                                                             style="text-align: right;flex: 0 0 12%;">
+                                                                            <div class="form-group">
+                                                                                <p style="margin-top: 7px;">
+                                                                                    <%= _.formatNumber(detail.price * detail.quantity) %>
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <% }); %>
+                                                            </div>
+                                                        <% } %>
+                                                        <% if(order.service_detail.filter(o => o.service_type === 4).length) { %>
+                                                            <div class="row mt-3">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <strong>
+                                                                            <svg width="18" height="16"
+                                                                                 viewBox="0 0 18 16"
+                                                                                 fill="none"
+                                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M15.92 1.01C15.8175 0.715033 15.6257 0.459298 15.3712 0.278305C15.1168 0.0973119 14.8123 4.16831e-05 14.5 0H3.5C2.845 0 2.285 0.42 2.08 1.01L0 7V15C0 15.55 0.45 16 1 16H2C2.26522 16 2.51957 15.8946 2.70711 15.7071C2.89464 15.5196 3 15.2652 3 15V14H15V15C15 15.55 15.45 16 16 16H17C17.2652 16 17.5196 15.8946 17.7071 15.7071C17.8946 15.5196 18 15.2652 18 15V7L15.92 1.01ZM3.5 11C2.67 11 2 10.33 2 9.5C2 8.67 2.67 8 3.5 8C4.33 8 5 8.67 5 9.5C5 10.33 4.33 11 3.5 11ZM14.5 11C13.67 11 13 10.33 13 9.5C13 8.67 13.67 8 14.5 8C15.33 8 16 8.67 16 9.5C16 10.33 15.33 11 14.5 11ZM2 6L3.5 1.5H14.5L16 6H2Z"
+                                                                                      fill="#00BFA8"/>
+                                                                            </svg>
+                                                                            Đưa đón tại sân bay
+                                                                        </strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;">
+                                                                <div class="row">
+                                                                    <div class="col-md-4"
+                                                                         style="flex: 0 0 32.3333%;">
+                                                                        <label for="">
+                                                                            <strong>Loại xe</strong>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-3"></div>
+                                                                    <div class="col-md-2" style="flex: 0 0 10%;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Ngày đến</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-1"
+                                                                         style="text-align: right;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Số lượng</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2"
+                                                                         style="text-align: right;flex: 0 0 10%;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Đơn giá VNĐ</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2"
+                                                                         style="text-align: right;flex: 0 0 12%;">
+                                                                        <div class="form-group">
+                                                                            <label for="">
+                                                                                <strong>Tổng cộng VNĐ</strong>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% order.service_detail.forEach(function(detail, key1) { %>
+                                                                    <% if(detail.service_type === 4) { %>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4"
+                                                                                 style="flex: 0 0 32.3333%;">
+                                                                                <p style="margin-top: 7px;">
+                                                                                    <strong>
+                                                                                        <%= detail.vehicle_type %>
+                                                                                    </strong>
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="col-md-3"></div>
+                                                                            <div class="col-md-2"
+                                                                                 style="flex: 0 0 10%;">
+                                                                                <div class="form-group">
+                                                                                    <p style="margin-top: 7px;">
+                                                                                        <%= detail.pick_up_date %>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-1"
+                                                                                 style="text-align: right;">
+                                                                                <div class="form-group">
+                                                                                    <p style="margin-top: 7px;">
+                                                                                        <%= detail.quantity %>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-2"
+                                                                                 style="text-align: right;flex: 0 0 10%;">
+                                                                                <div class="form-group">
+                                                                                    <p style="margin-top: 7px;">
+                                                                                        <%= _.formatNumber(detail.price) %>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-2"
+                                                                                 style="text-align: right;flex: 0 0 12%;">
+                                                                                <div class="form-group">
+                                                                                    <p style="margin-top: 7px;">
+                                                                                        <%= _.formatNumber(detail.price * detail.quantity) %>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    <% } %>
+                                                                <% }); %>
+                                                            </div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer" style="text-align: center;" data-ng-app="orderCrudApp"
+                                         data-ng-controller="orderCrudCtrl">
+                                        <button type="button" class="btn btn-danger"
+                                                data-ng-click="downloadPdf('<%= order._id %>')">
+                                            <span class="fa fa-file-pdf-o"></span>
+                                            Tải về pdf
+                                        </button>
+                                        <a target="_blank" href="/admin/order/public/<%= order._id %>"
+                                           class="btn btn-success">
+                                            <span class="fa fa-link"></span>
+                                            Xem trực tiếp
+                                        </a>
+                                        <% if(userLogin.roleId === 1) { %>
+                                            <a href="/admin/order/update/<%= order._id %>"
+                                               class="btn btn-primary">
+                                                <span class="fa fa-edit"></span>
+                                                Cập nhật
+                                            </a>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/javascript/order-crud.js"></script>
+</body>
+</html>

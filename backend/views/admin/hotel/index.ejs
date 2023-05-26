@@ -66,8 +66,14 @@
                                         <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
                                             Khách sạn
                                         </p>
+                                        <div class="card-header-actions">
+                                            <a href="/admin/quote/index" class="btn btn-block btn-primary active">
+                                                <i class="nav-icon icon-rocket"></i>
+                                                Báo giá
+                                            </a>
+                                        </div>
                                         <% if(userLogin.roleId === 1) { %>
-                                            <div class="card-header-actions">
+                                            <div class="card-header-actions" style="margin-right: 10px;">
                                                 <a href="create" class="btn btn-block btn-success active">
                                                     <i class="nav-icon icon-plus"></i>
                                                     Thêm mới

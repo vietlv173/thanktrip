@@ -80,6 +80,8 @@ let tourRouter = require('./routes/admin/tour.route');
 
 let orderRouter = require('./routes/admin/order.route');
 
+let quoteRouter = require('./routes/admin/quote.route');
+
 let hotelRouter = require('./routes/admin/hotel.route');
 
 let flightRouter = require('./routes/admin/flight.route');
@@ -114,6 +116,8 @@ app.use('/admin/bank', bankRouter);
 
 app.use('/admin/order', orderRouter);
 
+app.use('/admin/quote', quoteRouter);
+
 app.use('/admin/hotel', hotelRouter);
 
 app.use('/admin/flight', flightRouter);
@@ -123,11 +127,9 @@ app.use('/admin/employee', employeeRouter);
 app.use('/admin/transaction', transactionRouter);
 
 app.use('/admin/collaborator', collaboratorRouter);
-
 app.use(function (req, res, next) {
     next(createError(404));
 });
-
 app.use(function (err, req, res) {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

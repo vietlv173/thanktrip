@@ -2,7 +2,7 @@
  * Created by vietlv on 6/3/2020.
  */
 
-let hotelCrudApp = angular.module('hotelCrudApp', []).run(function ($rootScope) {
+let quoteApp = angular.module('quoteApp', []).run(function ($rootScope) {
     $rootScope.typeOf = function (value) {
         return typeof value;
     };
@@ -44,58 +44,20 @@ let hotelCrudApp = angular.module('hotelCrudApp', []).run(function ($rootScope) 
     };
 });
 
-hotelCrudApp.controller('hotelCrudCtrl', ['$scope', '$http', function ($scope, $http) {
+quoteApp.controller('quoteCtrl', ['$scope', '$http', '$filter', '$httpParamSerializer', function ($scope, $http) {
 
     $scope.responses = {};
 
-    $scope.provinces = [];
+    $scope.queries = {
+        status: 2
+    };
 
-    $http.get('/json/provinces.json').then(r => {
-        $scope.provinces = r.data;
-    });
-
-    $scope.room_detail = [{
-        id: 1,
-        bed_type: null,
-        room_type: null,
-        price_normal: null,
-        price_weekend: null,
-        price_lunar: null,
-        from: null,
-        to: null,
-    }];
-
-    $scope.service_detail = [];
-
-    $scope.addDetail = function () {
-        $scope.room_detail.push({
-            id: $scope.room_detail.length,
-            bed_type: null,
-            room_type: null,
-            price_normal: null,
-            price_weekend: null,
-            price_lunar: null,
-            from: null,
-            to: null,
+    $scope.getStatistical = function () {
+        $http.get('/api/quote').success(function (response) {
+            $scope.responses = response;
         });
-    }
+    };
 
-    $scope.addService = function () {
-        $scope.service_detail.push({
-            title: null,
-            price: null,
-        });
-    }
+    $scope.getStatistical();
 
-    $scope.deleteService = function (key) {
-        if ($scope.service_detail.length > 1) {
-            $scope.service_detail.splice(key, 1);
-        }
-    }
-
-    $scope.deleteDetail = function (key) {
-        if ($scope.room_detail.length > 1) {
-            $scope.room_detail.splice(key, 1);
-        }
-    }
 }]);

@@ -59,20 +59,19 @@ hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSeri
         }
     ];
 
-    $scope.room_detail = [{
-        bed_type: null,
-        room_type: null,
-        price_normal: null,
-        price_weekend: null,
-        price_lunar: null,
-        from: null,
-        to: null,
-    }];
-
     $scope.service_detail = [];
 
     $scope.addDetail = function () {
+        let maxId = 0;
+
+        for (let i = 0; i < $scope.room_detail.length; i++) {
+            if (maxId < $scope.room_detail.id) {
+                maxId = $scope.room_detail.id;
+            }
+        }
+
         $scope.room_detail.push({
+            id: maxId + 1,
             bed_type: null,
             room_type: null,
             price_normal: null,
@@ -131,9 +130,25 @@ hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSeri
                 $scope.service_detail = response.hotels[0].service_detail;
             }
 
+            let maxId = 0;
+
             for (let i = 0; i < $scope.room_detail.length; i++) {
-                $scope.room_detail[i].to = new Date($scope.room_detail[i].to);
-                $scope.room_detail[i].from = new Date($scope.room_detail[i].from);
+                if (maxId < $scope.room_detail.id) {
+                    maxId = $scope.room_detail.id;
+                }
+            }
+
+            for (let i = 0; i < $scope.room_detail.length; i++) {
+                if (!('id' in $scope.room_detail[i] && $scope.room_detail[i].id)) {
+                    maxId++;
+
+                    $scope.room_detail[i].id = maxId;
+                }
+
+                if (i === 0) {
+                    $scope.room_detail[i].to = new Date($scope.room_detail[i].to);
+                    $scope.room_detail[i].from = new Date($scope.room_detail[i].from);
+                }
 
                 if ($scope.room_detail[i].bed_type === 1) {
                     $scope.room_detail[i].bed_type = {id: 1, name: 'TWIN (TWN)'};

@@ -1,28 +1,35 @@
-<div ng-if="detail.service_type == 3" class="col-md-11">
+<div class="col-md-11">
     <div class="row">
         <div class="col-md-3">
             <div class="form-group">
-                <label for="">Mã đặt chỗ</label>
-                <input type="hidden" value="3" name="service_detail[{{key}}][service_type]">
-                <input type="text" name="service_detail[{{key}}][flight_id]" class="form-control"
-                       ng-model="detail.flight_id">
+                <label for="">Loại xe</label>
+                <input type="hidden" value="4" name="service_detail[{{key}}][service_type]">
+                <input type="text" name="service_detail[{{key}}][vehicle_type]" class="form-control"
+                       ng-model="detail.vehicle_type">
             </div>
         </div>
         <div class="col-md-3">
+            <div class="form-group">
+                <label for="">Ngày đón</label>
+                <input type="date" name="service_detail[{{key}}][pick_up_date]" class="form-control"
+                       ng-model="detail.pick_up_date">
+            </div>
+        </div>
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="">Số lượng vé</label>
                 <input type="number" name="service_detail[{{key}}][quantity]" class="form-control"
                        ng-model="detail.quantity">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="">Giá vé</label>
                 <input type="number" name="service_detail[{{key}}][price]" class="form-control"
                        ng-model="detail.price">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="">Hoa hồng</label>
                 <input type="number" name="service_detail[{{key}}][commission]" class="form-control"

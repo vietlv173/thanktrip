@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Báo giá khách sạn</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="/admin/quote/index">Báo giá khách sạn</a>
+            </li>
+            <li class="breadcrumb-item active">Cập nhật</li>
+        </ol>
+        <div class="container-fluid" data-ng-app="quoteCrudApp" data-ng-controller="quoteCrudCtrl">
+            <input type="hidden" id="quoteId" value="<%= quote.id %>">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                                <form action="/admin/quote/update/<%= quote.id %>" method="post">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong>Báo giá khách sạn</strong>
+                                            <small>Cập nhật</small>
+                                        </div>
+                                        <div class="card-body" style="padding: 0;">
+                                            <div style="padding: 1.25rem;">
+                                                <strong style="text-transform: uppercase;">Báo giá khách sạn</strong>
+                                            </div>
+                                            <div ng-repeat="(key,detail) in details track by $index">
+                                                <div style="background: #F2F2F2;padding: 10px 20px;font-weight: bold;text-transform: uppercase;">
+                                                    <button ng-if="key == 0" type="button"
+                                                            class="btn btn-sm btn-danger"
+                                                            data-ng-click="deleteDetail(key)">
+                                                        <span class="fa fa-trash"></span>
+                                                    </button>
+                                                    Option {{key + 1}}: {{detail.title}}
+                                                    <input type="hidden" value="{{detail.hotel_id}}"
+                                                           name="details[{{key}}][hotel_id]">
+                                                </div>
+                                                <div style="padding: 1.25rem;">
+                                                    <div class="row">
+                                                        <% include _hotel %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <div class="form-group">
+                                                        <button type="button" class="btn btn-outline-primary"
+                                                                data-toggle="modal" data-target="#myModal">
+                                                            <span class="fa fa-hotel"></span>
+                                                            Chọn khách sạn
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-success pull-right" type="submit">
+                                                <i class="nav-icon icon-check"></i>
+                                                Lưu & Tiếp tục
+                                            </button>
+                                            <a href="/admin/quote/index" class="btn btn-danger pull-left">
+                                                <i class="nav-icon icon-close"></i>
+                                                Hủy bỏ
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% include _modal %>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/javascript/quote-crud.js"></script>
+</body>
+</html>

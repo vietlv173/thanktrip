@@ -78,13 +78,22 @@ orderCrudApp.controller('orderCrudCtrl', ['$scope', '$http', '$filter', '$httpPa
                 detail: [],
                 services: [],
             });
-        } else {
+        } else if (service_type === 3) {
             $scope.service_detail.push({
                 service_type: 3,
                 flight_id: null,
                 quantity: null,
                 price: null,
                 commission: null,
+            });
+        } else {
+            $scope.service_detail.push({
+                service_type: 4,
+                vehicle_type: null,
+                quantity: null,
+                price: null,
+                commission: null,
+                pick_up_date: null,
             });
         }
     }
@@ -94,9 +103,14 @@ orderCrudApp.controller('orderCrudCtrl', ['$scope', '$http', '$filter', '$httpPa
     }
 
     $scope.deleteDetail = function (key) {
-        if ($scope.service_detail.length > 1) {
-            $scope.service_detail.splice(key, 1);
-        }
+        $scope.service_detail.splice(key, 1);
+    }
+
+    $scope.downloadPdf = function (id) {
+        let link = document.createElement('a');
+        link.href = '/uploads/orders/' + id + '.pdf';
+        link.download = id + '.pdf';
+        link.dispatchEvent(new MouseEvent('click'));
     }
 
     $scope.queries = {
@@ -160,8 +174,6 @@ orderCrudApp.controller('orderCrudCtrl', ['$scope', '$http', '$filter', '$httpPa
                 break;
             }
         }
-
-        console.log(detail);
     }
 
     $scope.getTours = function () {

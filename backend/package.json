@@ -19,6 +19,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.0",
     "gravatar": "^1.8.0",
+    "html-pdf-node": "^1.0.8",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
@@ -28,6 +29,8 @@
     "nodemailer": "^6.4.6",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "pdf-master": "^1.1.0",
+    "puppeteer": "^20.3.0",
     "react-isolated-scroll": "^0.1.1",
     "req-flash": "0.0.3",
     "validator": "^12.2.0"

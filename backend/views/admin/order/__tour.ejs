@@ -2,23 +2,14 @@
     <div class="row">
         <div class="col-md-2">
             <div class="form-group">
-                <label for="">Chọn tour</label>
-                <input type="hidden" value="{{detail.surcharge}}" name="service_detail[{{key}}][surcharge]">
-                <input type="hidden" value="{{detail.commission}}" name="service_detail[{{key}}][commission]">
-                <input type="hidden" value="1" name="service_detail[{{key}}][service_type]">
-                <select class="form-control" ng-change="selectTour(detail)"
-                        name="service_detail[{{key}}][tour_id]" ng-model="detail.tour_id">
-                    <option ng-repeat="t in tours"
-                            value="{{t._id}}">
-                        {{t.title}}
-                    </option>
-                </select>
+                <label for="">tour</label>
+                <span>{{detail.title}}</span>
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label for="">Ngày đi</label>
-                <input type="date" name="service_detail[{{key}}][from]" class="form-control" ng-model="detail.from">
+                <span></span>
             </div>
         </div>
     </div>

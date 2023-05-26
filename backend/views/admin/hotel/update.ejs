@@ -115,7 +115,27 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="province-id">
+                                                            Số điện thoại
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input value="<%= hotel.phone %>" name="phone"
+                                                               class="form-control" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="province-id">
+                                                            Email
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input value="<%= hotel.email %>" name="email"
+                                                               class="form-control" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="province-id">
                                                             Thành phố
@@ -128,7 +148,7 @@
                                                                 ng-model="currentProvince"></select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="address">
                                                             Địa chỉ
@@ -137,6 +157,51 @@
                                                         <input name="address" class="form-control" type="text"
                                                                value="<%= hotel.address %>"
                                                                id="address" placeholder="Nhập địa chỉ cụ thể">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <strong>Thông tin thanh toán</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="province-id">
+                                                            Ngân hàng
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <select name="bank_id" id="bank-id"
+                                                                class="form-control">
+                                                            <option value="">Chọn ngân hàng</option>
+                                                            <option ng-repeat="province in provinces"
+                                                                    value="{{province.code}}">
+                                                                {{province.name}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="province-id">
+                                                            Số tài khoản
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input value="<%= hotel.accountNumber %>" name="accountNumber"
+                                                               class="form-control" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="address">
+                                                            Tên tài khoản
+                                                            <span class="required">(*)</span>
+                                                        </label>
+                                                        <input value="<%= hotel.accountHolder %>" name="accountHolder"
+                                                               class="form-control" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,6 +238,8 @@
                                                                     <br>
                                                                 </div>
                                                                 <strong style="line-height: 3;">{{key + 1}}</strong>
+                                                                <input type="hidden" class="form-control"
+                                                                       value="{{detail.id}}" name="room_detail[id][]">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -349,7 +416,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="company">
-                                                            Khoản phụ trội
+                                                            Hoa hồng ThankTrip
                                                             <span class="required">(*)</span>
                                                         </label>
                                                         <input name="surcharge" class="form-control" type="number"
@@ -423,7 +490,7 @@
                                                 <i class="nav-icon icon-check"></i>
                                                 Lưu & Tiếp tục
                                             </button>
-                                            <a href="index" class="btn btn-danger pull-left">
+                                            <a href="/admin/hotel/index" class="btn btn-danger pull-left">
                                                 <i class="nav-icon icon-close"></i>
                                                 Hủy bỏ
                                             </a>

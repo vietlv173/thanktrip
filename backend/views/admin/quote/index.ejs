@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Báo giá khách sạn</title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <link href="/angular-xeditable/css/xeditable.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<% include ../layouts/header.ejs %>
+<div class="app-body">
+    <% include ../layouts/sidebar.ejs %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active">Báo giá khách sạn</li>
+        </ol>
+        <div class="container-fluid" data-ng-app="quoteApp" data-ng-controller="quoteCtrl">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
+                                            Báo giá khách sạn
+                                        </p>
+                                        <div class="card-header-actions">
+                                            <a href="create" class="btn btn-block btn-success active">
+                                                <i class="nav-icon icon-plus"></i>
+                                                Thêm mới
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding: 0;">
+                                        <table class="table table-responsive-sm table-striped"
+                                               style="margin-bottom: 0;">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 40px;">STT</th>
+                                                <th>Người tạo</th>
+                                                <th>Mã báo giá</th>
+                                                <th>Thời gian</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="(key,quote) in responses.quotes">
+                                                <td>
+                                                    {{key + 1}}
+                                                </td>
+                                                <td>
+                                                    {{quote.createdBy.fullName}}
+                                                </td>
+                                                <td>
+                                                    {{quote.quote_id}}
+                                                </td>
+                                                <td>
+                                                    {{quote.createdAt | date: 'H:mm:s dd/MM/yyyy' }}
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-primary"
+                                                       href="/admin/quote/view/{{ quote._id }}">
+                                                        <span class="fa fa-eye"></span>
+                                                        Chi tiết
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/angular-xeditable/js/xeditable.js"></script>
+<script src="/javascript/quote.js"></script>
+</body>
+</html>

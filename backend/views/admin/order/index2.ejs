@@ -107,9 +107,7 @@
                                                             <th>Tổng thu</th>
                                                             <th>Tổng hoa hồng</th>
                                                             <th>Trạng thái</th>
-                                                            <% if(userLogin.roleId === 1) { %>
-                                                                <th>Thao tác</th>
-                                                            <% } %>
+                                                            <th>Thao tác</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -131,9 +129,7 @@
                                                                     <option value="4">Đã hủy</option>
                                                                 </select>
                                                             </td>
-                                                            <% if(userLogin.roleId === 1) { %>
-                                                                <td></td>
-                                                            <% } %>
+                                                            <td></td>
                                                         </tr>
                                                         <tr ng-repeat="(key,order) in responses.orders">
                                                             <td>
@@ -146,7 +142,9 @@
                                                                 {{order.user.fullName}}
                                                             </td>
                                                             <td>
-                                                                {{order.order_id}}
+                                                                <a href="/admin/order/view/{{order._id}}">
+                                                                    {{order.order_id}}
+                                                                </a>
                                                             </td>
                                                             <td>
                                                                 ₫<strong>{{ order.revenue | number }}</strong>
@@ -167,6 +165,12 @@
                                                             </td>
                                                             <td ng-show="order.status == 4">
                                                                 <span class="badge badge-danger">Đã hủy</span>
+                                                            </td>
+                                                            <td>
+                                                                <a class="btn btn-sm btn-primary"
+                                                                   href="/admin/order/view/{{ order._id }}">
+                                                                    <span class="fa fa-eye"></span>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -181,7 +185,6 @@
                                                             <th style="width: 40px;">STT</th>
                                                             <th>Thời gian</th>
                                                             <th>Cộng tác viên</th>
-                                                            <th>Loại hình</th>
                                                             <th>Mã đơn hàng</th>
                                                             <th>Tổng thu</th>
                                                             <th>Tổng hoa hồng</th>
@@ -196,14 +199,6 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
-                                                            <td>
-                                                                <select name="" id="" class="form-control">
-                                                                    <option value="">Tất cả</option>
-                                                                    <option value="">Khách sạn</option>
-                                                                    <option value="">Tour</option>
-                                                                </select>
-                                                            </td>
-                                                            <td></td>
                                                             <td></td>
                                                             <td></td>
                                                             <td>
@@ -217,9 +212,7 @@
                                                                     <option value="4">Đã hủy</option>
                                                                 </select>
                                                             </td>
-                                                            <% if(userLogin.roleId === 1) { %>
-                                                                <td></td>
-                                                            <% } %>
+                                                            <td></td>
                                                         </tr>
                                                         <tr ng-repeat="(key,order) in responses2.orders">
                                                             <td>
@@ -231,8 +224,6 @@
                                                             <td>
                                                                 {{order.user.fullName}}
                                                             </td>
-                                                            <td>
-                                                                {{order.tpe == 1 ? 'Khách sạn' : 'Tour'}}
                                                             <td>
                                                                 {{order.order_id}}
                                                             </td>
@@ -255,6 +246,12 @@
                                                             </td>
                                                             <td ng-show="order.status == 4">
                                                                 <span class="badge badge-danger">Đã hủy</span>
+                                                            </td>
+                                                            <td>
+                                                                <a class="btn btn-sm btn-primary"
+                                                                   href="/admin/order/view/{{ order._id }}">
+                                                                    <span class="fa fa-eye"></span>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         </tbody>

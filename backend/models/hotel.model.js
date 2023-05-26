@@ -12,6 +12,21 @@ let HotelSchema = new Schema({
     title: {
         type: String, required: true
     },
+    phone: {
+        type: String, required: true
+    },
+    email: {
+        type: String, required: true
+    },
+    bank_id: {
+        type: String, required: true
+    },
+    accountHolder: {
+        type: String, required: true
+    },
+    accountNumber: {
+        type: String, required: true
+    },
     tpe: {
         type: Number, required: true
     }, province_id: {

@@ -1,0 +1,166 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <strong>Danh sách phòng</strong>
+        </div>
+    </div>
+    <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;">
+        <div class="row"
+             ng-repeat="(key2, room) in detail.rooms">
+            <div ng-if="room.visible" class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label ng-if="key2 == 0" for="">Loại phòng</label>
+                            <p style="margin-top: 7px;">
+                                <strong>
+                                    {{room.title}}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align: right;">
+                        <div class="form-group">
+                            <label ng-if="key2 == 0" for="">
+                                Ngày thường
+                            </label>
+                            <p style="margin-top: 7px;">
+                                ₫<strong>
+                                    {{ room.price_normal | number}}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align: right;">
+                        <div class="form-group">
+                            <label ng-if="key2 == 0" for="">
+                                Cuối tuần
+                            </label>
+                            <p style="margin-top: 7px;">
+                                ₫<strong>
+                                    {{ room.price_weekend | number}}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align: right;">
+                        <div class="form-group">
+                            <label ng-if="key2 == 0" for="">
+                                Ngày lễ
+                            </label>
+                            <p style="margin-top: 7px;">
+                                ₫<strong>
+                                    {{ room.price_lunar | number}}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="collapse{{key}}" class="collapse" aria-labelledby="heading{{key}}"
+         data-parent="#accordion">
+        <div ng-if="detail.services.length">
+            <div class="row">
+                <div class="col-md-12 mb-3 mt-3">
+                    <strong>Phụ thu</strong>
+                </div>
+            </div>
+            <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;">
+                <div class="row"
+                     ng-repeat="(key2, service) in detail.services">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label ng-if="key2 == 0" for="">Tên dịch vụ</label>
+                            <p style="margin-top: 7px;">
+                                <strong>
+                                    {{ service.title }}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2" style="text-align: right;">
+                        <div class="form-group">
+                            <label ng-if="key2 == 0" for="">Chi phí</label>
+                            <p style="margin-top: 7px;">
+                                ₫<strong>
+                                    {{ service.price | number }}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3 mt-3">
+                <strong>Thông tin khách sạn</strong>
+            </div>
+        </div>
+        <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">Giờ nhận phòng</label>
+                        <p style="margin-top: 7px;">
+                            <strong>
+                                {{ detail.hotel.check_in }}
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <div class="form-group">
+                        <label for="">Giờ trả phòng</label>
+                        <p style="margin-top: 7px;">
+                            <strong>
+                                {{ detail.hotel.check_out }}
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4" style="text-align: right;">
+                    <div class="form-group">
+                        <label for="">Chính sách hoàn huỷ</label>
+                        <p style="margin-top: 7px;">
+                            <strong>
+                                {{ detail.hotel.refund_policy }}
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background: #f2f2f2;border-radius: 10px;padding: 10px 15px 0;margin-top: 15px;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for=""><strong>Ghi chú</strong></label>
+                        <p style="margin-top: 7px;">
+                            {{ detail.hotel.note }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <div class="form-group">
+                        <label for=""><strong>Chính sách trẻ em</strong></label>
+                        <p style="margin-top: 7px;">
+                            {{ detail.hotel.child_policy }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4" style="text-align: right;">
+                    <div class="form-group">
+                        <label for=""><strong>Dịch vụ miễn phí</strong></label>
+                        <p style="margin-top: 7px;">
+                            {{ detail.hotel.free_service }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

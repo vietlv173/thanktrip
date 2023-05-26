@@ -44,59 +44,29 @@ exports.createPost = function (req, res, next) {
             if (user === null) {
                 return res.redirect('/admin/login');
             } else {
-                if (req.body.title && req.body.tpe && req.body.province_id && req.body.address && req.body.surcharge && req.body.note && req.body.room_detail && req.body.room_included && req.body.check_in && req.body.child_policy && req.body.free_service && req.body.refund_policy) {
-                    let room_detail = [];
-
-                    let data = req.body.room_detail;
-
-                    for (let i = 0; i < data.room_type.length; i++) {
-                        if (i === 0) {
-                            room_detail.push({
-                                to: data.to[i],
-                                from: data.from[i],
-                                room_type: data.room_type[i],
-                                bed_type: parseInt(data.bed_type[i]),
-                                price_lunar: parseInt(data.price_lunar[i]),
-                                price_normal: parseInt(data.price_normal[i]),
-                                price_weekend: parseInt(data.price_weekend[i])
-                            });
-                        } else {
-                            room_detail.push({
-                                room_type: data.room_type[i],
-                                bed_type: parseInt(data.bed_type[i]),
-                                price_lunar: parseInt(data.price_lunar[i]),
-                                price_normal: parseInt(data.price_normal[i]),
-                                price_weekend: parseInt(data.price_weekend[i])
-                            });
-                        }
-                    }
-
-                    let service_detail = [];
-
-                    let data2 = req.body.service_detail;
-
-                    for (let i = 0; i < data2.length; i++) {
-                        service_detail.push({
-                            title: data2[i].title,
-                            price: parseInt(data2[i].price)
-                        });
-                    }
+                if (validateBody(req.body)) {
+                    let result = resultDetails(req.body);
 
                     let hotel = new Hotel({
-                        createdBy: user._id,
                         tpe: req.body.tpe,
+                        createdBy: user._id,
                         note: req.body.note,
                         title: req.body.title,
-                        room_detail: room_detail,
+                        email: req.body.email,
+                        phone: req.body.phone,
+                        room_detail: result.room_detail,
+                        bank_id: req.body.bank_id,
                         address: req.body.address,
                         check_in: req.body.check_in,
                         check_out: req.body.check_out,
                         surcharge: req.body.surcharge,
-                        service_detail: service_detail,
+                        service_detail: result.service_detail,
                         commission: req.body.commission,
                         province_id: req.body.province_id,
                         child_policy: req.body.child_policy,
                         free_service: req.body.free_service,
+                        accountNumber: req.body.accountNumber,
+                        accountHolder: req.body.accountHolder,
                         refund_policy: req.body.refund_policy,
                         room_included: req.body.room_included,
                     });
@@ -208,71 +178,106 @@ exports.updatePost = function (req, res, next) {
             if (user === null) {
                 return res.redirect('/admin/login');
             } else {
-                Hotel.findById(req.params.id, function (err, hotel) {
-                    if (err) return next(err);
+                if (validateBody(req.body)) {
+                    Hotel.findById(req.params.id, function (err, hotel) {
+                        if (err) return next(err);
 
-                    let room_detail = [];
+                        let result = resultDetails(req.body);
 
-                    let data = req.body.room_detail;
+                        let queries = {
+                            tpe: req.body.tpe,
+                            note: req.body.note,
+                            title: req.body.title,
+                            email: req.body.email,
+                            phone: req.body.phone,
+                            room_detail: result.room_detail,
+                            bank_id: req.body.bank_id,
+                            address: req.body.address,
+                            check_in: req.body.check_in,
+                            check_out: req.body.check_out,
+                            surcharge: req.body.surcharge,
+                            service_detail: result.service_detail,
+                            commission: req.body.commission,
+                            province_id: req.body.province_id,
+                            child_policy: req.body.child_policy,
+                            free_service: req.body.free_service,
+                            accountNumber: req.body.accountNumber,
+                            accountHolder: req.body.accountHolder,
+                            refund_policy: req.body.refund_policy,
+                            room_included: req.body.room_included,
+                        };
 
-                    for (let i = 0; i < data.room_type.length; i++) {
-                        if (i === 0) {
-                            room_detail.push({
-                                to: data.to[i],
-                                from: data.from[i],
-                                room_type: data.room_type[i],
-                                bed_type: parseInt(data.bed_type[i]),
-                                price_lunar: parseInt(data.price_lunar[i]),
-                                price_normal: parseInt(data.price_normal[i]),
-                                price_weekend: parseInt(data.price_weekend[i])
-                            });
-                        } else {
-                            room_detail.push({
-                                room_type: data.room_type[i],
-                                bed_type: parseInt(data.bed_type[i]),
-                                price_lunar: parseInt(data.price_lunar[i]),
-                                price_normal: parseInt(data.price_normal[i]),
-                                price_weekend: parseInt(data.price_weekend[i])
-                            });
-                        }
-                    }
+                        Hotel.updateOne({_id: hotel.id}, {$set: queries}, function (err) {
+                            if (err) return console.error(err);
 
-                    let service_detail = [];
-
-                    let data2 = req.body.service_detail;
-
-                    for (let i = 0; i < data2.length; i++) {
-                        service_detail.push({
-                            title: data2[i].title,
-                            price: parseInt(data2[i].price)
+                            return res.redirect('/admin/hotel/view/' + req.params.id);
                         });
-                    }
-
-                    let queries = {
-                        tpe: req.body.tpe,
-                        note: req.body.note,
-                        title: req.body.title,
-                        room_detail: room_detail,
-                        address: req.body.address,
-                        check_in: req.body.check_in,
-                        check_out: req.body.check_out,
-                        surcharge: req.body.surcharge,
-                        service_detail: service_detail,
-                        commission: req.body.commission,
-                        province_id: req.body.province_id,
-                        child_policy: req.body.child_policy,
-                        free_service: req.body.free_service,
-                        refund_policy: req.body.refund_policy,
-                        room_included: req.body.room_included,
-                    };
-
-                    Hotel.updateOne({_id: hotel.id}, {$set: queries}, function (err) {
-                        if (err) return console.error(err);
-
-                        return res.redirect('/admin/hotel/view/' + req.params.id);
                     });
-                });
+                } else {
+                    req.flash('validateFormError', 'Vui lòng điền đẩy đủ các thông tin có dấu (*)');
+
+                    res.redirect('/admin/hotel/create');
+                }
             }
         }
     });
 };
+
+function resultDetails(body) {
+    let room_detail = [];
+
+    let data = body.room_detail;
+
+    for (let i = 0; i < data.room_type.length; i++) {
+        if (i === 0) {
+            room_detail.push({
+                to: data.to[i],
+                from: data.from[i],
+                id: parseInt(data.id[i]),
+                room_type: data.room_type[i],
+                bed_type: parseInt(data.bed_type[i]),
+                price_lunar: parseInt(data.price_lunar[i]),
+                price_normal: parseInt(data.price_normal[i]),
+                price_weekend: parseInt(data.price_weekend[i])
+            });
+        } else {
+            room_detail.push({
+                id: parseInt(data.id[i]),
+                room_type: data.room_type[i],
+                bed_type: parseInt(data.bed_type[i]),
+                price_lunar: parseInt(data.price_lunar[i]),
+                price_normal: parseInt(data.price_normal[i]),
+                price_weekend: parseInt(data.price_weekend[i])
+            });
+        }
+    }
+
+    let service_detail = [];
+
+    if ('service_detail' in body) {
+        let data2 = body.service_detail;
+
+        for (let i = 0; i < data2.length; i++) {
+            service_detail.push({
+                title: data2[i].title,
+                price: parseInt(data2[i].price)
+            });
+        }
+    }
+
+    return {room_detail, service_detail};
+}
+
+function validateBody(body) {
+    let fieldRequires = ['title', 'phone', 'email', 'bank_id', 'accountHolder', 'accountNumber', 'tpe', 'province_id', 'address', 'check_in', 'check_out', 'refund_policy', 'commission', 'surcharge', 'room_included'];
+
+    for (let i = 0; i < fieldRequires.length; i++) {
+        let field = fieldRequires[i];
+        if (!(field in body) || !body[field]) {
+            console.log(field);
+            return false;
+        }
+    }
+
+    return true;
+}

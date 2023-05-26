@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Thinkflight | Báo giá khách sạn
+        %>
+    </title>
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any"/>
+    <link href="/stylesheets/coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="/stylesheets/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/pace.min.css" rel="stylesheet">
+
+    <style>
+        .card-body table th {
+            text-transform: uppercase;
+        }
+
+        table tr th {
+            color: #000 !important;
+            border-top: 1px solid #c5e7f2 !important;
+            border-bottom: 1px solid #c5e7f2 !important;
+            background: url(https://cdn-app.kiotviet.vn/retailler/Content/thBg.png) right center no-repeat #dcf4fc !important;
+        }
+
+        .table th {
+            border-bottom: none !important;
+            font-weight: 400 !important;
+            font-size: 12px !important;
+            text-transform: uppercase;
+        }
+
+        .table-responsive-sm a:hover {
+            text-decoration: none;
+        }
+
+    </style>
+
+    <style>
+        h2 {
+            line-height: 36px;
+            font-size: 20px;
+        }
+
+        h5 {
+            line-height: 18px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .r4_counter h4 {
+            margin: 0;
+        }
+
+        a {
+            color: #008ece;
+            text-decoration: none !important;
+        }
+
+        .dashboardStatistic {
+            position: relative;
+        }
+
+        .uln ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-custom .dashboardStatistic ul li {
+            max-width: calc(100% / 4);
+        }
+
+        .dashboardStatistic ul li {
+            position: relative;
+            color: #999;
+            font-size: 12px;
+            padding: 6px 0 6px 67px;
+            text-align: left;
+            display: inline-block;
+            height: auto;
+            vertical-align: middle;
+            min-height: 72px;
+            white-space: nowrap;
+            margin: 4px 25px 8px 0;
+            box-sizing: border-box;
+        }
+
+        .dashboardStatistic .total .dash_icon {
+            background: #0094da;
+        }
+
+        .dashboardStatistic .dash_icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            position: absolute;
+            top: 25px;
+            left: 28px;
+            background: #4bac4d;
+            text-align: center;
+            border-radius: 100% !important;
+            color: #fff;
+            line-height: 32px;
+        }
+
+        .dashboardStatistic .dash_title {
+            font-weight: 700;
+            color: #666;
+            margin: 0 0 0 2px;
+        }
+
+        .c-callout {
+            text-align: left;
+            padding: 6px 0 6px 60px;
+            border-top: 1px solid #d6d6d6;
+        }
+
+        .dashboardStatistic .total span.number {
+            color: #0094da;
+        }
+
+        .dashboardStatistic span.number {
+            display: block;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        span.yesterday {
+            color: #999;
+            display: block;
+            font-size: 12px;
+            margin: 0 0 0 2px;
+        }
+
+        .btn-group-left a, .btn-group-left button {
+            text-transform: uppercase;
+        }
+
+        .dashboardStatistic .return .dash_icon {
+            background: #ff8030;
+        }
+
+        .dashboardStatistic .down .dash_icon {
+            background: #f94f5e;
+        }
+
+        @media (min-width: 768px) {
+            .c-callout {
+                border-top: none;
+                border-left: 1px solid #d6d6d6;
+            }
+        }
+    </style>
+
+    <style type="text/css">
+        @keyframes spinner {
+            0% {
+                opacity: 1
+            }
+            100% {
+                opacity: 0
+            }
+        }
+
+        .spinner div {
+            left: 95px;
+            top: 75px;
+            position: absolute;
+            animation: spinner linear 1s infinite;
+            background: #1d3f72;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px / 5px;
+            transform-origin: 5px 25px;
+        }
+
+        .spinner div:nth-child(1) {
+            transform: rotate(0deg);
+            animation-delay: -0.9s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(2) {
+            transform: rotate(36deg);
+            animation-delay: -0.8s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(3) {
+            transform: rotate(72deg);
+            animation-delay: -0.7s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(4) {
+            transform: rotate(108deg);
+            animation-delay: -0.6s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(5) {
+            transform: rotate(144deg);
+            animation-delay: -0.5s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: -0.4s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(7) {
+            transform: rotate(216deg);
+            animation-delay: -0.3s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(8) {
+            transform: rotate(252deg);
+            animation-delay: -0.2s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(9) {
+            transform: rotate(288deg);
+            animation-delay: -0.1s;
+            background: #1d3f72;
+        }
+
+        .spinner div:nth-child(10) {
+            transform: rotate(324deg);
+            animation-delay: 0s;
+            background: #1d3f72;
+        }
+
+        .loading-io {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .spinner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: translateZ(0) scale(1);
+            backface-visibility: hidden;
+            transform-origin: 0 0; /* see note above */
+        }
+
+        .spinner div {
+            box-sizing: content-box;
+        }
+
+        .th-text-right {
+            text-align: right;
+        }
+
+        .tab-content .tab-pane {
+            padding: 0 0 0;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<%- include('../layouts/header', {userLogin: userLogin}); %>
+<div class="app-body">
+    <%- include('../layouts/sidebar', {userLogin: userLogin}); %>
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/admin/quote/index">Báo giá khách sạn</a>
+            </li>
+            <li class="breadcrumb-item active">Chi tiết báo giá</li>
+        </ol>
+        <div class="container-fluid" data-ng-app="quoteCrudApp" data-ng-controller="quoteCrudCtrl">
+            <input type="hidden" id="quoteId" value="<%= quote.id %>">
+            <div id="ui-view">
+                <div>
+                    <div class="fade-in">
+                        <div class="row">
+                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-body" style="padding: 0;">
+                                        <div style="padding: 1.25rem;">
+                                            <strong style="text-transform: uppercase;">Báo giá khách sạn</strong>
+                                            <br>
+                                            <span>Ngày tạo: <%= quote.createdAt %></span>
+                                        </div>
+                                        <div ng-repeat="(key,detail) in details track by $index">
+                                            <div style="background: #F2F2F2;padding: 10px 20px;">
+                                                <button class="btn btn-link" data-toggle="collapse"
+                                                        data-target="#collapse{{key}}"
+                                                        aria-expanded="false" aria-controls="collapse{{key}}"
+                                                        style="font-size: 16px;padding-left: 0;">
+                                                    <strong style="text-transform: uppercase;">
+                                                        Option {{key + 1}}: {{detail.title}}
+                                                    </strong>
+                                                </button>
+                                                <br>
+                                                <span>{{detail.hotel.address}}</span>
+                                            </div>
+                                            <div id="accordion" style="padding: 1.25rem;">
+                                                <div class="row">
+                                                    <% include __hotel_view %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12" style="text-align: center;">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-danger"
+                                                            data-ng-click="downloadPdf('<%= quote._id %>')">
+                                                        <span class="fa fa-file-pdf-o"></span>
+                                                        Tải về pdf
+                                                    </button>
+                                                    <a target="_blank" href="/admin/quote/public/<%= quote._id %>"
+                                                       class="btn btn-success">
+                                                        <span class="fa fa-link"></span>
+                                                        Xem trực tiếp
+                                                    </a>
+                                                    <a href="/admin/quote/update/<%= quote._id %>"
+                                                       class="btn btn-primary">
+                                                        <span class="fa fa-edit"></span>
+                                                        Cập nhật
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<% include ../layouts/footer %>
+<script src="/javascript/quote-crud.js"></script>
+</body>
+</html>

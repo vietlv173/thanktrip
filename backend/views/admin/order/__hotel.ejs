@@ -1,32 +1,24 @@
 <div ng-if="detail.service_type == 2" class="col-md-11">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-4">
             <div class="form-group">
-                <label for="">Chọn hotel</label>
-                <input type="hidden" value="2" name="service_detail[{{key}}][service_type]">
-                <input type="hidden" value="{{detail.surcharge}}" name="service_detail[{{key}}][surcharge]">
-                <input type="hidden" value="{{detail.commission}}" name="service_detail[{{key}}][commission]">
-                <select class="form-control" ng-model="detail.hotel_id" ng-change="selectHotel(detail)"
-                        name="service_detail[{{key}}][hotel_id]">
-                    <option ng-repeat="t in hotels"
-                            value="{{t._id}}">
-                        {{t.title}}
-                    </option>
-                </select>
+                <label for="">Khách sạn</label>
+                <br>
+                <strong>{{detail.hotel_id}}</strong>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="">Ngày đi</label>
-                <input type="date" name="service_detail[{{key}}][from]" class="form-control" ng-model="detail.from"
-                       min="{{minDate1[key] | date:'yyyy-MM-dd'}}" ng-change="updateMinDate2(detail, key)">
+                <br>
+                <strong>{{detail.from}}</strong>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="">Ngày về</label>
-                <input type="date" name="service_detail[{{key}}][to]" class="form-control" ng-model="detail.to"
-                       min="{{minDate2[key] | date:'yyyy-MM-dd'}}">
+                <br>
+                <strong>{{detail.to}}</strong>
             </div>
         </div>
     </div>

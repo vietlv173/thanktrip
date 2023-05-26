@@ -12,6 +12,8 @@ const userCtrl = require('../../controllers/api/user.controller');
 
 const orderCtrl = require('../../controllers/api/order.controller');
 
+const quoteCtrl = require('../../controllers/api/quote.controller');
+
 const hotelCtrl = require('../../controllers/api/hotel.controller');
 
 const flightCtrl = require('../../controllers/api/flight.controller');
@@ -33,6 +35,8 @@ router.post('/tour/update-status', jsonParser, tourCtrl.updateStatus);
 router.get('/order', jsonParser, orderCtrl.index);
 
 router.post('/order/update-status', jsonParser, orderCtrl.updateStatus);
+
+router.get('/quote', jsonParser, quoteCtrl.index);
 
 router.get('/hotel', jsonParser, hotelCtrl.index);
 

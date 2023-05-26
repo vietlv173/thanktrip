@@ -67,7 +67,7 @@
                                             <strong>Giao dịch</strong>
                                             <small>Thêm mới</small>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body" style="padding: 1rem;">
                                             <div class="form-group">
                                                 <% if(typeof validateFormError !== "undefined") { %>
                                                     <div class="alert alert-danger" role="alert" style="opacity: 1;">
@@ -101,60 +101,228 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <strong>Chi tiết giao dịch</strong>
+                                                <div class="col-md-12" style="background: #f2f2f2;">
+                                                    <div class="form-group" style="margin: 0.75rem 0;">
+                                                        <strong style="font-size: 15px;">Chi tiết giao dịch</strong>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div ng-repeat="(key,detail) in service_detail track by $index">
+                                            <div style="padding: 15px 0;">
                                                 <div class="row">
-                                                    <div class="col-md-1">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <div ng-if="key == 0">
-                                                                        <strong style="color: #fff;">STT</strong>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <strong>
+                                                                <svg width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none"
+                                                                     xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M22.5 4.96497H1.5C0.8775 4.96497 0.375 5.46747 0.375 6.08997V8.91747C0.375 9.53997 0.8775 10.0425 1.5 10.0425C2.58 10.0425 3.4575 10.92 3.4575 12C3.4575 13.08 2.58 13.9575 1.5 13.9575C0.8775 13.9575 0.375 14.46 0.375 15.0825V17.91C0.375 18.5325 0.8775 19.035 1.5 19.035H22.5C23.1225 19.035 23.625 18.5325 23.625 17.91V15.0825C23.625 14.46 23.1225 13.9575 22.5 13.9575C21.42 13.9575 20.5425 13.08 20.5425 12C20.5425 10.92 21.42 10.0425 22.5 10.0425C23.1225 10.0425 23.625 9.53997 23.625 8.91747V6.08997C23.625 5.46747 23.1225 4.96497 22.5 4.96497ZM16.875 14.625C16.875 15.24 16.3725 15.75 15.75 15.75C15.1275 15.75 14.625 15.24 14.625 14.625V9.37497C14.625 8.75997 15.1275 8.24997 15.75 8.24997C16.3725 8.24997 16.875 8.75997 16.875 9.37497V14.625Z"
+                                                                          fill="#00BFA8"/>
+                                                                </svg>
+                                                                Vé thăm quan
+                                                            </strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div ng-repeat="(key,detail) in service_detail track by $index">
+                                                    <div ng-if="detail.service_type == 1" class="row">
+                                                        <div class="col-md-1">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <div ng-if="key == 0">
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                        </div>
+                                                                        <button ng-if="key == 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: -15px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
+                                                                        <button ng-if="key != 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: 33px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
                                                                     </div>
-                                                                    <button ng-if="key == 0" type="button"
-                                                                            class="btn btn-sm btn-danger"
-                                                                            style="margin-top: -15px;"
-                                                                            data-ng-click="deleteDetail(key)">
-                                                                        <span class="fa fa-trash"></span>
-                                                                    </button>
-                                                                    <button ng-if="key != 0" type="button"
-                                                                            class="btn btn-sm btn-danger"
-                                                                            style="margin-top: 33px;"
-                                                                            data-ng-click="deleteDetail(key)">
-                                                                        <span class="fa fa-trash"></span>
-                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <% include _tour %>
                                                     </div>
-                                                    <% include _tour %>
-                                                    <% include _hotel %>
-                                                    <% include _flight %>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <button type="button" class="btn btn-outline-primary"
-                                                                data-ng-click="addDetail(1)">
-                                                            <span class="fa fa-globe"></span>
-                                                            Thêm tour
-                                                        </button>
-                                                        <button type="button" class="btn btn-outline-primary"
-                                                                data-ng-click="addDetail(2)">
-                                                            <span class="fa fa-home"></span>
-                                                            Thêm hotel
-                                                        </button>
-                                                        <button type="button" class="btn btn-outline-primary"
-                                                                data-ng-click="addDetail(3)">
-                                                            <span class="fa fa-plane"></span>
-                                                            Vé máy bay
-                                                        </button>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-outline-primary"
+                                                                    data-ng-click="addDetail(1)">
+                                                                <span class="fa fa-globe"></span>
+                                                                Thêm dịch vụ
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <strong>
+                                                                <svg width="24" height="18" viewBox="0 0 24 18"
+                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M1.71428 10.7143H24.8571C25.0893 10.7143 25.2902 10.7991 25.4598 10.9688C25.6295 11.1384 25.7143 11.3393 25.7143 11.5714V17.5714H22.2857V14.1429H1.71428V17.5714H-1.71429V1.28573C-1.71429 1.05359 -1.62947 0.852696 -1.45983 0.683053C-1.29019 0.51341 -1.08929 0.428589 -0.857152 0.428589H0.857134C1.08928 0.428589 1.29017 0.51341 1.45981 0.683053C1.62946 0.852696 1.71428 1.05359 1.71428 1.28573V10.7143ZM9.42856 6.42859C9.42856 5.48216 9.09374 4.67412 8.4241 4.00448C7.75446 3.33484 6.94642 3.00002 5.99999 3.00002C5.05356 3.00002 4.24553 3.33484 3.57588 4.00448C2.90624 4.67412 2.57142 5.48216 2.57142 6.42859C2.57142 7.37502 2.90624 8.18305 3.57588 8.8527C4.24553 9.52234 5.05356 9.85716 5.99999 9.85716C6.94642 9.85716 7.75446 9.52234 8.4241 8.8527C9.09374 8.18305 9.42856 7.37502 9.42856 6.42859ZM25.7143 9.85716V9.00002C25.7143 7.58037 25.212 6.36832 24.2076 5.36386C23.2031 4.35939 21.9911 3.85716 20.5714 3.85716H11.1428C10.9107 3.85716 10.7098 3.94198 10.5402 4.11162C10.3705 4.28127 10.2857 4.48216 10.2857 4.7143V9.85716H25.7143Z"
+                                                                          fill="#00BFA8"/>
+                                                                </svg>
+                                                                Khách sạn
+                                                            </strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div ng-repeat="(key,detail) in service_detail track by $index">
+                                                    <div ng-if="detail.service_type == 2" class="row">
+                                                        <div class="col-md-1">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <div ng-if="key == 0">
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                        </div>
+                                                                        <button ng-if="key == 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: -15px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
+                                                                        <button ng-if="key != 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: 33px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <% include _hotel %>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-outline-primary"
+                                                                    data-ng-click="addDetail(2)">
+                                                                <span class="fa fa-globe"></span>
+                                                                Thêm dịch vụ
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <strong>
+                                                                <svg width="22" height="24" viewBox="0 0 22 24"
+                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M12.2047 14.6203C12.2234 14.2969 12.5938 14.4094 12.5938 14.4094L15.5 15L21.5 17.2828C21.5 16.1578 21.3219 16.0406 21.0594 15.8438L12.5 9.70312C12.5 9.70312 12.2703 6.89062 12.2703 4.41094C12.2703 3.2625 11.7172 0.75 11 0.75C10.2828 0.75 9.72969 3.3 9.72969 4.41094C9.72969 6.76406 9.5 9.70312 9.5 9.70312L0.940625 15.8438C0.607813 16.0781 0.5 16.2047 0.5 17.2828L6.5 15L9.40156 14.4094C9.40156 14.4094 9.77187 14.2969 9.79062 14.6203C9.80937 14.9437 9.73438 17.8594 10.0672 19.4062C10.1094 19.6125 9.95 19.6266 9.84219 19.7531L7.40937 21.2906C7.32969 21.3797 7.29219 21.6328 7.29219 21.6328L7.24531 22.5L10.4328 21.75L10.9953 23.25L11.5578 21.75L14.7453 22.5L14.6984 21.6328C14.7031 21.6328 14.6656 21.3797 14.5859 21.2906L12.1531 19.7531C12.0453 19.6266 11.8859 19.6125 11.9281 19.4062C12.2516 17.8594 12.1859 14.9437 12.2047 14.6203Z"
+                                                                          fill="#00BFA8"/>
+                                                                </svg>
+                                                                Vé máy bay
+                                                            </strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div ng-repeat="(key,detail) in service_detail track by $index">
+                                                    <div ng-if="detail.service_type == 3" class="row">
+                                                        <div class="col-md-1">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <div ng-if="key == 0">
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                        </div>
+                                                                        <button ng-if="key == 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: -15px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
+                                                                        <button ng-if="key != 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: 33px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <% include _flight %>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-outline-primary"
+                                                                    data-ng-click="addDetail(3)">
+                                                                <span class="fa fa-globe"></span>
+                                                                Thêm dịch vụ
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <strong>
+                                                                <svg width="18" height="16" viewBox="0 0 18 16"
+                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M15.92 1.01C15.8175 0.715033 15.6257 0.459298 15.3712 0.278305C15.1168 0.0973119 14.8123 4.16831e-05 14.5 0H3.5C2.845 0 2.285 0.42 2.08 1.01L0 7V15C0 15.55 0.45 16 1 16H2C2.26522 16 2.51957 15.8946 2.70711 15.7071C2.89464 15.5196 3 15.2652 3 15V14H15V15C15 15.55 15.45 16 16 16H17C17.2652 16 17.5196 15.8946 17.7071 15.7071C17.8946 15.5196 18 15.2652 18 15V7L15.92 1.01ZM3.5 11C2.67 11 2 10.33 2 9.5C2 8.67 2.67 8 3.5 8C4.33 8 5 8.67 5 9.5C5 10.33 4.33 11 3.5 11ZM14.5 11C13.67 11 13 10.33 13 9.5C13 8.67 13.67 8 14.5 8C15.33 8 16 8.67 16 9.5C16 10.33 15.33 11 14.5 11ZM2 6L3.5 1.5H14.5L16 6H2Z"
+                                                                          fill="#00BFA8"/>
+                                                                </svg>
+                                                                Đưa đón tại sân bay
+                                                            </strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div ng-repeat="(key,detail) in service_detail track by $index">
+                                                    <div ng-if="detail.service_type == 4" class="row">
+                                                        <div class="col-md-1">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <div ng-if="key == 0">
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                            <strong style="color: #fff;">STT</strong>
+                                                                        </div>
+                                                                        <button ng-if="key == 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: -15px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
+                                                                        <button ng-if="key != 0" type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                style="margin-top: 33px;"
+                                                                                data-ng-click="deleteDetail(key)">
+                                                                            <span class="fa fa-trash"></span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <% include _vehicle %>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-outline-primary"
+                                                                    data-ng-click="addDetail(4)">
+                                                                <span class="fa fa-globe"></span>
+                                                                Thêm dịch vụ
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

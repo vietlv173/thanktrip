@@ -8,7 +8,11 @@ router.get('/index', orderCtrl.index);
 
 router.get('/create', orderCtrl.create);
 
+router.get('/view/:id', orderCtrl.view);
+
 router.get('/update/:id', orderCtrl.update);
+
+router.get('/public/:id', orderCtrl.public);
 
 router.post('/create', orderCtrl.createPost);
 
