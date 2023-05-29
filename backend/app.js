@@ -129,6 +129,7 @@ app.use('/admin/transaction', transactionRouter);
 app.use('/admin/collaborator', collaboratorRouter);
 app.use(function (req, res, next) {
     next(createError(404));
+    res.redirect(301, '/admin/login');
 });
 app.use(function (err, req, res) {
     res.locals.message = err.message;
