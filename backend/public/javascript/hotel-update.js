@@ -56,9 +56,13 @@ hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSeri
 
     $scope.beds = [
         {
+            id: 0, name: 'Chọn loại gường',
+        }, {
             id: 1, name: 'TWIN (TWN)',
         }, {
             id: 2, name: 'Double (DBL)',
+        }, {
+            id: 3, name: 'DBL/TWN',
         }
     ];
 
@@ -181,11 +185,11 @@ hotelUpdateApp.controller('hotelUpdateCtrl', ['$scope', '$http', '$httpParamSeri
                     $scope.room_detail[i].from = new Date($scope.room_detail[i].from);
                 }
 
-                if ($scope.room_detail[i].bed_type === 1) {
-                    $scope.room_detail[i].bed_type = {id: 1, name: 'TWIN (TWN)'};
-                } else {
-                    $scope.room_detail[i].bed_type = {id: 2, name: 'Double (DBL)'};
-                }
+                $scope.beds.forEach(x => {
+                    if (parseInt(x.id) === $scope.room_detail[i].bed_type) {
+                        $scope.room_detail[i].bed_type = x;
+                    }
+                });
             }
 
             $scope.tpes.forEach(t => {

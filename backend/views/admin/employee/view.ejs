@@ -302,46 +302,13 @@
                 <div>
                     <div class="fade-in">
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
-                                            Tìm kiếm
-                                        </p>
-                                        <div class="card-header-actions">
-                                            <a href="/admin/collaborator/create" class="btn btn-block btn-outline-dark">
-                                                <i class="nav-icon icon-plus"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" id="name" type="text"
-                                                           placeholder="Theo tên, mã CTV">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="btn btn-sm btn-primary pull-right" type="submit">
-                                            <i class="nav-icon icon-check"></i>
-                                            Tìm kiếm
-                                        </button>
-                                        <button class="btn btn-sm btn-danger pull-left" type="reset">
-                                            <i class="nav-icon icon-close"></i>
-                                            Khôi phục
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-10">
                                 <div class="card">
                                     <div class="card-header">
                                         <p style="float: left;font-weight: bold;margin-top: 8px;margin-bottom: 0;">
                                             <i class="nav-icon icon-globe"></i>
-                                            <%= collaborator.fullName %>
+                                            <%= employee.fullName %>
                                         </p>
                                         <div class="card-header-actions">
                                             <select class="form-control" id="filterDate" ng-model="file" ng-change="getStatistical()">
@@ -592,5 +559,6 @@
     </main>
 </div>
 <% include ../layouts/footer %>
+<script src="/javascript/collaborator.js"></script>
 </body>
 </html>

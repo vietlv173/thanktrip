@@ -244,6 +244,8 @@
                                                                     <br>
                                                                 </div>
                                                                 <strong style="line-height: 3;">{{key + 1}}</strong>
+                                                                <input type="hidden" class="form-control"
+                                                                       value="{{detail.id}}" name="room_detail[id][]">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -261,8 +263,10 @@
                                                     <div class="form-group">
                                                         <label ng-if="key == 0" for="">Loại giường</label>
                                                         <select class="form-control" name="room_detail[bed_type][]">
+                                                            <option value="0">Chọn loại gường</option>
                                                             <option value="1">TWIN (TWN)</option>
                                                             <option value="2">Double (DBL)</option>
+                                                            <option value="3">DBL/TWN</option>
                                                         </select>
                                                     </div>
                                                 </div>

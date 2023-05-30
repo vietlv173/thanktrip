@@ -229,11 +229,12 @@ function resultDetails(body) {
     let data = body.room_detail;
 
     for (let i = 0; i < data.room_type.length; i++) {
+        let id = 'id' in data ? parseInt(data.id[i]) : i + 1;
         if (i === 0) {
             room_detail.push({
+                id: id,
                 to: data.to[i],
                 from: data.from[i],
-                id: parseInt(data.id[i]),
                 room_type: data.room_type[i],
                 bed_type: parseInt(data.bed_type[i]),
                 price_lunar: parseInt(data.price_lunar[i]),
@@ -242,7 +243,7 @@ function resultDetails(body) {
             });
         } else {
             room_detail.push({
-                id: parseInt(data.id[i]),
+                id: id,
                 room_type: data.room_type[i],
                 bed_type: parseInt(data.bed_type[i]),
                 price_lunar: parseInt(data.price_lunar[i]),
